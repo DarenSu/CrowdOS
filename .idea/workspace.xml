@@ -164,7 +164,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-14" />
-    <option name="width" value="881" />
+    <option name="width" value="1200" />
     <option name="height" value="1073" />
   </component>
   <component name="ProjectId" id="1fRh2CHJhfbaJtNz8Wm9212Apm4" />
@@ -255,6 +255,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Springboot_Mybatis-V7.3.0-修改 - Protobuf" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
