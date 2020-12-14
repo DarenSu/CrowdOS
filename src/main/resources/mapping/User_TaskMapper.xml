@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.User_TaskMapper">
+
+
+    <resultMap id="BaseResultMap" type="com.example.entity.User_Task">
+        <result column="user_taskId" jdbcType="INTEGER" property="user_taskId" />
+        <result column="userId" jdbcType="INTEGER" property="userId" />
+        <result column="taskId" jdbcType="INTEGER" property="taskId" />
+        <result column="user_taskStatus" jdbcType="INTEGER" property="user_taskStatus" />
+        <result column="content" jdbcType="VARCHAR" property="content" />
+        <result column="image" jdbcType="VARCHAR" property="image" />
+        <result column="type" jdbcType="INTEGER" property="type" />
+    </resultMap>
+
+
+    <!--  2019.7.11  功能：查询（根据user_taskId查询）       -->
+    <select id="Sel"  parameterType="int" resultType="com.example.entity.User_Task">
+        select * from user_task where user_taskId = #{user_taskId}
+    </select>
+
+
+    <!-- 2019.7.11   功能：任务数据上传（添加）  将前端上传的User_Task类数据存入数据库   -->
+    <insert id="add" parameterType="com.example.entity.User_Task" useGeneratedKeys="true" keyProperty="user_taskId">
+        insert into user_task (user_taskId, userId, taskId, user_taskStatus, content, image, type)
+        values (#{user_taskId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{taskId,jdbcType=INTEGER},
+        #{user_taskStatus,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER})
+    </insert>
+
+    <select id="getStatus" parameterType="com.example.entity.User_Task"  resultType="com.example.entity.User_Task">
+        select * from user_task where userId = #{userId} and taskId=#{taskId}
+    </select>
+
+<!--    2019.11.30 接受任务，将任务状态变为1-->
+    <update id="acceptUser_Task" parameterType="com.example.entity.User_Task" >
+        UPDATE user_task SET
+        user_taskStatus = #{user_taskStatus}
+        WHERE userId = #{userId} and taskId = #{taskId}
+    </update>
+
+    <!--    ///2019-11-30 进行检测，若是该数据没有的话，则需要另行添加-->
+    <select id="SelUser_Task" parameterType="com.example.entity.User_Task"  resultType="com.example.entity.User_Task">
+        select *
+        from user_task
+        where
+        userId = #{userId} and taskId=#{taskId}
+    </select>
+
+
+    <!-- 2019.7.16  用户-任务表更新，之前只有userId和taskId,现在是更新，也就是填充后面的content和image  -->
+    <update id="update" parameterType="com.example.entity.User_Task">
+        UPDATE user_task SET
+        user_taskStatus = #{user_taskStatus},
+        content = #{content},
+        image = #{image}
+        WHERE userId = #{userId} and taskId = #{taskId}
+    </update>
+
+    <!--2019.7.18 查看task的完成情况，即看有多少人正在执行该任务，只要是接受任务的都要统计
+    输入参数taskId，返回List<user_task>和返回List<user>
+    通过taskId查询出对应的多有的user_task类
+    然后根据查询到的user_task类里的userId查询出其对应的user类（主要是要user里的userName）-->
+    <select id="SelTaskId"  parameterType="INTEGER" resultType="com.example.entity.User_Task">
+        <!--没有去重的    select *  from user_task where taskId = #{taskId}-->
+        <!--去重的-->
+        select *  from user_task where taskId = #{taskId} and (type = 1 or type = 0) and user_taskStatus = 1 group by userId
+    </select>
+    <select id="SelTaskIdForUT"  parameterType="INTEGER" resultType="com.example.entity.User_Task">
+        <!--没有去重的    select *  from user_task where taskId = #{taskId}-->
+        <!--去重的-->
+        select *  from user_task where taskId = #{taskId}
+<!--    没必要去重的，因为在UT中一个taskId不可能对应两个一样的userId-->
+<!--    group by userId-->
+    </select>
+
+
+
+    <!--2019.9.10  输入参数utask,返回单个图片,-->
+    <select id="selcetUser_Task"  parameterType="com.example.entity.User_Task" resultType="com.example.entity.User_Task">
+        select * from user_task where user_taskId = #{user_taskId} and userId = #{userId}
+    </select>
+
+    <!--2019-11-1   根据前端传输的用户的ID，返回此用户已经接收的所有任务-->
+    <select id="seluserId" parameterType="INTEGER" resultType="com.example.entity.User_Task">
+        select *
+        from user_task
+        where userId = #{userId}
+    </select>
+
+    <!--2019-11-1   根据前端传输的用户的ID，返回此用户已经接收的并且已经完成的所有任务-->
+    <select id="seluserIdFinish" parameterType="INTEGER" resultType="com.example.entity.User_Task">
+        select *
+        from user_task
+        where   userId = #{userId}
+            and
+                user_taskStatus = ('1')
+<!--            group by taskId-->
+    </select>
+
+    <!--2019-11-3   根据前端传输的用户的ID，返回此用户已经接收的但是未完成完成的所有任务-->
+    <select id="seluserIdUnfinish" parameterType="INTEGER" resultType="com.example.entity.User_Task">
+        select *
+        from user_task
+        where   userId = #{userId}
+        and
+        user_taskStatus = ('0')
+    </select>
+    <!--2019-11-1   根据前端传输的用户的ID，根据推荐系统的策略返回此用户最合适接受的未执行的任务（目前的本质是随机返回）-->
+    <select id="seluserIdRandom" parameterType="INTEGER" resultType="com.example.entity.User_Task">
+        select *
+        from user_task
+        employees ORDER BY RAND() LIMIT 5
+
+    </select>
+
+    <!--2019-11-3   根据前端传输的用户的ID，返回此用户已经接收的所有任务的taskId-->
+    <!--并且已经进行了去重的处理，即查询的List<INTEGER>都是没有重复的数据,使用group by taskId-->
+    <select id="seluserIdForTaskId" parameterType="INTEGER" resultType="INTEGER">
+        select taskId
+        from user_task
+        where userId = #{userId} group by taskId
+    </select>
+
+
+</mapper>
+<!--   select *
+        from user_task
+        where
+        user_taskStatus = 0
+        and
+        employees  ORDER BY RAND() LIMIT 5 -->

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.entity.User">
+        <result column="userId" jdbcType="INTEGER" property="userId" />
+        <result column="userName" jdbcType="VARCHAR" property="userName" />
+        <result column="passWord" jdbcType="VARCHAR" property="passWord" />
+        <result column="realName" jdbcType="VARCHAR" property="realName" />
+        <result column="coins" jdbcType="INTEGER" property="coins" />
+    </resultMap>
+
+
+    <select id="Sel"  parameterType="int" resultType="com.example.entity.User">
+        select * from user where userId = #{userId}
+    </select>
+
+
+    <!-- 2019.7.2修改：单个数据返回修改为多数据返回 -->
+    <select id="SelInfo" parameterType="string" resultType="com.example.entity.User">
+            select * from user where userName = #{userName}
+    </select>
+
+    <!-- 2019.7.5 用户登录 -->
+    <select id="Enter"  parameterType="User" resultType="com.example.entity.User">
+        select *
+        from user
+        where
+        userName = #{userName} and passWord = #{passWord}
+    </select>
+
+
+    <!-- 2019.7.5 防止用户重复名称注册 -->
+    <!-- 2019.9.25 并且检测用户登录是否拥有登录资格 -->
+    <select id="check"  parameterType="com.example.entity.User" resultType="com.example.entity.User">
+        select * from user
+        where
+        (userName = #{userName} and passWord = #{passWord})
+
+    </select>
+
+
+    <!--2019.9.16 一次性返回数据库用户信息最后面的十条数据-->
+    <select id="getUserRank"  resultType="com.example.entity.User">
+    select * from user order by user.coins desc limit 0,10
+    </select>
+
+
+    <!-- 2019.9.25 并防止用户重复注册 -->
+    <select id="checkLogin"  parameterType="com.example.entity.User" resultType="com.example.entity.User">
+        select * from user
+        where
+        userName = #{userName}
+
+
+    </select>
+
+    
+	<insert id="add" parameterType="com.example.entity.User" useGeneratedKeys="true" keyProperty="userId">
+        insert into user (userId, userName, passWord, realName, coins)
+        values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR},
+        #{realName,jdbcType=VARCHAR},#{coins,jdbcType=INTEGER})
+    </insert>
+
+
+<!--
+    <insert id="add_BeanTask" parameterType="com.example.entity.Bean_Task" keyProperty="id">
+        insert into Bean_Task (id, taskName, postTime, deadLine, postName, coin, text)
+        values (#{id,jdbcType=VARCHAR}, #{taskName,jdbcType=VARCHAR}, #{postTime,jdbcType=VARCHAR},
+        #{deadLine,jdbcType=VARCHAR}, #{postName,jdbcType=VARCHAR}, #{coin,jdbcType=VARCHAR}, #{text,jdbcType=VARCHAR})
+    </insert>
+    
+    <select id="Sel_BeanTask" resultType="com.example.entity.Bean_Task">
+        select * from Bean_Task where id = #{id}
+    </select>
+    -->
+    
+    
+    
+    <delete id="del" parameterType="com.example.entity.User">  
+        DELETE FROM user WHERE userId = #{userId}
+	</delete> 
+
+
+	<select id="checkUser" parameterType="com.example.entity.User" resultType="com.example.entity.User">  
+    	SELECT *
+          	FROM user  
+         	WHERE userName = #{userName} and passWord = #{passWord}
+	</select>  
+
+
+    <!--<insert id="insert" parameterType="com.example.entity.User">
+        insert into User (userId, userName, phone,
+        sex)
+        values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+        #{sex,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.example.entity.User">
+        insert into User
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userid != null">
+                userId,
+            </if>
+            <if test="username != null">
+                userName,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userid != null">
+                #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="findAllUser" resultType="com.example.entity.User">
+        select * from User
+    </select>-->
+</mapper>
+
+
+

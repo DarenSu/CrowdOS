@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.Familiar_SensorMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.entity.Familiar_Sensor">
+        <result column="familiar_sensorId" jdbcType="INTEGER" property="familiar_sensorId" />
+        <result column="userId" jdbcType="INTEGER" property="userId" />
+        <result column="taskId" jdbcType="INTEGER" property="taskId" />
+        <result column="longitude" jdbcType="FLOAT" property="longitude" />
+        <result column="latitude" jdbcType="FLOAT" property="latitude" />
+        <result column="speed" jdbcType="FLOAT" property="speed" />
+        <result column="sensorType" jdbcType="VARCHAR" property="sensorType" />
+        <result column="sensorFile" jdbcType="VARCHAR" property="sensorFile" />
+    </resultMap>
+
+
+<!--    //20200824   传感器数据（json数据+文件）上传至传感器数据表-->
+    <insert id="addfile" parameterType="com.example.entity.Familiar_Sensor" useGeneratedKeys="true" keyProperty="userId">
+        insert into familiar_sensor (familiar_sensorId,userId, taskId, longitude, latitude, speed, sensorType, sensorFile)
+        values ( #{familiar_sensorId,jdbcType=INTEGER},#{userId,jdbcType=INTEGER}, #{taskId,jdbcType=INTEGER}, #{longitude,jdbcType=FLOAT},
+        #{latitude,jdbcType=FLOAT}, #{speed,jdbcType=FLOAT}, #{sensorType,jdbcType=VARCHAR}, #{sensorFile,jdbcType=VARCHAR})
+    </insert>
+
+    <!-- 2019.7.11   功能：任务数据上传（添加）  将前端上传的User_Task类数据存入数据库   -->
+    <insert id="add" parameterType="com.example.entity.Familiar_Sensor" useGeneratedKeys="true" keyProperty="familiar_sensorId">
+        insert into familiar_sensor (familiar_sensorId, userId, taskId, longitude, latitude, speed, sensorType, sensorFile)
+        values ( #{familiar_sensorId,jdbcType=INTEGER}，#{userId,jdbcType=INTEGER}, #{taskId,jdbcType=INTEGER}, #{longitude,jdbcType=FLOAT},
+        #{latitude,jdbcType=FLOAT}, #{speed,jdbcType=FLOAT}, #{sensorType,jdbcType=VARCHAR}, #{sensorFile,jdbcType=VARCHAR})
+    </insert>
+
+
+    <!--2019.9.11 根据任务的taskId返回任务的List   -->
+    <select id="selFamiliar_Sensor"  resultType="com.example.entity.Familiar_Sensor" parameterType="com.example.entity.Familiar_Sensor">
+        select * from familiar_sensor where userId = #{userId} and taskId = #{taskId}
+    </select>
+
+    <!--2019.9.11 根据任务的taskId返回任务的List   -->
+    <!--    不仅仅返回了十条数据，并且还进行了排序操作，将搜索的数据按照taskId进行排序返回-->
+    <select id="SelTaskFromKind"  resultType="com.example.entity.Task" parameterType="INTEGER">
+        select * from task where taskKind = #{taskKind} order by task.taskId desc limit 0,10
+    </select>
+
+
+
+
+
+
+
+
+
+</mapper>

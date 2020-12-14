@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.Version_UpdatingMapper">
+
+
+    <resultMap id="BaseResultMap" type="com.example.entity.Version_Updating">
+        <result column="versionId" jdbcType="INTEGER" property="versionId" />
+        <result column="versionCode" jdbcType="INTEGER" property="versionCode" />
+        <result column="versionName" jdbcType="VARCHAR" property="versionName" />
+        <result column="versionAddress" jdbcType="VARCHAR" property="versionAddress" />
+        <result column="apkName" jdbcType="VARCHAR" property="apkName" />
+    </resultMap>
+
+    <!--    2019.10.29  判断是否需要进行更新,前端输入当前的版本，与服务器的最新版本进行比较-->
+    <!--     版本号不同的话temp为1，进行更新，版本号相同的话temp为0，不需要费更新-->
+    <select id="checkForPresence"  resultType="com.example.entity.Version_Updating"  parameterType="INTEGER">
+        select *
+        from version_updating
+        where
+        versionCode <![CDATA[ > ]]> #{versionCode}
+        <!--  前面的是数据库的，后面的是输入的参数-->
+        <!--            and versionName <![CDATA[ < ]]> #{versionName} -->
+
+    </select>
+
+
+    <!--2019.11.1 一次性返回数据库最后面的一条数据-->
+    <select id="getLastOne"  resultType="com.example.entity.Version_Updating">
+        select *
+        from version_updating
+        order by version_updating.versionId desc limit 0,1
+    </select>
+</mapper>

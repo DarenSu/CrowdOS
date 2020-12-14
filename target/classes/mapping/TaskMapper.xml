@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.TaskMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.entity.Task">
+        <result column="taskId" jdbcType="INTEGER" property="taskId" />
+        <result column="taskName" jdbcType="VARCHAR" property="taskName" />
+        <result column="postTime" jdbcType="DATE" property="postTime" />
+        <result column="deadLine" jdbcType="DATE" property="deadLine" />
+        <result column="userId" jdbcType="INTEGER" property="userId" />
+        <result column="userName" jdbcType="VARCHAR" property="userName" />
+        <result column="coin" jdbcType="FLOAT" property="coin" />
+        <result column="describe_task" jdbcType="VARCHAR" property="describe_task" />
+        <result column="totalNum" jdbcType="INTEGER" property="totalNum" />
+        <result column="taskStatus" jdbcType="INTEGER" property="taskStatus" />
+        <result column="taskKind" jdbcType="INTEGER" property="taskKind" />
+        <result column="longitude" jdbcType="FLOAT" property="longitude" />
+        <result column="latitude" jdbcType="FLOAT" property="latitude" />
+        <result column="sensorTypes" jdbcType="VARCHAR" property="sensorTypes" />
+    </resultMap>
+
+
+
+    <insert id="add_Task" parameterType="com.example.entity.Task" useGeneratedKeys="true" keyProperty="taskId">
+        insert into task (taskId, taskName,postTime, deadLine,userId,userName,coin, describe_task, totalNum,taskStatus,taskKind,longitude,latitude,sensorTypes)
+        values ( #{taskId,jdbcType=INTEGER},
+        #{taskName,jdbcType=VARCHAR},
+        #{postTime},
+        #{deadLine},
+        #{userId,jdbcType=INTEGER},
+        #{userName,jdbcType=VARCHAR},
+        #{coin,jdbcType=FLOAT},
+        #{describe_task,jdbcType=VARCHAR},
+        #{totalNum,jdbcType=INTEGER},
+        #{taskStatus,jdbcType=INTEGER},
+        #{taskKind,jdbcType=INTEGER},
+        #{longitude,jdbcType=FLOAT},
+        #{latitude,jdbcType=FLOAT},
+        #{sensorTypes,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+
+    <!-- 2019.7.5  获取入参为taskName的所有的数据，查询多个list    -->
+
+    <select id="SelInfo" parameterType="string" resultType="com.example.entity.Task">
+        select * from task where taskName = #{taskName}
+    </select>
+
+
+
+    <!--2019.7.6 一次性返回数据库最后面的十条数据-->
+    <select id="getTen"  resultType="com.example.entity.Task">
+        select * from task order by task.taskId desc limit 0,10
+    </select>
+    <!--2019.8.12 一次性返回数据库某id的前十条数据      有错误     mybatis中的小于等于：&lt;=   -->
+    <!--2019.8.12 实现思路-小于此ID并且不找过十条数据    -->
+    <!--   taskKind = #{taskKind}中，前面的参数是数据库里的，后面的参数是前段传进来的参数 -->
+    <select id="getNewTen"  resultType="com.example.entity.Task" parameterType="INTEGER">
+
+    <!--select * from task where taskId in (select top 10 taskId from task where taskId &lt; mintaskId order by id desc-->
+    select *
+    from task
+    where
+    taskId <![CDATA[< ]]> #{mintaskId} and taskId <![CDATA[ > ]]> (#{mintaskId}-'11')
+
+    </select>
+
+    <!--2019.9.11 根据任务的taskId返回任务的List   -->
+<!--    不仅仅返回了十条数据，并且还进行了排序操作，将搜索的数据按照taskId进行排序返回-->
+    <select id="SelTaskFromKind"  resultType="com.example.entity.Task" parameterType="INTEGER">
+        select * from task where taskKind = #{taskKind} order by task.taskId desc limit 0,10
+    </select>
+
+
+
+
+
+<!--2019.7.18  功能：查询某userId所发布的所有的任务  ，输入的参数：userId，返回的结果：List<task>-->
+    <select id="SelUserId" parameterType="INTEGER" resultType="com.example.entity.Task">
+        select * from task where userId =#{userId}
+    </select>
+
+
+    <select id="Sel_Task" resultMap="BaseResultMap">
+        select * from task where taskId = #{taskId} and taskKind = ('2')
+    </select>
+
+
+    <delete id="del_Task" parameterType="com.example.entity.Task">
+        DELETE FROM task WHERE taskId = #{taskId}
+    </delete>
+
+
+    <select id="check_Task" parameterType="com.example.entity.Task" resultType="com.example.entity.Task">
+        SELECT *
+        FROM task
+        WHERE taskName = #{taskName} and userId = #{userId}
+    </select>
+
+
+
+
+
+    <!--<insert id="insert" parameterType="com.example.entity.User">
+        insert into User (userId, userName, phone,
+        sex)
+        values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+        #{sex,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.example.entity.User">
+        insert into User
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userid != null">
+                userId,
+            </if>
+            <if test="username != null">
+                userName,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userid != null">
+                #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="findAllUser" resultType="com.example.entity.User">
+        select * from User
+    </select>-->
+</mapper>

@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: dev
+
+#mybatis:
+#type-aliases-package: com.example.demo.entity
+#config-location: classpath:mybatis/mybatis-config.xml
+#mapper-locations: classpath:mybatis/mapper/*.xml
+
