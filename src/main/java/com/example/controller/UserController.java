@@ -90,7 +90,7 @@ public class UserController {
     /// 自己测试走表单不需要requestbody，前后台对接使用的是json数据，需要使用requestbody
     ///  2019.9.25 ---待添加---
     @RequestMapping(value = "enterUser", method = RequestMethod.POST)
-    public ResponseEntity<User> EnterUser(/*@RequestBody*/ User user) {
+    public ResponseEntity<User> EnterUser(@RequestBody User user) {
         //return userService.SelInfo(userName).toString();
         Liveness liveness = new Liveness();
 

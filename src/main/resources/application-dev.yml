@@ -4,8 +4,8 @@ server:
 spring:
   datasource:
     username: root
-    password: 123123123    #EqCvN3FP
-#    password: EqCvN3FP
+#    password: 123123123    #EqCvN3FP
+    password: EqCvN3FP
     url: jdbc:mysql://127.0.0.1/zph?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
 #    url: jdbc:mysql://47.96.146.104/zph?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
