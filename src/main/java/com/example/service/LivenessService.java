@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.entity.Liveness;
 import com.example.mapper.LivenessMapper;
+import com.example.util.CheckLivenessIsEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,28 @@ public class LivenessService {
     //   20200712  目前已完成的功能如下：可以进行活跃度表的更新，用户登录便可以进行数据的记录
     public Liveness enterLiveness(Liveness liveness) /*throws LivenessServiceException*/ {
         System.out.println("欢迎来到：LivenessServer的enterLiveness");
+        //20201214 由于活跃度里面的函数有一些是空的，所以准备删除这些有很多null的数据
+        {
+            System.out.println("是否进行空数据的删除开始：");
+            Integer temptest = 0;
+            List<Liveness> livenessesList = livenessMapper.SelALLFromLiveness();
+            for (int i = 0; i < livenessesList.size() - 1; i++) {
+                Liveness liveness2 = livenessesList.get(i);
+                if (CheckLivenessIsEmpty.checkLivenessIsEmpty(liveness2) == 0) {//0删除，1不需要删除
+                    System.out.println("进行Liveness数据表中空数据的删除：");
+                    livenessMapper.deleteNull(liveness2);
+                    temptest++;
+                    System.out.println("删除成功后需要对Liveness数据表的自增ID进行重置");
 
+                }
+                ;
+            }
+            if (temptest == 0) {
+                System.out.println("没有进行Liveness表空数据的删除");
+            } else {
+                System.out.println("对Liveness中的空数据进行删除");
+            }
+        }
         /*try {
               Liveness liveness1 = liveness  ;
         }
@@ -59,12 +81,17 @@ public class LivenessService {
 
         // DarenSu 20200816  前置判断，需要判断传进来的userId不是空的，是空的就不要调用这个函数
         // DarenSu 20200814  添加判断，若是之前没有该用户的UserId,那么我们就需要进行判断，然后手动添加
-        if (livenessMapper.SelByuserId(liveness.getUserId()) == null) {
-            System.out.println("没有，我自己添加了");
-            Liveness liveness1 = new Liveness();
-            liveness1.setUserId(liveness.getUserId());
-            livenessMapper.add_Liveness(liveness1);
+        {
+            if (livenessMapper.SelByuserId(liveness.getUserId()) == null) {
+                System.out.println("没有，我自己添加了");
+                Liveness liveness1 = new Liveness();
+                liveness1.setUserId(liveness.getUserId());
+                System.out.println("添加2--------"+liveness1);
+                livenessMapper.add_Liveness(liveness1);
+                System.out.println("添加了！！！");
+            }
         }
+
 
         //           20200628         DarenSu
         // 获得现在传入的liveness对应的用户的userId，然后通过userId获取该用户的最新的数据
@@ -149,8 +176,12 @@ public class LivenessService {
         //System.out.println("5");                                                            // 修正livenessId，使其可以在数据库中正常自增
         System.out.println(liveness);
         //if(liveness.getOnlineTime() == null) {
+
+        System.out.println("添加3--------"+liveness);
         livenessMapper.add_Liveness(liveness);
         //}
+
+        System.out.println("更新4--------"+liveness);
         livenessMapper.update_Liveness(liveness);
         //if(liveness2.get(liveness2.size()-2).getOnlineTime() ==null ){
         // DarenSu   20200824  UserController里的登录函数enterUser，由于初次登陆需要直接在其中进行liveness活跃度表的该用户记录添加（只有userId）
@@ -195,4 +226,18 @@ public class LivenessService {
     public void delete_Liveness(Liveness liveness) {
         livenessMapper.delete_Liveness(liveness);
     }
+    //20201214  自增id删除后未进行重置，故加此功能,对所有的id进行重置，并且进行自增id的指针重定义
+    public void updateTheLivenessid() {
+        List<Liveness> livenessesList = livenessMapper.SelALLFromLiveness();
+        //思路便是，找到所有的数据，然后找出size，根据size()大小，对id重新自增，然后一个个更新，最后对自增的id指针进行充值到size()+1
+
+        livenessMapper.updateTheLivenessid();
+    }
+    //20201214  自增id删除后未进行重置，在resetTheLivenessid中更新了自增地的顺序，这块进行自增id的指针重定义
+    public void resetTheLivenessid() {
+        livenessMapper.resetTheLivenessid();
+    }
+
+
+
 }

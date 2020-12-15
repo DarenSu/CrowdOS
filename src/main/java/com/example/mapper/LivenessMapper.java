@@ -37,4 +37,16 @@ public interface LivenessMapper {
     //  所以，需要删除enterUser里的添加的记录
     //  但是，这个活跃度更新的函数属于公共函数，直接在这里面进行修改的话，造成的bug较多，所以在enterUser理进行修改
     void delete_Liveness(Liveness liveness);
+    //20201214 由于活跃度里面的函数有一些是空的，所以准备删除这些有很多null的数据
+    void deleteNull(Liveness liveness);
+
+
+//20201214 由于活跃度里面的函数有一些是空的，所以准备删除这些有很多null的数据
+    List<Liveness> SelALLFromLiveness();
+
+
+    //20201214  自增id删除后未进行重置，故加此功能
+    void updateTheLivenessid();
+    //20201214  自增id删除后未进行重置，在resetTheLivenessid中更新了自增地的顺序，这块进行自增id的指针重定义
+    void resetTheLivenessid();
 }

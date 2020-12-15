@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41121d63-f8ac-4d8d-8000-01e4c3c8297a" name="Default Changelist" comment="" />
-    <ignored path="$PROJECT_DIR$/classes/" />
-    <ignored path="$PROJECT_DIR$/target/" />
+    <list default="true" id="41121d63-f8ac-4d8d-8000-01e4c3c8297a" name="Default Changelist" comment="“第一次修改”">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/Familiar_SensorServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/TaskServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/User_TaskServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/Version_UpdatingServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/Familiar_SensorServiceInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/LivenessServiceInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/TaskServiceInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/UserServiceInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/User_TaskServiceInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/Version_UpdatingServiceInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/util/CheckLivenessIsEmpty.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/app.log.2020-12-11.0.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_dbcp_commons_dbcp_20030825_184428.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_pool_commons_pool_20030825_183949.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/demo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/LivenessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/LivenessController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mapper/LivenessMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/LivenessMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/LivenessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/LivenessService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/LivenessServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/LivenessServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/LivenessMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/LivenessMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/target/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/LivenessController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/LivenessController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/mapper/LivenessMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/mapper/LivenessMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/service/LivenessService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/service/LivenessService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapping/LivenessMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/LivenessMapper.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,97 +53,12 @@
   <component name="FavoritesManager">
     <favorites_list name="demo" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1368">
-              <caret line="57" column="4" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/controller/User_TaskController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4920">
-              <caret line="223" column="41" selection-start-line="223" selection-start-column="30" selection-end-line="223" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/banner.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/controller/UserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1776">
-              <caret line="88" column="33" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/controller/TaskController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1632">
-              <caret line="79" column="44" selection-start-line="79" selection-start-column="44" selection-end-line="79" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/mapper/UserMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="792">
-              <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/UserMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="696">
-              <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/controller/LivenessController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="984">
-              <caret line="55" column="56" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Interface" />
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -129,25 +74,6 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/example/service/LivenessService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/controller/LivenessController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/entity/Familiar_Sensor.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapping/TaskMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapping/Familiar_SensorMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/entity/Task.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/controller/TaskController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/controller/User_TaskController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/controller/Familiar_SensorController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/entity/User_Peripherals.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/banner.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/controller/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application-dev.yml" />
-      </list>
-    </option>
-  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -162,92 +88,14 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-14" />
-    <option name="width" value="1200" />
-    <option name="height" value="1073" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="397" />
+    <option name="y" value="88" />
+    <option name="width" value="1179" />
+    <option name="height" value="822" />
   </component>
   <component name="ProjectId" id="1fRh2CHJhfbaJtNz8Wm9212Apm4" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Springboot_Mybatis-V7.3.0-修改" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapping" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-    </panes>
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -256,7 +104,15 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Springboot_Mybatis-V7.3.0-修改 - Protobuf" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -265,10 +121,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.service.serviceImpl" />
+      <recent name="com.example.service.serviceInterface" />
+      <recent name="com.example.util" />
       <recent name="com.example.service" />
       <recent name="com.example.mapper" />
-      <recent name="com.example.controller" />
-      <recent name="com.example.entity" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="H:\后台代码备份\最新版\Springboot_Mybatis  - V7.1.0\src\main\resources\mapping" />
@@ -287,7 +144,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.DemoApplication">
     <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.DemoApplication" />
       <module name="demo" />
@@ -301,23 +158,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.DemoApplication" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="StructureViewFactory">
     <option name="ACTIVE_ACTIONS" value=",SHOW_PROPERTIES,SHOW_INTERFACES" />
@@ -332,6 +184,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561135285738</updated>
+      <workItem from="1607951250255" duration="11048000" />
     </task>
     <task id="LOCAL-00001" summary="“第一次修改”">
       <created>1607936779475</created>
@@ -352,38 +205,19 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-14" y="0" width="881" height="1073" extended-state="0" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.6365884" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4353206" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.43947655" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" />
-      <window_info anchor="bottom" id="GenProtobuf" order="11" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Coverage" order="8" side_tool="true" />
-    </layout>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="“第一次修改”" />
@@ -455,7 +289,7 @@
     <SUITE FILE_PATH="coverage/Springboot_Mybatis_V7_1_0_$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1600052529745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Springboot_Mybatis_V7_3_0_$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1607673820242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Springboot_Mybatis_V7_3_0_$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1608022619090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/demo$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1594728941693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -464,335 +298,6 @@
     <SUITE FILE_PATH="coverage/Springboot_Mybatis_V7_2_0_$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1604063838541" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.*</FILTER>
     </SUITE>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.9.RELEASE/spring-webmvc-5.0.9.RELEASE.jar!/org/springframework/web/servlet/mvc/method/AbstractHandlerMethodAdapter.class">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/LivenessMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="34" column="27" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/entity/Questionnaire.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/TaskMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="33" column="37" lean-forward="true" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/service/User_TaskService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-16">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/Familiar_SensorMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="19" column="55" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/User_TaskMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="55" column="55" lean-forward="true" selection-start-line="55" selection-start-column="55" selection-end-line="55" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/mapper/User_TaskMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/entity/Combine_u_ut.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/entity/Familiar_Sensor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/mapper/Familiar_SensorMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/mapper/TaskMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/service/TaskService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="e#560#561#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/entity/Liveness.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.9.RELEASE/spring-web-5.0.9.RELEASE-sources.jar!/org/springframework/http/HttpStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="200" column="4" selection-start-line="200" selection-start-column="4" selection-end-line="200" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/controller/Familiar_SensorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2208">
-          <caret line="102" column="56" selection-start-line="102" selection-start-column="56" selection-end-line="102" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.9.RELEASE/spring-web-5.0.9.RELEASE-sources.jar!/org/springframework/web/multipart/MultipartFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2304">
-          <caret line="115" column="9" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/service/LivenessService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1296">
-          <caret line="61" column="49" selection-start-line="59" selection-start-column="39" selection-end-line="61" selection-end-column="49" />
-          <folding>
-            <element signature="e#6709#6710#0" expanded="true" />
-            <element signature="e#6754#6755#0" expanded="true" />
-            <element signature="e#6806#6807#0" expanded="true" />
-            <element signature="e#6859#6860#0" expanded="true" />
-            <element signature="e#6924#6925#0" expanded="true" />
-            <element signature="e#6988#6989#0" expanded="true" />
-            <element signature="e#7085#7086#0" expanded="true" />
-            <element signature="e#7146#7147#0" expanded="true" />
-            <element signature="e#7203#7204#0" expanded="true" />
-            <element signature="e#7260#7261#0" expanded="true" />
-            <element signature="e#7593#7594#0" expanded="true" />
-            <element signature="e#7649#7650#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/service/Familiar_SensorService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-          <folding>
-            <element signature="e#614#615#0" expanded="true" />
-            <element signature="e#676#677#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/controller/Version_UpdatingController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1728">
-          <caret line="84" column="42" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/entity/User_Peripherals.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/entity/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="22" column="48" selection-start-line="19" selection-start-column="4" selection-end-line="22" selection-end-column="48" />
-          <folding>
-            <element signature="e#2028#2029#0" expanded="true" />
-            <element signature="e#2057#2058#0" expanded="true" />
-            <element signature="e#2102#2103#0" expanded="true" />
-            <element signature="e#2138#2139#0" expanded="true" />
-            <element signature="e#2173#2174#0" expanded="true" />
-            <element signature="e#2204#2205#0" expanded="true" />
-            <element signature="e#2252#2253#0" expanded="true" />
-            <element signature="e#2292#2293#0" expanded="true" />
-            <element signature="e#2325#2326#0" expanded="true" />
-            <element signature="e#2356#2357#0" expanded="true" />
-            <element signature="e#2402#2403#0" expanded="true" />
-            <element signature="e#2442#2443#0" expanded="true" />
-            <element signature="e#2475#2476#0" expanded="true" />
-            <element signature="e#2506#2507#0" expanded="true" />
-            <element signature="e#2552#2553#0" expanded="true" />
-            <element signature="e#2592#2593#0" expanded="true" />
-            <element signature="e#2626#2627#0" expanded="true" />
-            <element signature="e#2655#2656#0" expanded="true" />
-            <element signature="e#2700#2701#0" expanded="true" />
-            <element signature="e#2736#2737#0" expanded="true" />
-            <element signature="e#2771#2772#0" expanded="true" />
-            <element signature="e#2802#2803#0" expanded="true" />
-            <element signature="e#2850#2851#0" expanded="true" />
-            <element signature="e#2890#2891#0" expanded="true" />
-            <element signature="e#2920#2921#0" expanded="true" />
-            <element signature="e#2947#2948#0" expanded="true" />
-            <element signature="e#2986#2987#0" expanded="true" />
-            <element signature="e#3018#3019#0" expanded="true" />
-            <element signature="e#3058#3059#0" expanded="true" />
-            <element signature="e#3094#3095#0" expanded="true" />
-            <element signature="e#3152#3153#0" expanded="true" />
-            <element signature="e#3202#3203#0" expanded="true" />
-            <element signature="e#3238#3239#0" expanded="true" />
-            <element signature="e#3269#3270#0" expanded="true" />
-            <element signature="e#3318#3319#0" expanded="true" />
-            <element signature="e#3358#3359#0" expanded="true" />
-            <element signature="e#3396#3397#0" expanded="true" />
-            <element signature="e#3429#3430#0" expanded="true" />
-            <element signature="e#3482#3483#0" expanded="true" />
-            <element signature="e#3526#3527#0" expanded="true" />
-            <element signature="e#3562#3563#0" expanded="true" />
-            <element signature="e#3593#3594#0" expanded="true" />
-            <element signature="e#3642#3643#0" expanded="true" />
-            <element signature="e#3682#3683#0" expanded="true" />
-            <element signature="e#3714#3715#0" expanded="true" />
-            <element signature="e#3741#3742#0" expanded="true" />
-            <element signature="e#3782#3783#0" expanded="true" />
-            <element signature="e#3814#3815#0" expanded="true" />
-            <element signature="e#3849#3850#0" expanded="true" />
-            <element signature="e#3881#3882#0" expanded="true" />
-            <element signature="e#3930#3931#0" expanded="true" />
-            <element signature="e#3972#3973#0" expanded="true" />
-            <element signature="e#4006#4007#0" expanded="true" />
-            <element signature="e#4037#4038#0" expanded="true" />
-            <element signature="e#4084#4085#0" expanded="true" />
-            <element signature="e#4124#4125#0" expanded="true" />
-            <element signature="e#4162#4163#0" expanded="true" />
-            <element signature="e#4196#4197#0" expanded="true" />
-            <element signature="e#4250#4251#0" expanded="true" />
-            <element signature="e#4296#4297#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="19" column="28" selection-start-line="16" selection-start-column="4" selection-end-line="19" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/entity/User_Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="22" column="76" selection-start-line="16" selection-start-column="3" selection-end-line="22" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
-          <folding>
-            <element signature="e#786#787#0" expanded="true" />
-            <element signature="e#822#823#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1368">
-          <caret line="57" column="4" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/controller/User_TaskController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4920">
-          <caret line="223" column="41" selection-start-line="223" selection-start-column="30" selection-end-line="223" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/banner.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1776">
-          <caret line="88" column="33" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/controller/TaskController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1632">
-          <caret line="79" column="44" selection-start-line="79" selection-start-column="44" selection-end-line="79" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/mapper/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapping/UserMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/controller/LivenessController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="984">
-          <caret line="55" column="56" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>

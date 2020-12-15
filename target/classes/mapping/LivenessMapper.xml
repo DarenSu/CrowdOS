@@ -94,9 +94,30 @@
         userId = #{userId} and total = 0
     </delete>
 
+    <!--    //20201214 由于活跃度里面的函数有一些是空的，所以准备删除这些有很多null的数据-->
+    <delete id="deleteNull"  parameterType="com.example.entity.Liveness">
+        delete from liveness
+        where
+        userId = #{userId} and livenessId=#{livenessId}
+    </delete>
+<!--    //20201214 由于活跃度里面的函数有一些是空的，所以准备删除这些有很多null的数据-->
+    <select id="SelALLFromLiveness"  resultType="com.example.entity.Liveness">
+        select *
+        from liveness
+    </select>
 
 
-
+<!--    //20201214  自增id删除后未进行重置，故加此功能-->
+    <update id="updateTheLivenessid"   parameterType="com.example.entity.Liveness">
+        update liveness SET
+        livenessId=#{livenessId}
+        where
+        deadlineTime=#{deadlineTime} and userId=#{userId}
+    </update>
+    <!--    //20201214  自增id删除后未进行重置，在resetTheLivenessid中更新了自增地的顺序，这块进行自增id的指针重定义-->
+    <update id="resetTheLivenessid"   parameterType="com.example.entity.Liveness">
+        alter table liveness AUTO_INCREMENT=#{livenessId};
+    </update>
 
 
 

@@ -6,11 +6,10 @@ import com.example.entity.User;
 import com.example.service.LivenessService;
 import com.example.service.TaskService;
 import com.example.service.UserService;
-import com.example.util.SHA256;
+import com.example.service.serviceInterface.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,6 +38,8 @@ public class UserController {
     private TaskService bean_TaskService;
     @Autowired
     private LivenessService livenessService;
+    @Autowired
+    private UserServiceInterface userServiceInterface;
 
 
     private Object setuser1;
@@ -47,6 +48,13 @@ public class UserController {
     public User GetUser(@PathVariable int id) {
         return userService.Sel(id);
     }
+
+    //20201215   Server层分两层的测试
+    @RequestMapping("getuser/{id}")
+    public User getuser(@PathVariable int id) {
+        return userServiceInterface.Sel(id);
+    }
+
 
 
     ////2019.7.2 修改：从单个的结果展示修改为多个结果展示
@@ -82,7 +90,7 @@ public class UserController {
     /// 自己测试走表单不需要requestbody，前后台对接使用的是json数据，需要使用requestbody
     ///  2019.9.25 ---待添加---
     @RequestMapping(value = "enterUser", method = RequestMethod.POST)
-    public ResponseEntity<User> EnterUser(@RequestBody User user) {
+    public ResponseEntity<User> EnterUser(/*@RequestBody*/ User user) {
         //return userService.SelInfo(userName).toString();
         Liveness liveness = new Liveness();
 
@@ -97,11 +105,11 @@ public class UserController {
         ////2020.04.21   密码加密
         String passWordtemp = user.getPassWord();
         ////SHA256加密
-
-        if (StringUtils.isEmpty(passWordtemp)) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        passWordtemp = SHA256.getSHA256StrJava(passWordtemp);
+//------------>>>>>>>>>>>20201214-由于加密涉及到活跃度判断问题，暂时注释------------------>>>>>>>>>>>>>>>>>>>>>>>------------------------------->>>>>>>>>>>
+//        if (StringUtils.isEmpty(passWordtemp)) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        passWordtemp = SHA256.getSHA256StrJava(passWordtemp);
 
         System.out.println(passWordtemp);
         User userTemp2 = new User();
@@ -134,11 +142,24 @@ public class UserController {
             // 那么我们这时候就需要进行登录标记，即将登陆的状态进行记录
             // 那么此时的liveness数据表里面肯定需要添加这个用户的登录记录的，并且只要添加了userId即可
             //    但是传入的参数user里面的userId是空的，需要根据user中的名字和密码从数据库中查询userId才行的
-            Integer userIdTemp = userService.check(user).getUserId();
+            System.out.println("有用户，进行登录准备：");
+            System.out.println(user);
+            System.out.println(userService.check(user));
+
+            Integer userIdTemp = 0;
+            if (userService.check(user) != null) {//使用密码未加密的查询
+                userIdTemp = userService.check(user).getUserId();
+                System.out.println(userService.check(user).getUserId());
+            } else {//使用密码加密的查询
+                userIdTemp = userService.check(check_userName).getUserId();
+                System.out.println(userService.check(check_userName).getUserId());
+            }
+
             Liveness livenessTemp = new Liveness();
             livenessTemp.setUserId(userIdTemp);
             //livenessTemp.setTotal(0);
-            livenessService.add_Liveness(livenessTemp);
+            //System.out.println("添加1--------"+livenessTemp);
+            //livenessService.add_Liveness(livenessTemp);
 
             //添加结束后，然后调用livenessServer的enterLiveness进行登陆时间和活跃次数的更新
 
@@ -149,7 +170,6 @@ public class UserController {
             //Liveness liveness = null;
             //int userIdTemp = userService.check(user).getUserId();
             //Integer userIdTemp = userService.check(user).getUserId();
-            System.out.println(userService.check(user).getUserId());
 
             System.out.println("2");
             System.out.println(userIdTemp);
@@ -173,7 +193,7 @@ public class UserController {
             //20201211 用户注册，之前的用户使用的账号密码没有加密，后面的加密了，导致之前注册的用户无法正常登陆
             //所以目前准备使用，两种方式，加密的可以，不加密的也可以
             //没加密的没找到，是空，那么用加密的登录
-            if (check_userName1 == null) {
+            if (check_userName1 == null ) {
                 return new ResponseEntity<>(userService.EnterUser(user), HttpStatus.OK);
             }
             //加密的没找到，是空，那么用没加密的登录
@@ -189,6 +209,16 @@ public class UserController {
     public ResponseEntity<User> addUser(@RequestBody User user) {
         //20201012  用户注册过程中数据检测，防止空数据进来
         User userTemp = user;
+        if (userTemp.getUserName() == null){//传的数据是空  406
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }else if (userTemp.getUserName() != null && userTemp.getUserId() == null
+                && userTemp.getPassWord() == null && userTemp.getRealName() == null ){
+            if (userService.checkLogin(userTemp) == null){//未注册过  200
+                return new ResponseEntity<>(HttpStatus.OK);
+            }else {//已注册过  404
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        }else {;}
 
         if (userTemp.getUserId() == null && userTemp.getUserName() != null
                 && userTemp.getPassWord() != null && userTemp.getRealName() != null
@@ -204,29 +234,30 @@ public class UserController {
                 //////2020.06.18   密码加密修改篇
                 String passWordtemp = user.getPassWord();
                 ////SHA256加密
+//------------>>>>>>>>>>>20201214-由于加密涉及到活跃度判断问题，暂时注释------------------>>>>>>>>>>>>>>>>>>>>>>>------------------------------->>>>>>>>>>>
 
-                if (StringUtils.isEmpty(passWordtemp)) {
-                    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-                }
-                passWordtemp = SHA256.getSHA256StrJava(passWordtemp);
+//                if (StringUtils.isEmpty(passWordtemp)) {//加密后的数据不为空
+//                    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//                }
+//                passWordtemp = SHA256.getSHA256StrJava(passWordtemp);
 
                 System.out.println(passWordtemp);
                 user.setPassWord(passWordtemp);
                 System.out.println(user.getPassWord());
 
 
-                if (check_userName == null) {
+                if (check_userName == null) {//没有这个人
                     userService.addUser(user);
                     return new ResponseEntity<>(user, HttpStatus.OK);
-                } else {
+                } else {//已有这个人  404
                     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
                 }
 
-            } else {
+            } else {//数据类型不正确   400
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
-        } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {//该有的数据不能为空  502
+            return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
         }
     }
 

@@ -148,6 +148,16 @@ public class LivenessController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
+	//20201214  自增id删除后未进行重置，故加此功能
+    @RequestMapping(value = "resetTheLivenessid", method=RequestMethod.POST)
+    public ResponseEntity<Liveness> resetTheLivenessid() {
+        livenessService.updateTheLivenessid();
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+
+
 
     //   DarenSu     20200424
     //   活跃度检测，主要进行对每个用户的活跃度进行检测
