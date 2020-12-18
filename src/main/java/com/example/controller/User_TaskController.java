@@ -120,7 +120,7 @@ public class User_TaskController {
     }
 
     @RequestMapping(value="SelUser_Task",method = RequestMethod.POST)
-    public ResponseEntity<User_Task> SelUser_Task(/*@RequestBody*/ User_Task user_task) {
+    public ResponseEntity<User_Task> SelUser_Task(@RequestBody User_Task user_task) {
         return new ResponseEntity<User_Task>(user_taskService.SelUser_Task(user_task),HttpStatus.OK);
     }
 

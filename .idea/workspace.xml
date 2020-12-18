@@ -417,7 +417,7 @@
     <SUITE FILE_PATH="coverage/Springboot_Mybatis_V7_1_0_$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1600052529745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Springboot_Mybatis_V7_3_0_$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1608022619090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Springboot_Mybatis_V7_3_0_$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1608291152789" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/demo$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1594728941693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
