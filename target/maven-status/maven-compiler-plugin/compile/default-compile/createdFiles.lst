@@ -6,9 +6,11 @@ com\example\DemoApplication.class
 com\example\service\serviceInterface\Version_UpdatingServiceInterface.class
 com\example\mapper\Familiar_SensorMapper.class
 com\example\service\serviceImpl\User_TaskServiceImpl.class
+com\example\controller\SecurityController.class
 com\example\service\serviceInterface\UserServiceInterface.class
 com\example\service\Familiar_SensorService.class
 com\example\service\serviceInterface\Familiar_SensorServiceInterface.class
+com\example\util\Security.class
 com\example\mapper\Version_UpdatingMapper.class
 com\example\util\CheckLivenessIsEmpty.class
 com\example\service\UserService.class

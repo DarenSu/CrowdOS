@@ -54,6 +54,13 @@
     <select id="getTen"  resultType="com.example.entity.Task">
         select * from task order by task.taskId desc limit 0,10
     </select>
+<!--    List<Task> getTen() ;-->
+    <select id="getAll"  resultType="com.example.entity.Task">
+        select * from task
+<!--        select * from task order by task.taskId desc limit 0,100-->
+    </select>
+
+
     <!--2019.8.12 一次性返回数据库某id的前十条数据      有错误     mybatis中的小于等于：&lt;=   -->
     <!--2019.8.12 实现思路-小于此ID并且不找过十条数据    -->
     <!--   taskKind = #{taskKind}中，前面的参数是数据库里的，后面的参数是前段传进来的参数 -->

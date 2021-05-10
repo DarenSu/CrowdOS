@@ -37,6 +37,8 @@ public interface TaskMapper {
 
     ////2019.7.6 修改：一次性返回数据库最后面的十条数据
     List<Task> getTen() ;
+    ////2021.1.11 修改：一次性返回数据库所有数据
+    List<Task> getAll() ;
     ////2019.8.12 修改：一次性返回数据库某taskID前面的十条数据
     List<Task> getNewTen(Integer mintaskId);
     ///2019.9.11 根据任务的taskId返回任务的List

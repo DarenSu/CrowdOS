@@ -25,8 +25,8 @@ import java.util.List;
 public class TaskService {
 	@Autowired
     TaskMapper taskMapper;
-	
-	
+
+
 ///Bean_Task数据库中数据的添加和查询         2016.6.18	
 	public void add_Task(Task task) {
 		taskMapper.add_Task(task);
@@ -52,6 +52,12 @@ public class TaskService {
 	public List<Task> getTen() {
 		return taskMapper.getTen();
 	}
+    ////2021.1.11 修改：一次性返回数据库所有数据
+    public List<Task> getAll() {
+        return taskMapper.getAll();
+    }
+    ////2021.1.11 修改：一次性返回数据库所有数据
+
 
 	////2019.8.12 修改：一次性返回数据库次后面的十条数据
     public List<Task> getNewTen(Integer mintaskId) {

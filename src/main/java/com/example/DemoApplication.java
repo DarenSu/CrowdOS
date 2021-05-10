@@ -8,16 +8,27 @@ import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 
 import javax.servlet.MultipartConfigElement;
+import java.util.Calendar;
+import java.util.Date;
 
 
 @MapperScan("com.example.mapper") //扫描的mapper
 @SpringBootApplication
 //函数的启动
+
+
 public class DemoApplication {
 
+
+
+	Calendar calendar = Calendar.getInstance();
+	Date dateone = calendar.getTime();
 	public static void main(String[] args) {
+
 		SpringApplication.run(DemoApplication.class, args);
+
 	}
+
 
 	/**
 	 * 2019-10-24

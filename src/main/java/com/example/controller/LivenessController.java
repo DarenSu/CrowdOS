@@ -69,7 +69,7 @@ public class LivenessController {
     //前后台对接    2019.6.22  自己写的有点问题  自己测试走表单不需要requestbody，前后台对接使用的是json数据，需要使用requestbody
     @RequestMapping(value="addLiveness",method=RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<Liveness> add_Task(/*@RequestBody*/ Liveness liveness) {
+    public ResponseEntity<Liveness> add_Task(@RequestBody Liveness liveness) {
 //		Task task1 = new Task();
 //		System.out.println(task1);
         System.out.println(liveness);

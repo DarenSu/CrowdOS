@@ -9,9 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -37,7 +35,9 @@ public class TaskController {
 	//private Object setuser1;
 	@Autowired
 	private User_TaskService user_taskService;
-
+	//20200110   帮师姐测试的时间戳
+	Calendar calendar = Calendar.getInstance();
+	Date dateone = calendar.getTime();
 
 	
 ///Task数据库中数据的添加和查询         2016.6.18
@@ -71,6 +71,16 @@ public class TaskController {
 	@PostMapping(value="add_Task")
 	@ResponseBody
 	public ResponseEntity<Task> add_Task(@RequestBody Task task) {
+		//20210110  只获取毫秒数
+		Long time1 = System.currentTimeMillis();
+
+		System.out.println(getType(System.currentTimeMillis()));
+		//20210110   帮师姐测试的时间戳
+		Calendar calendar1 = Calendar.getInstance();
+		Date dateonetemp = calendar1.getTime();
+		System.out.println("进入函数--时分秒"+dateonetemp);
+		System.out.println("进入函数--毫秒"+System.currentTimeMillis());
+
 //		Task task1 = new Task();
 //		System.out.println(task1);
 		System.out.println("欢迎来到任务添加功能：task的add_Task");
@@ -81,7 +91,7 @@ public class TaskController {
 		//20201012  任务发布过程中数据检测，防止空数据进来
 		Task taskTemp = task;
 		if (taskTemp.getTaskId() == null && taskTemp.getTaskName() != null &&
-				taskTemp.getPostTime() != null && taskTemp.getDeadLine() != null &&
+				//taskTemp.getPostTime() != null && taskTemp.getDeadLine() != null &&
 				taskTemp.getUserId() != null && taskTemp.getUserName() != null &&
 				taskTemp.getCoin() != null && taskTemp.getDescribe_task() != null &&
 				taskTemp.getTotalNum() != null && taskTemp.getTaskStatus() != null &&
@@ -90,7 +100,7 @@ public class TaskController {
 				taskTemp.getSensorTypes() != null*/) {
 			//20201024 数据非空的话，需要检测数据类型是否正确
 			if (taskTemp.getTaskName() instanceof String  &&
-					taskTemp.getPostTime() instanceof Date && taskTemp.getDeadLine() instanceof Date &&
+					//taskTemp.getPostTime() instanceof Date && taskTemp.getDeadLine() instanceof Date &&
 					taskTemp.getUserId() instanceof Integer && taskTemp.getUserName() instanceof String &&
 					taskTemp.getCoin() instanceof Float && taskTemp.getDescribe_task() instanceof String &&
 					taskTemp.getTotalNum() instanceof Integer && taskTemp.getTaskStatus() instanceof Integer &&
@@ -100,13 +110,28 @@ public class TaskController {
 				//20201102   添加
 				taskService.add_Task(task);
 				System.out.println(task);
+
+				//20200110   帮师姐测试的时间戳
+				//20200110  只获取毫秒数
+				Long time2 = System.currentTimeMillis()-time1;
+				Calendar calendar = Calendar.getInstance();
+				Date dateone1 = calendar.getTime();
+				System.out.println(dateone);
+				System.out.println(dateonetemp);
+				System.out.println(dateone1);
+				System.out.println(time2);
+
+				System.out.println("离开函数--时分秒"+dateonetemp);
+				System.out.println("离开函数--毫秒"+System.currentTimeMillis());
+
 				return new ResponseEntity<>(task, HttpStatus.OK);
 			}
 			//return "OK";
-			else {//数据类型不正确
+			else {//数据类型不正确   返回406
+
 				return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 			}
-		} else {//空数据
+		} else {//空数据   返回400
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
@@ -127,11 +152,56 @@ public class TaskController {
 		//return userService.SelInfo().toString();
 		//System.out.println();
 		//System.out.println(taskService.getTen());
+		//20200110  只获取毫秒数
+		Long time1 = System.currentTimeMillis();
+		System.out.println(getType(System.currentTimeMillis()));
+		//20200110   帮师姐测试的时间戳
+		Calendar calendar1 = Calendar.getInstance();
+		Date dateonetemp = calendar1.getTime();
+		System.out.println("进入函数--时分秒"+dateonetemp);
+		System.out.println("进入函数--毫秒"+System.currentTimeMillis());
 
 		if (taskService.getTen() == null) {
+			//20200110   帮师姐测试的时间戳
+			//20200110  只获取毫秒数
+			Long time2 = System.currentTimeMillis()-time1;
+			Calendar calendar = Calendar.getInstance();
+			Date dateone1 = calendar.getTime();
+			System.out.println(dateone);
+			System.out.println(dateonetemp);
+			System.out.println(dateone1);
+			System.out.println(time2);
+			System.out.println("离开函数--时分秒"+dateonetemp);
+			System.out.println("离开函数--毫秒"+System.currentTimeMillis());
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
-			return new ResponseEntity<List<Task>>(taskService.getTen(), HttpStatus.OK);
+			//20200110   帮师姐测试的时间戳
+			//20200110  只获取毫秒数
+			Long time2 = System.currentTimeMillis()-time1;
+			Calendar calendar = Calendar.getInstance();
+			Date dateone1 = calendar.getTime();
+			System.out.println(dateone);
+			System.out.println(dateonetemp);
+			System.out.println(dateone1);
+			System.out.println(time2);
+			System.out.println("离开函数--时分秒"+dateonetemp);
+			System.out.println("离开函数--毫秒"+System.currentTimeMillis());
+
+			//逆序排列，按照时间顺序最新的在最前面
+			List<Task> taskTemp = taskService.getTen();
+//            System.out.println("正序 ");
+//			for (Task n : taskTemp) {
+//                System.out.println(n + " ");
+//            }
+
+//            System.out.println("逆序 ");
+            Collections.reverse(taskTemp);
+//            for (Task n : taskTemp) {
+//                System.out.println(n + " ");
+//            }
+
+            return new ResponseEntity<List<Task>>(taskService.getTen(), HttpStatus.OK);
+//            return new ResponseEntity<List<Task>>(taskTemp, HttpStatus.OK);
 		}
 	}
 
@@ -147,8 +217,15 @@ public class TaskController {
 		System.out.println(taskService.SelUserId(userId).get(0));
 
 
+        List<Task> taskTemp = taskService.SelUserId(userId);
+//            System.out.println("正序 ");
+//			for (Task n : taskTemp) {
+//                System.out.println(n + " ");
+//            }
 
-		return taskService.SelUserId(userId);
+//            System.out.println("逆序 ");
+        Collections.reverse(taskTemp);
+		return taskTemp;
 
 	}
 
@@ -273,12 +350,43 @@ public class TaskController {
 		List<User_Task> tempList = user_taskService.seluserIdRandom(userId);
 		///新建一个List<Task>类型的数据，目的是为了存储List<User_Task>在T中的查询结果
 		List<Task> taskList1 = new ArrayList<Task>();
+		//20210111   代码修改，之前查询的是UT中和改UserId关联的所有任务，本质上应该推荐没有关联的任务
+//		List<Task> taskList2 = new ArrayList<>();
+//		taskList2 = taskService.getAll();
+//		int num = 0;
+//		for (int i = 0 ;i < taskList2.size() ; i++){
+//			System.out.println(i);	///	测试i专用
+//			///20210111 判断该任务没有与该用户关联
+//			if (taskList2.get(i)){}
+//			///取出List<User_Task> tempList中的一条数据，并且继续取出其taskId
+//			Integer taskIdListTemp = user_taskService.seluserIdRandom(userId).get(i).getTaskId();
+//			Task taskTemp = taskService.Sel_Task(taskIdListTemp);
+//			taskList1.add(taskTemp);
+//		}
+
+
 		for (int i = 0 ;i < tempList.size() ; i++){
 			System.out.println(i);	///	测试i专用
 			///取出List<User_Task> tempList中的一条数据，并且继续取出其taskId
 			Integer taskIdListTemp = user_taskService.seluserIdRandom(userId).get(i).getTaskId();
 			Task taskTemp = taskService.Sel_Task(taskIdListTemp);
-			taskList1.add(taskTemp);
+			if (taskTemp != null) {
+				taskList1.add(taskTemp);
+			}
+//			if (taskIdListTemp < 50 ){
+//				taskIdListTemp+=2;taskTemp = taskService.Sel_Task(taskIdListTemp);taskList1.add(taskTemp);
+//				taskIdListTemp+=4;taskTemp = taskService.Sel_Task(taskIdListTemp);taskList1.add(taskTemp);
+//				taskIdListTemp+=6;taskTemp = taskService.Sel_Task(taskIdListTemp);taskList1.add(taskTemp);
+//				taskIdListTemp+=8;taskTemp = taskService.Sel_Task(taskIdListTemp);taskList1.add(taskTemp);
+//				taskIdListTemp+=10;taskTemp = taskService.Sel_Task(taskIdListTemp);taskList1.add(taskTemp);
+//			}else {
+//				taskIdListTemp-=2;taskTemp = taskService.Sel_Task(taskIdListTemp);taskList1.add(taskTemp);
+//				taskIdListTemp-=4;taskTemp = taskService.Sel_Task(taskIdListTemp);taskList1.add(taskTemp);
+//				taskIdListTemp-=6;taskTemp = taskService.Sel_Task(taskIdListTemp);taskList1.add(taskTemp);
+//				taskIdListTemp-=8;taskTemp = taskService.Sel_Task(taskIdListTemp);taskList1.add(taskTemp);
+//				taskIdListTemp-=10;taskTemp = taskService.Sel_Task(taskIdListTemp);taskList1.add(taskTemp);
+//			}
+
 		}
 		if (taskList1 == null ){
 			return new ResponseEntity<List<Task>>( HttpStatus.NOT_FOUND);

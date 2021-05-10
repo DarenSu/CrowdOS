@@ -1,13 +1,9 @@
 package com.example.mapper;
 
 import com.example.entity.User;
-
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.stereotype.Repository;
 
-import com.example.entity.Task;
+import java.util.List;
 
 /**
  * @Author:0xOO
@@ -27,6 +23,7 @@ public interface UserMapper {
     User Sel(int id);
 
 
+    User getUser(int id);
     ////2019.7.2 修改：从单个的结果展示修改为多个结果展示
 
     //User SelInfo(String userName);

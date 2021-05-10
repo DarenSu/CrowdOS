@@ -14,6 +14,12 @@
     <select id="Sel"  parameterType="int" resultType="com.example.entity.User">
         select * from user where userId = #{userId}
     </select>
+    
+
+    <select id="getUser"  parameterType="int" resultType="com.example.entity.User">
+        select * from user where userId = #{userId}
+    </select>
+
 
 
     <!-- 2019.7.2修改：单个数据返回修改为多数据返回 -->

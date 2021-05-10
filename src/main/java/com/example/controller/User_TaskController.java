@@ -99,10 +99,10 @@ public class User_TaskController {
 
             //System.out.println(ut.getUser_taskStatus());
             if (ut.getUser_taskStatus() != null) {
-                if (ut.getUser_taskStatus() == 1) {///接受并已执行
+                if (ut.getUser_taskStatus() == 1) {///接受并已执行  400
                     return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
                 }
-                if (ut.getUser_taskStatus() == 0) {///接受未执行
+                if (ut.getUser_taskStatus() == 0) {///接受未执行  202
                     return new ResponseEntity<>(HttpStatus.ACCEPTED);
                 }
             }
@@ -130,10 +130,17 @@ public class User_TaskController {
 		System.out.println("欢迎来到用户-任务表更新--接受任务后：user_task/updateUser_Task");
 
 		System.out.println(user_task);
+		if (user_taskService.SelUser_Task(user_task).getUser_taskStatus() == 0 ) {
+
+		user_task.setUser_taskStatus(1);
 
 		user_taskService.updateUser_Task(user_task);
 
 		return new ResponseEntity<>(HttpStatus.OK);
+		}else {
+			System.out.println("已有该数据，该任务已执行");
+			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+		}
 	}
 
 	////2019.7.2 修改：从单个的结果展示修改为多个结果展示
@@ -416,9 +423,18 @@ public class User_TaskController {
 	@RequestMapping("getUserAllUnfinishTask/{userId}")
 	public ResponseEntity<List<User_Task>> getUserAllUnfinishTask(@PathVariable int userId){
 		System.out.println(userId);
-		System.out.println(user_taskService.seluserIdUnfinish(userId));
+		List<User_Task> user_tasks = user_taskService.seluserIdUnfinish(userId);
+		System.out.println(user_tasks);
 
-		return new ResponseEntity<List<User_Task>>(user_taskService.seluserIdUnfinish(userId),HttpStatus.OK);
+		List<User_Task> user_tasks1 = new ArrayList<>();
+		for (int i = 0; i<user_tasks.size();i++){
+			if (user_tasks.get(i).getUser_taskStatus()==0){
+				user_tasks1.add(user_tasks.get(i));
+			}
+		}
+
+		return new ResponseEntity<List<User_Task>>(user_tasks1,HttpStatus.OK);
+		//return new ResponseEntity<List<User_Task>>(user_taskService.seluserIdUnfinish(userId),HttpStatus.OK);
 	}
 
 	///2019-11-1   根据前端传输的用户的ID，根据推荐系统的策略返回此用户最合适接受的未执行的任务（目前的本质是随机返回）
