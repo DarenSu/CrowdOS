@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.Sensor_MessageMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.entity.Sensor_Message">
+        <result column="sensor_messageId" jdbcType="INTEGER" property="sensor_messageId" />
+        <result column="userId" jdbcType="INTEGER" property="userId" />
+        <result column="taskId" jdbcType="INTEGER" property="taskId" />
+        <result column="fileName" jdbcType="VARCHAR" property="fileName" />
+        <result column="onlineTime" jdbcType="DATE" property="onlineTime" />
+
+        <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+        <result column="latitude" jdbcType="VARCHAR" property="latitude" />
+        <result column="accelerated" jdbcType="VARCHAR" property="accelerated" />
+
+        <result column="direction" jdbcType="VARCHAR" property="direction" />
+        <result column="temperature" jdbcType="VARCHAR" property="temperature" />
+        <result column="humidity" jdbcType="VARCHAR" property="humidity" />
+
+        <result column="gravity" jdbcType="VARCHAR" property="gravity" />
+        <result column="airPressure" jdbcType="VARCHAR" property="airPressure" />
+        <result column="light" jdbcType="VARCHAR" property="light" />
+
+        <result column="distance" jdbcType="VARCHAR" property="distance" />
+        <result column="magnetic" jdbcType="VARCHAR" property="magnetic" />
+        <result column="gyroscope" jdbcType="VARCHAR" property="gyroscope" />
+
+        <result column="voice" jdbcType="VARCHAR" property="voice" />
+        <result column="picture" jdbcType="VARCHAR" property="picture" />
+        <result column="fingerprint" jdbcType="VARCHAR" property="fingerprint" />
+
+        <result column="heartRate" jdbcType="VARCHAR" property="heartRate" />
+        <result column="bloodOxygen" jdbcType="VARCHAR" property="bloodOxygen" />
+        <result column="ultravioletRay" jdbcType="VARCHAR" property="ultravioletRay" />
+
+        <result column="stepNumber" jdbcType="VARCHAR" property="stepNumber" />
+        <result column="stepCount" jdbcType="VARCHAR" property="stepCount" />
+        <result column="temp1" jdbcType="VARCHAR" property="temp1" />
+
+        <result column="temp2" jdbcType="VARCHAR" property="temp2" />
+        <result column="temp3" jdbcType="VARCHAR" property="temp3" />
+        <result column="sensorFilePath" jdbcType="VARCHAR" property="sensorFilePath" />
+    </resultMap>
+
+
+<!--    //20200824   传感器数据（json数据+文件）上传至传感器数据表-->
+    <insert id="addfilebyte" parameterType="com.example.entity.Sensor_Message" useGeneratedKeys="true" keyProperty="sensor_messageId">
+        insert into sensor_message (sensor_messageId,userId, taskId,fileName, onlineTime, longitude, latitude, accelerated,
+                direction, temperature, humidity, gravity, airPressure, light,
+                 distance, magnetic, gyroscope, voice, picture, fingerprint,
+                 heartRate, bloodOxygen, ultravioletRay, stepNumber, stepCount, temp1,
+                 temp2, temp3, sensorFilePath)
+        values ( #{sensor_messageId,jdbcType=INTEGER},#{userId,jdbcType=INTEGER}, #{taskId,jdbcType=INTEGER},
+                 #{fileName,jdbcType=VARCHAR},#{onlineTime},
+                #{longitude,jdbcType=VARCHAR},#{latitude,jdbcType=VARCHAR}, #{accelerated,jdbcType=VARCHAR},
+
+                #{direction,jdbcType=VARCHAR}, #{temperature,jdbcType=VARCHAR}, #{humidity,jdbcType=VARCHAR},
+                #{gravity,jdbcType=VARCHAR}, #{airPressure,jdbcType=VARCHAR}, #{light,jdbcType=VARCHAR},
+
+                #{distance,jdbcType=VARCHAR}, #{magnetic,jdbcType=VARCHAR}, #{gyroscope,jdbcType=VARCHAR},
+                #{voice,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, #{fingerprint,jdbcType=VARCHAR},
+
+                #{heartRate,jdbcType=VARCHAR}, #{bloodOxygen,jdbcType=VARCHAR}, #{ultravioletRay,jdbcType=VARCHAR},
+                #{stepNumber,jdbcType=VARCHAR}, #{stepCount,jdbcType=VARCHAR}, #{temp1,jdbcType=VARCHAR},
+
+                #{temp2,jdbcType=VARCHAR}, #{temp3,jdbcType=VARCHAR}, #{sensorFilePath,jdbcType=VARCHAR})
+    </insert>
+
+
+    <!--    //20200514 寻找最新的id，也就是最大的自增主键-->
+    <select id="getMaxId"  resultType="com.example.entity.Sensor_Message">
+        select * from sensor_message order by sensor_message.sensor_messageId desc limit 0,1
+    </select>
+
+    <!--    //20200514 根据任务的taskId返回所有传感器数据的List   -->
+    <select id="selAllMessageFromTaskId"  resultType="com.example.entity.Sensor_Message" parameterType="com.example.entity.Sensor_Message">
+        select * from sensor_message where  taskId = #{taskId}
+    </select>
+
+    <!--    //20200514 根据任务的taskId和userId返回所有传感器数据的List   -->
+    <select id="selAllMessageFromUserIdTaskId"  resultType="com.example.entity.Sensor_Message" parameterType="com.example.entity.Sensor_Message">
+        select * from sensor_message where userId = #{userId} and taskId = #{taskId}
+    </select>
+
+
+    <!-- 2019.7.11   功能：任务数据上传（添加）  将前端上传的User_Task类数据存入数据库   -->
+    <insert id="add" parameterType="com.example.entity.Sensor_Message" useGeneratedKeys="true" keyProperty="familiar_sensorId">
+        insert into familiar_sensor (familiar_sensorId, userId, taskId, longitude, latitude, speed, sensorType, sensorFile)
+        values ( #{familiar_sensorId,jdbcType=INTEGER},#{userId,jdbcType=INTEGER}, #{taskId,jdbcType=INTEGER}, #{longitude,jdbcType=FLOAT},
+        #{latitude,jdbcType=FLOAT}, #{speed,jdbcType=FLOAT}, #{sensorType,jdbcType=VARCHAR}, #{sensorFile,jdbcType=VARCHAR})
+    </insert>
+
+
+    <!--2019.9.11 根据任务的taskId返回任务的List   -->
+    <select id="selFamiliar_Sensor"  resultType="com.example.entity.Sensor_Message" parameterType="com.example.entity.Sensor_Message">
+        select * from familiar_sensor where userId = #{userId} and taskId = #{taskId}
+    </select>
+
+    <!--2019.9.11 根据任务的taskId返回任务的List   -->
+    <!--    不仅仅返回了十条数据，并且还进行了排序操作，将搜索的数据按照taskId进行排序返回-->
+    <select id="SelTaskFromKind"  resultType="com.example.entity.Task" parameterType="INTEGER">
+        select * from task where taskKind = #{taskKind} order by task.taskId desc limit 0,10
+    </select>
+
+
+
+
+
+
+
+
+
+</mapper>

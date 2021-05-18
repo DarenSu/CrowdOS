@@ -16,6 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -90,6 +92,7 @@ public class User_TaskController {
 		System.out.println(user_task);
 		return new ResponseEntity<>(ut, HttpStatus.OK);
 	}
+
     ///2019.11.30 接受任务，将任务状态变为0(接受未完成状态)
     @RequestMapping(value="acceptUser_Task", method=RequestMethod.POST)
     public ResponseEntity<User_Task> acceptUser_Task(@RequestBody User_Task user_task){
@@ -110,15 +113,52 @@ public class User_TaskController {
             System.out.println(user_task);
         }
         if ( user_taskService.SelUser_Task(user_task) == null ){///若是没有该用户执行该任务的数据的话，则需要进行添加该条数据
-            //System.out.println(user_task);
-            user_taskService.addUser_Task(user_task);
+            // 20210518   没有接受次任务，那么需要在接受的时候将该任务的任务数量--，并且还要判断该任务是否可执行
+			// 20210514    Date数据类型的时间获取
+			Calendar calendar = Calendar.getInstance();
+			Date date = calendar.getTime();
+			System.out.println(date);
+			// 20210518		判断该任务是否可执行   首先判断时间，然后判断人数
+			Task task= new Task();
+			task.setTaskId(user_task.getTaskId());
+			Task tasktest= taskService.SelTaskFromTaskId(task.getTaskId());
+			System.out.println("查找出来的tasktest"+tasktest);
+			int residueTotalNum= tasktest.getTotalNum()- 1;//该任务目前的剩余人数 - 1
+			//date中compareTo的用法。也是比较时间大小的，前面的等于后面的返回0，前面的大于后面的返回1，前面的小于后面的返回-1.
+			//当前的时间在截止日期之前和发布日期之后
+			System.out.println("date="+date);
+			System.out.println("tasktest.getDeadLine()="+tasktest.getDeadLine());
+			System.out.println(date.compareTo(tasktest.getDeadLine()));
+			System.out.println(date.compareTo(tasktest.getPostTime()));
+			System.out.println("residueTotalNum="+ residueTotalNum);
+			//20210515		有该任务  该任务没过期并且可执行  该任务的剩余人数还有
+			if( tasktest != null && date.compareTo(tasktest.getDeadLine()) <= 0  && date.compareTo(tasktest.getPostTime()) >= 0 && residueTotalNum >= 0){
+				//System.out.println(user_task);
+				// 20210515  	任务可执行，需要添加可执行的记录，然后将还需要将该任务的人数-1
+				tasktest.setTotalNum(residueTotalNum);
+				// 20210515		对剩余人数进行更新
+				taskService.updateTaskTotalNum(tasktest);
+				System.out.println("剩余人数更新完成，已完成-1操作");
+				user_taskService.addUser_Task(user_task);
+			}else{// 20210515	任务已经过期  不允许访问，返回403
+				return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+			}
+
+
         }
 	    user_task.setUser_taskStatus(0);
         //System.out.println(user_task);
+		//改变任务状态，由0变成1
         user_taskService.acceptUser_Task(user_task);
 	    return new ResponseEntity<User_Task>(HttpStatus.OK);
     }
 
+//    @RequestMapping(value = "updateTotalNum", method = RequestMethod.POST)
+//	public ResponseEntity<Task> updateTotalNum(@RequestParam Task task){
+//		task.
+//		return new ResponseEntity<Task>(taskService.SelTaskFromTaskId(task),HttpStatus.OK);
+//	}
+	// 20210516  输入UT，包含taskID，进行整条数据的查询
     @RequestMapping(value="SelUser_Task",method = RequestMethod.POST)
     public ResponseEntity<User_Task> SelUser_Task(@RequestBody User_Task user_task) {
         return new ResponseEntity<User_Task>(user_taskService.SelUser_Task(user_task),HttpStatus.OK);

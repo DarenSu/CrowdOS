@@ -55,6 +55,10 @@ public interface TaskMapper {
     void del_Task(Integer taskId);
 
     Task checkTask(Task task);
+    //20210516   任务剩余的总人数-1
+    void updateTaskTotalNum(Task task);
+    //20210516  根据taskId查找该条task的整个信息
+    Task SelTaskFromTaskId(Integer taskId);
 
     //void add_Task(Task task);
 }

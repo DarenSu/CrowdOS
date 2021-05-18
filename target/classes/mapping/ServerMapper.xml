@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ServerMapper">
+<!--
+    @Author:DarenSu
+    @Date: 2021/04/21
+    @Time: 14:42
+  -->
+    <resultMap id="BaseResultMap" type="com.example.entity.Server">
+        <result column="serverId" jdbcType="INTEGER" property="serverId" />
+        <result column="cpu" jdbcType="INTEGER" property="cpu" />
+        <result column="memory" jdbcType="INTEGER" property="memory" />
+        <result column="disk" jdbcType="INTEGER" property="disk" />
+        <result column="time" jdbcType="DATE" property="time" />
+        <result column="temp" jdbcType="VARCHAR" property="temp" />
+    </resultMap>
+
+<!--    //2021 04 21 将设备信息存储到数据库中-->
+    <insert id="addServer" parameterType="com.example.entity.Server" useGeneratedKeys="true" keyProperty="serverId">
+        insert into server (serverId, cpu, memory, disk, time, temp)
+        values (#{serverId,jdbcType=INTEGER}, #{cpu,jdbcType=INTEGER}, #{memory,jdbcType=INTEGER},
+        #{disk,jdbcType=INTEGER},#{time},#{temp,jdbcType=VARCHAR})
+    </insert>
+<!--    //2021 04 21  获取最新的一条数据信息-->
+    <select id="getServer"  resultType="com.example.entity.Server">
+        select * from server order by server.serverId desc limit 1
+    </select>
+
+    <select id="getAllServer"  resultType="com.example.entity.Server">
+        select * from server
+        <!--        select * from task order by task.taskId desc limit 0,100-->
+    </select>
+
+
+
+    <!--<insert id="insert" parameterType="com.example.entity.User">
+        insert into User (userId, userName, phone,
+        sex)
+        values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+        #{sex,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.example.entity.User">
+        insert into User
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userid != null">
+                userId,
+            </if>
+            <if test="username != null">
+                userName,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userid != null">
+                #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="findAllUser" resultType="com.example.entity.User">
+        select * from User
+    </select>-->
+</mapper>
+
+
+

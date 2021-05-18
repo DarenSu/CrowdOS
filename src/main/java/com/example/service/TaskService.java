@@ -82,6 +82,12 @@ public class TaskService {
 	///查询1&0
 	public Task check_Task(Task task) {		return taskMapper.checkTask(task);	}
 
-
-	
+	//20210516   任务剩余的总人数-1
+    public void updateTaskTotalNum(Task task) {
+		taskMapper.updateTaskTotalNum(task);
+    }
+	//20210516  根据taskId查找该条task的整个信息
+	public Task SelTaskFromTaskId(Integer taskId) {
+		return taskMapper.SelTaskFromTaskId(taskId);
+	}
 }

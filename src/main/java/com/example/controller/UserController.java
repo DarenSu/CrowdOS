@@ -72,13 +72,13 @@ public class UserController {
 
 
 
-
+    // 20201215     用户查询
     @RequestMapping("getUser/{id}")
     public User GetUser(@PathVariable int id) {
         return userService.Sel(id);
     }
 
-    //20201215   Server层分两层的测试
+    //  20201215   Server层分两层的测试
     @RequestMapping("getuser/{id}")
     public User getuser(@PathVariable int id) {
         return userServiceInterface.Sel(id);
@@ -241,7 +241,7 @@ public class UserController {
         if (userTemp.getUserName() == null){//传的数据是空  406
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }else if (userTemp.getUserName() != null && userTemp.getUserId() == null
-                && userTemp.getPassWord() == null && userTemp.getRealName() == null ){
+                && userTemp.getPassWord() == null /*&& userTemp.getRealName() == null*/ ){
             if (userService.checkLogin(userTemp) == null){//未注册过  200
                 return new ResponseEntity<>(HttpStatus.OK);
             }else {//已注册过  404
@@ -254,7 +254,7 @@ public class UserController {
                 && userTemp.getCoins() != null) {
             ////20201024 数据非空的话，需要检测数据类型是否正确
             if (userTemp.getUserName() instanceof String && userTemp.getCoins() instanceof Integer
-                    && userTemp.getPassWord() instanceof String && userTemp.getRealName() instanceof String) {
+                    && userTemp.getPassWord() instanceof String /*&& userTemp.getRealName() instanceof String*/) {
 
 
                 User check_userName = userService.checkLogin(user);
