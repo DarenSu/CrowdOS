@@ -266,7 +266,7 @@ public class User_TaskController {
 
 
 
-	///2019.7.25 上传任务的文字信息和图片，两个参数，user_task文字信息+单张图片
+	///2019.7.25 上传任务的文字信息和图片，两个参数，user_task文字信息+单张图片   user_task里面的是userid和taskid
 	///目前没有实现多张图片上传，实现的是单图片的上传
 	@RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
 	@ResponseBody
@@ -276,8 +276,20 @@ public class User_TaskController {
 	    // 获取文件名
         System.out.println(utask);
 
-		String fileName = file.getOriginalFilename();
-		System.out.println(fileName);
+		String fileName_temp = file.getOriginalFilename();
+		System.out.println("fileName_temp="+fileName_temp);
+		// 给文件名添加上userid和taskid 用于区分
+		String str_uid= utask.getUserId()+ "";
+		String str_tid= utask.getTaskId()+ "";
+		StringBuilder stringBuilder= new StringBuilder(str_uid);
+		stringBuilder.append("-");
+		stringBuilder.append(str_tid);
+		stringBuilder.append("-");
+		stringBuilder.append(fileName_temp);
+
+		String fileName= stringBuilder.toString();
+		System.out.println("修改后的fileName="+fileName);
+
 
 		//2019.9.17  读取上传的文件的大小，不能超过SSM所支持的最大值,单位为B
 		//2019.9.17  前端那边设置最多可以传输十个文件
@@ -290,7 +302,7 @@ public class User_TaskController {
 		// 获取文件的后缀名
 		String suffixName = fileName.substring(fileName.lastIndexOf("."));
 		// 文件上传后的路径   自己测试
-		//String filePath = "E:" + File.separator + "springboot-upload" + File.separator + "image" + File.separator ;
+//		String filePath = "E:" + File.separator + "springboot-upload" + File.separator + "image" + File.separator ;
 		// 服务器测试
 		String filePath =  "/E/springboot-upload/image/";
 
