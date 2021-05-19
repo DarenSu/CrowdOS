@@ -2,66 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41121d63-f8ac-4d8d-8000-01e4c3c8297a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_18_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_core_2_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_schema_2_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spi_2_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_web_2_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger2_2_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_common_2_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_ui_2_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_models_1_5_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_15.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mapstruct_mapstruct_1_0_0_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_1_2_0_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_metadata_1_2_0_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/ExecutorController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/Sensor_ByteController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/Sensor_DetailController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/Sensor_MessageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/ServerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Sensor_Byte.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Sensor_Detail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Sensor_Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/Sensor_ByteMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/Sensor_DetailMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/Sensor_MessageMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/ServerMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/Sensor_ByteService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/Sensor_DetailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/Sensor_MessageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/ServerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/AsyncServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/AsyncService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/util/ComputerMonitorUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/util/ExecutorConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/util/VisiableThreadPoolTaskExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapping/Sensor_ByteMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapping/Sensor_DetailMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapping/Sensor_MessageMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapping/ServerMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/demo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/User_TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/User_TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mapper/Familiar_SensorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/Familiar_SensorMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mapper/TaskMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/TaskMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/TaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/TaskMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/Sensor_DetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/Sensor_DetailController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/target/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/User_TaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/User_TaskController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/mapper/TaskMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/mapper/TaskMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/mapper/UserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/service/TaskService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/service/TaskService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapping/TaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/TaskMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapping/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/Sensor_DetailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/Sensor_DetailController.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -201,7 +145,7 @@
       <option name="presentableId" value="Default" />
       <updated>1561135285738</updated>
       <workItem from="1607951250255" duration="11048000" />
-      <workItem from="1621231670353" duration="43567000" />
+      <workItem from="1621231670353" duration="46587000" />
     </task>
     <task id="LOCAL-00001" summary="“第一次修改”">
       <created>1607936779475</created>
@@ -327,7 +271,7 @@
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1599793867281" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Springboot_Mybatis_V7_3_0_$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1621347942697" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Springboot_Mybatis_V7_3_0_$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1621387710832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/demo$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1594728941693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

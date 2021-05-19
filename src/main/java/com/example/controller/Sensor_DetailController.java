@@ -2,7 +2,6 @@ package com.example.controller;
 
 
 import com.example.entity.Sensor_Detail;
-import com.example.entity.Sensor_Message;
 import com.example.entity.User_Task;
 import com.example.service.*;
 import com.example.service.serviceInterface.AsyncService;
@@ -60,7 +59,7 @@ public class Sensor_DetailController {
     @RequestMapping(value = "/uploadSensorFileMessageDetail", method = RequestMethod.POST)
     @ResponseBody
     // User类           文件类型的参数（可以是文件、视频、图片均可）
-    public ResponseEntity<Sensor_Message> add_Sensor_File_Bytes(@RequestPart("sensor_byte") Sensor_Detail sensor_detail, @RequestPart("file") MultipartFile file) throws IOException {
+    public ResponseEntity<Sensor_Detail> add_Sensor_File_Bytes(@RequestPart("sensor_detail") Sensor_Detail sensor_detail, @RequestPart("file") MultipartFile file) throws IOException {
 
         System.out.println("欢迎来到传感器数据到逐条上传到表里：sensordetial/uploadSensorFileMessageDetail");
 
@@ -78,7 +77,7 @@ public class Sensor_DetailController {
         // 20210513 数据判断，防止无意义的访问导致数据库崩溃
         if(sensor_detail.getSensor_detailId() != null || sensor_detail.getUserId() == null ||
                 sensor_detail.getTaskId() == null || file.isEmpty()){//数据有问题，返回400
-            return new ResponseEntity<Sensor_Message>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         System.out.println("测试到了这里了！！！");
         //查看文件是否有重复
