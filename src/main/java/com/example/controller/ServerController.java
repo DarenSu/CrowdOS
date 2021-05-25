@@ -43,9 +43,9 @@ public class ServerController {
 
         //当前系统的CPU使用率
         double cpuUsage = ComputerMonitorUtil.getCpuUsage();
-//当前系统的内存使用率
+        //当前系统的内存使用率
         double memUsage = ComputerMonitorUtil.getMemUsage();
-//当前系统的硬盘使用率
+        //当前系统的硬盘使用率
         double diskUsage = ComputerMonitorUtil.getDiskUsage();
         //double 转 int    *100
         int cpu_temp = (int)cpuUsage* 100;

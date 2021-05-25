@@ -4,7 +4,13 @@
     <list default="true" id="41121d63-f8ac-4d8d-8000-01e4c3c8297a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/User_TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/User_TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/HumanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/HumanController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/Sensor_DetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/Sensor_DetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/ServerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/entity/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Human.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/entity/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/target/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/Sensor_DetailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/Sensor_DetailController.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,11 +76,15 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.example.util" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\resources\mapping" />
+      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\java\com\example\service" />
+      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\java\com\example\mapper" />
+      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\java\com\example\entity" />
+      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\java\com\example\controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.mapper" />
@@ -83,12 +93,8 @@
       <recent name="com.example.entity" />
       <recent name="com.example.util" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\resources\mapping" />
-      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\java\com\example\service" />
-      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\java\com\example\mapper" />
-      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\java\com\example\entity" />
-      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\java\com\example\controller" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.util" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -145,7 +151,8 @@
       <updated>1561135285738</updated>
       <workItem from="1607951250255" duration="11048000" />
       <workItem from="1621231670353" duration="47984000" />
-      <workItem from="1621425252173" duration="4372000" />
+      <workItem from="1621425252173" duration="13452000" />
+      <workItem from="1621736546996" duration="5954000" />
     </task>
     <task id="LOCAL-00001" summary="“第一次修改”">
       <created>1607936779475</created>
@@ -271,7 +278,7 @@
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1599793867281" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Springboot_Mybatis_V7_3_0_$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1621430947779" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Springboot_Mybatis_V7_3_0_$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1621930298608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/demo$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1594728941693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

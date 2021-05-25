@@ -1,6 +1,7 @@
 package com.example.controller;
 
 
+import com.example.entity.Human;
 import com.example.entity.Liveness;
 import com.example.entity.User;
 import com.example.service.HumanService;
@@ -120,11 +121,15 @@ public class HumanController {
     ////用户登录   2019.9.25  userName 和 realName均可以进行登录
     /// 自己测试走表单不需要requestbody，前后台对接使用的是json数据，需要使用requestbody
     ///  2019.9.25 ---待添加---
-    @RequestMapping(value = "enterUser", method = RequestMethod.POST)
-    public ResponseEntity<User> EnterUser(@RequestBody User user) {
+    @RequestMapping(value = "addHuman", method = RequestMethod.POST)
+    public ResponseEntity<User> AddHuman(@RequestBody Human human) {
         //return userService.SelInfo(userName).toString();
         Liveness liveness = new Liveness();
 
+        System.out.println(human);
+        Human humanTemp1= human;
+
+        User user = new User();
         System.out.println(user);
         //System.out.println(userService.EnterUser(user));
 

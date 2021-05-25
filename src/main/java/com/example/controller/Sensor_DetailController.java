@@ -2,7 +2,6 @@ package com.example.controller;
 
 
 import com.example.entity.Sensor_Detail;
-import com.example.entity.User_Task;
 import com.example.service.*;
 import com.example.service.serviceInterface.AsyncService;
 import com.example.util.ExecutorConfig;
@@ -26,6 +25,16 @@ import java.util.List;
 //import com.***.common.upload.file.ChunkInfoModel;
 //import com.***.common.upload.file.UploadFileCallback;
 //import com.***.common.upload.file.UploadFileConfig;
+
+/*
+传感器文件上传
+ - 采用的模式是每个传感上传一个文件夹，文件夹一行代表着一条记录，里面有两个属性：时间/数值
+ - 并且使用的模式是前端定时向后台传送文件，并非是任务的要求才传送该数据的，也就是这个和FS里面的传感器文件传输是不一样的
+ - 并且使用的参数有两个，分别是Sensor_Detail和file，其中Sensor_Detail里面只有userId非空即可
+ - 经测试发现，一小时之内，每个传感器产生数据的量大概在800条左右
+ - 经测试发现，一小时之内，每个传感器产生的数据大小在35 - 65kb
+ */
+
 
 @RestController      //进行模块的注明，此处为控制模块
 @RequestMapping("/sensordetail")
@@ -65,15 +74,17 @@ public class Sensor_DetailController {
 
         // 首先检验该条数据是否在存在在表中，也就是这条数据的userId和taskId是否真的有关联
         // 需要在ut表中进行查询
-        User_Task user_task= new User_Task();
-        user_task.setUserId(sensor_detail.getUserId());
-        user_task.setTaskId(sensor_detail.getTaskId());
-        User_Task user_taskresult = user_taskService.SelUser_Task(user_task);
-        if( user_taskresult == null ){//请求成功了，但是没有资源，也就是这个userId和taskId没有关联  204
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
+        // 不需要计算了，因为这个函数的功能实现的是传感器数据的定时上传，和任务是没有关系的
+//        User_Task user_task= new User_Task();
+//        user_task.setUserId(sensor_detail.getUserId());
+//        user_task.setTaskId(sensor_detail.getTaskId());
+//        User_Task user_taskresult = user_taskService.SelUser_Task(user_task);
+//        if( user_taskresult == null ){//请求成功了，但是没有资源，也就是这个userId和taskId没有关联  204
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
 
-
+        //  设定这类和人物没有关系的传感器感知数据的任务的id为-1
+        sensor_detail.setTaskId(-1);
         // 20210513 数据判断，防止无意义的访问导致数据库崩溃
         if(sensor_detail.getSensor_detailId() != null || sensor_detail.getUserId() == null ||
                 sensor_detail.getTaskId() == null || file.isEmpty()){//数据有问题，返回400

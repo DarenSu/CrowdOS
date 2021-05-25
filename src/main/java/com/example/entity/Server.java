@@ -12,7 +12,7 @@ import java.util.Date;
 
 
 public class Server {
-    private Integer serverId;                 //用户ID
+    private Integer serverId;                 //设备ID
     private Integer cpu;                //CPU
     private Integer memory;                //内存
     private Integer disk;                //磁盘
