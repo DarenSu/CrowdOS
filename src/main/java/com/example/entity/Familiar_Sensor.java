@@ -2,29 +2,26 @@ package com.example.entity;
 
 /**
  * @Author:DarenSu
- * @Date: 2020/05/28 修改
+ * @Date: 2020/05/28
  * @Time: 14:42
  */
 
-//      传感器相关的类
-//      后续需要和前端进行协商，这部分没有统一
-//      暂时就做最简单的
 
-//      20200625   增加数据存储方式
-//     类似与之前的文件存储，具体的需要进一步与前端协商。切记
+
+//      20200625   add data storage method
 
 public class Familiar_Sensor {
-    private Integer familiar_sensorId;          //主键
-    private Integer userId;                    //用户ID
-    private Integer taskId;                    //任务ID
+    private Integer familiar_sensorId;          //primary key
+    private Integer userId;
+    private Integer taskId;
 
-    private Float longitude;  //经度
-    private Float latitude;  //维度
-    private Float speed; //速度
+    private Float longitude;
+    private Float latitude;
+    private Float speed;
 
-    private String sensorType;  //类型
+    private String sensorType;
 
-    private String sensorFile;   //位置存储
+    private String sensorFile;   //memory address
 
     public Familiar_Sensor() {
         super();

@@ -9,15 +9,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * @Author:0xOO
- * @Date: 2018/9/26 0026
- * @Time: 15:23
- */
+
 
 /**
  * @Author:DarenSu
- * @Date: 2019/6/13 修改
+ * @Date: 2019/6/13
  * @Time: 14:42
  */
 
@@ -32,13 +28,15 @@ public class Version_UpdatingService {
 
 
 
-	///2019.10.29  判断是否需要进行更新,前端输入当前的版本，与服务器的最新版本进行比较
-	// 版本号不同的话temp为1，进行更新，版本号相同的话temp为0，不需要费更新
+	///2019.10.29  Determine whether an update is needed, enter the current version on the front end, and compare it
+	// with the latest version of the server
+	// If the version number is different, temp is 1, and update is performed. If the version number is the same,
+	//  temp is 0, and no update is required.
 	public List<Version_Updating> checkForPresence(Integer versionCode) {
 		return version_updatingMapper.checkForPresence(versionCode);
 	}
 
-	////2019.11.1 修改：一次性返回数据库最后面的一条数据
+	//2019.11.1 Modification: Return the last piece of data in the database at one time
 	public Version_Updating getLastOne() {
 		return version_updatingMapper.getLastOne();
 	}

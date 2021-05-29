@@ -10,28 +10,23 @@ import java.util.Date;
  * @Time: 14:42
  */
 
-//      传感器相关的类
-//      后续需要和前端进行协商，这部分没有统一
-//      暂时就做最简单的
 
-//      20200625   增加数据存储方式
-//     类似与之前的文件存储，具体的需要进一步与前端协商。切记
 
 public class Sensor_Byte {
-    private Integer sensor_messageId;          //主键
-    private Integer userId;                    //用户ID
-    private Integer taskId;                    //任务ID
+    private Integer sensor_messageId;     // primary key
+    private Integer userId;
+    private Integer taskId;
 
     @JsonFormat(pattern = "yyyy.MM.dd")
-    private Date onlineTime;     // 数据上传日期
+    private Date onlineTime;     // data upload time
 
-    private String fileByte;     // 二进制文件流
-    private String temp1;     // 测试
-    private String temp2;     // 测试
-    private String temp3;     // 测试
-    private String temp4;     // 测试
+    private String fileByte;     // binary stream
+    private String temp1;     // test & reserve data
+    private String temp2;     // test & reserve data
+    private String temp3;     // test & reserve data
+    private String temp4;     // test & reserve data
 
-//    private String sensorFilePath;  //文件存储位置
+//    private String sensorFilePath;
 
 
     public Sensor_Byte() {

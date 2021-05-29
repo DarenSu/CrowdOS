@@ -29,10 +29,10 @@ public class ServerService {
 
 
 
-	//2021 04 21 将设备信息存储到数据库中
+	//2021 04 21 Store device information in the database
 	public  void addServer(Server server){serverMapper.addServer(server); }
 
-	//2021 04 21  获取最新的一条数据信息
+	////2021 04 21  Get the latest piece of data
 	public Server getServer(){ return serverMapper.getServer(); }
 	public List<Server> getAllServer(){ return serverMapper.getAllServer(); }
 	

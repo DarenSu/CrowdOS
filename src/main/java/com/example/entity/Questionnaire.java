@@ -9,31 +9,31 @@ public class Questionnaire {
     private Integer userId;   //用户ID
     private Integer taskId;   //任务ID
 
-    private String realName; //真实姓名-选填
-    private String school; //单位或者学校
-    private String level; //对平台的了解程度
-    private String goal; // 使用本平台的目的是什么
+    private String realName; // optional
+    private String school; // workplace or school
+    private String level; // evaluate the user's acquaintance of this platform
+    private String goal; //  the purpose of using this platform
 
 
 
 
-    //User类的扩增数据
-//    private Integer userId;                 //用户ID
-//    private String userName;                //用户账号
-//    private String passWord;                //登录密码
-//    private String realName;                //真实姓名
-//    private Integer coins;                  //积分
-//    private String Nickname;                //用户昵称
-//    private String QQNumber;                //QQ
-//    private String Phone;                   //电话
-//    private String UserIcon;                //头像存储路径
+    //User
+//    private Integer userId;                 //
+//    private String userName;                //
+//    private String passWord;                //
+//    private String realName;                //
+//    private Integer coins;                  //
+//    private String Nickname;                //
+//    private String QQNumber;                //
+//    private String Phone;                   //
+//    private String UserIcon;                //
 //
-//    private String userrealName; //真实姓名-选填
-//    private String school; //公司单位或者学校
-//    private String sex; //性别
-//    private String mail; //邮箱
-//    private String direction; //研究方向
-//    private String degree; //学位
+//    private String userrealName; //
+//    private String school; //
+//    private String sex; //
+//    private String mail; //
+//    private String direction; //
+//    private String degree; //
 
 
 }

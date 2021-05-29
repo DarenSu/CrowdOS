@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 //import java.util.logging.Logger;
 
-@RestController
-@EnableScheduling //时间模块
+@RestController //To indicate the module, here is the control module
+@EnableScheduling //Time module
 @RequestMapping("/thread")
 public class ExecutorController {
     private static final Logger logger = (Logger) LoggerFactory.getLogger(ExecutorController.class);
@@ -24,7 +24,7 @@ public class ExecutorController {
     @RequestMapping("/ececutor")
     public String submit(){
         logger.info("start submit");
-        //调用service层的任务
+        //Tasks that invoke the Service layer
         asyncService.executeAsync();
         logger.info("end submit");
         return "success";

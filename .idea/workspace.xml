@@ -4,13 +4,130 @@
     <list default="true" id="41121d63-f8ac-4d8d-8000-01e4c3c8297a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/DemoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/ExecutorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/ExecutorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/Familiar_SensorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/Familiar_SensorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/HumanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/HumanController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/LivenessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/LivenessController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/SecurityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/SecurityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/Sensor_ByteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/Sensor_ByteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/Sensor_DetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/Sensor_DetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/Sensor_MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/Sensor_MessageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/ServerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/User_TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/User_TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/Version_UpdatingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/Version_UpdatingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/entity/Combine_u_ut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Combine_u_ut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/entity/Familiar_Sensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Familiar_Sensor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/entity/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Human.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/entity/Liveness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Liveness.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/entity/Questionnaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Questionnaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/entity/Sensor_Byte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Sensor_Byte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/entity/Sensor_Detail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Sensor_Detail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/entity/Sensor_Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Sensor_Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/entity/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/entity/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/entity/User_Peripherals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/User_Peripherals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/entity/User_Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/User_Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/entity/Version_Updating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/entity/Version_Updating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mapper/Familiar_SensorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/Familiar_SensorMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mapper/LivenessMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/LivenessMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mapper/Sensor_ByteMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/Sensor_ByteMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mapper/Sensor_DetailMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/Sensor_DetailMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mapper/Sensor_MessageMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/Sensor_MessageMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mapper/ServerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/ServerMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mapper/TaskMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/TaskMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mapper/User_TaskMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/User_TaskMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mapper/Version_UpdatingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mapper/Version_UpdatingMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/Familiar_SensorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/Familiar_SensorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/HumanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/HumanService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/LivenessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/LivenessService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/Sensor_ByteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/Sensor_ByteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/Sensor_DetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/Sensor_DetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/Sensor_MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/Sensor_MessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/ServerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/ServerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/User_TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/User_TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/Version_UpdatingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/Version_UpdatingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/Familiar_SensorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/Familiar_SensorServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/LivenessServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/LivenessServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/TaskServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/User_TaskServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/Version_UpdatingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceImpl/Version_UpdatingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/AsyncService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/AsyncService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/Familiar_SensorServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/Familiar_SensorServiceInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/LivenessServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/LivenessServiceInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/TaskServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/UserServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/User_TaskServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/Version_UpdatingServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/serviceInterface/Version_UpdatingServiceInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/util/CheckLivenessIsEmpty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/util/CheckLivenessIsEmpty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/util/ComputerMonitorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/util/ComputerMonitorUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/util/ExecutorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/util/ExecutorConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/util/MYApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/util/MYApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/util/SHA256.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/util/SHA256.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/Familiar_SensorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/Familiar_SensorMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/LivenessMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/LivenessMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/Sensor_ByteMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/Sensor_ByteMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/Sensor_DetailMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/Sensor_DetailMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/Sensor_MessageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/Sensor_MessageMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/ServerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/ServerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/TaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/TaskMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/User_TaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/User_TaskMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/Version_UpdatingMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/Version_UpdatingMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/target/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app.log.2021-05-19.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/app.log.2021-05-21.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/Familiar_SensorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/Familiar_SensorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/HumanController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/HumanController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/LivenessController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/LivenessController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/SecurityController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/SecurityController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/Sensor_ByteController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/Sensor_ByteController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/Sensor_DetailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/Sensor_DetailController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/Sensor_MessageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/Sensor_MessageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/TaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/TaskController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/User_TaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/User_TaskController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/controller/Version_UpdatingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/controller/Version_UpdatingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/entity/Combine_u_ut.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/entity/Combine_u_ut.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/entity/Familiar_Sensor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/entity/Familiar_Sensor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/entity/Human.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/entity/Human.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/entity/Sensor_Byte.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/entity/Sensor_Byte.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/entity/Sensor_Detail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/entity/Sensor_Detail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/entity/Sensor_Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/entity/Sensor_Message.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/entity/Task.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/entity/Task.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/entity/User_Task.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/entity/User_Task.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/entity/Version_Updating.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/entity/Version_Updating.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/service/HumanService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/service/HumanService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/service/LivenessService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/service/LivenessService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/service/User_TaskService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/service/User_TaskService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/service/Version_UpdatingService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/service/Version_UpdatingService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/service/serviceImpl/Familiar_SensorServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/service/serviceImpl/Familiar_SensorServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/util/ComputerMonitorUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/util/ComputerMonitorUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/util/ExecutorConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/util/ExecutorConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapping/Familiar_SensorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/Familiar_SensorMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapping/LivenessMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/LivenessMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapping/Sensor_ByteMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/Sensor_ByteMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapping/Sensor_DetailMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/Sensor_DetailMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapping/Sensor_MessageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/Sensor_MessageMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapping/ServerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/ServerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapping/TaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/TaskMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapping/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapping/User_TaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/User_TaskMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapping/Version_UpdatingMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapping/Version_UpdatingMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.demo.DemoApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.demo.DemoApplicationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.example.demo.DemoApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.example.demo.DemoApplicationTests.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,13 +182,14 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="D:/work/workspace/community" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/example/service" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -79,12 +197,8 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\resources\mapping" />
-      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\java\com\example\service" />
-      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\java\com\example\mapper" />
-      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\java\com\example\entity" />
-      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\java\com\example\controller" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.util" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.mapper" />
@@ -93,8 +207,12 @@
       <recent name="com.example.entity" />
       <recent name="com.example.util" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.example.util" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\java\com\example\service" />
+      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\resources\mapping" />
+      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\java\com\example\mapper" />
+      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\java\com\example\entity" />
+      <recent name="D:\CrowdOS\Springboot_Mybatis-V7.3.0-修改\src\main\java\com\example\controller" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -152,7 +270,10 @@
       <workItem from="1607951250255" duration="11048000" />
       <workItem from="1621231670353" duration="47984000" />
       <workItem from="1621425252173" duration="13452000" />
-      <workItem from="1621736546996" duration="5954000" />
+      <workItem from="1621736546996" duration="7987000" />
+      <workItem from="1622182423820" duration="1198000" />
+      <workItem from="1622212024023" duration="505000" />
+      <workItem from="1622214476130" duration="12697000" />
     </task>
     <task id="LOCAL-00001" summary="“第一次修改”">
       <created>1607936779475</created>
@@ -278,7 +399,7 @@
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1599793867281" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Springboot_Mybatis_V7_3_0_$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1621930298608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Springboot_Mybatis_V7_3_0_$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1622263217597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/demo$DemoApplication.ic" NAME="DemoApplication Coverage Results" MODIFIED="1594728941693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

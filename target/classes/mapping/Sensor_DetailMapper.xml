@@ -15,7 +15,7 @@
         <result column="temp2" jdbcType="VARCHAR" property="temp2" />
     </resultMap>
 
-<!--    //20200514   传感器数据（json数据+文件）上传至传感器数据表-->
+    <!--    20200514   -->
     <insert id="addfilebyte" parameterType="com.example.entity.Sensor_Detail" useGeneratedKeys="true" keyProperty="sensor_messageId">
         insert into sensor_detail (sensor_detailId,userId, taskId, fileName, onlineTime, sensorType,acquisitionTime,sensorValue,temp1,temp2)
         values ( #{sensor_detailId,jdbcType=INTEGER},#{userId,jdbcType=INTEGER}, #{taskId,jdbcType=INTEGER},#{fileName,jdbcType=VARCHAR},
@@ -23,24 +23,24 @@
                 #{sensorValue,jdbcType=VARCHAR},#{temp1,jdbcType=VARCHAR},#{temp2,jdbcType=VARCHAR})
     </insert>
 
-    <!--20200514 寻找最新的id，也就是最大的自增主键-->
+    <!--20200514 -->
     <select id="getMaxId"  resultType="com.example.entity.Sensor_Detail">
         select * from sensor_detail order by sensor_detail.sensor_detailId desc limit 0,1
     </select>
 
 
-    <!--20200515  根据任务的userId、taskId返回整个传感器数据的List   -->
+    <!--20200515     -->
     <select id="selSensor_Byte"  resultType="com.example.entity.Sensor_Detail" parameterType="com.example.entity.Sensor_Detail">
         select * from sensor_detail where userId = #{userId} and taskId = #{taskId}
     </select>
 
 
-    <!--    //20200514 根据任务的taskId返回所有传感器数据的List   -->
+    <!--    20200514   -->
     <select id="selAllMessageFromTaskId"  resultType="com.example.entity.Sensor_Detail" parameterType="com.example.entity.Sensor_Detail">
         select * from sensor_detail where  taskId = #{taskId}
     </select>
 
-    <!--    //20200514 根据任务的taskId和userId返回所有传感器数据的List   -->
+    <!--     20200514    -->
     <select id="selAllMessageFromUserIdTaskId"  resultType="com.example.entity.Sensor_Detail" parameterType="com.example.entity.Sensor_Detail">
         select * from sensor_detail where userId = #{userId} and taskId = #{taskId}
     </select>

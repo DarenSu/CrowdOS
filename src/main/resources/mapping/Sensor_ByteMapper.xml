@@ -16,7 +16,7 @@
     </resultMap>
 
 
-<!--    //20200514   传感器数据（json数据+文件）上传至传感器数据表-->
+<!--    //20200514   Upload sensor data (json data + file) to sensor data table-->
     <insert id="addfilebyte" parameterType="com.example.entity.Sensor_Byte" useGeneratedKeys="true" keyProperty="sensor_messageId">
         insert into sensor_byte (sensor_messageId,userId, taskId, onlineTime, fileByte,temp1,temp2,temp3,temp4)
         values ( #{sensor_messageId,jdbcType=INTEGER},#{userId,jdbcType=INTEGER}, #{taskId,jdbcType=INTEGER},
@@ -24,13 +24,13 @@
                 #{temp2,jdbcType=VARCHAR},#{temp3,jdbcType=VARCHAR},#{temp4,jdbcType=VARCHAR})
     </insert>
 
-    <!--20200514 寻找最新的id，也就是最大的自增主键-->
+    <!--20200514 Find the latest id, which is the largest auto-incrementing primary key-->
     <select id="getMaxId"  resultType="com.example.entity.Sensor_Byte">
         select * from sensor_byte order by sensor_byte.sensor_messageId desc limit 0,1
     </select>
 
 
-    <!--20200515  根据任务的userId、taskId返回整个传感器数据的List   -->
+    <!--20200515  Return a List of the entire sensor data according to the userId and taskId of the task  -->
     <select id="selSensor_Byte"  resultType="com.example.entity.Sensor_Byte" parameterType="com.example.entity.Sensor_Byte">
         select * from sensor_byte where userId = #{userId} and taskId = #{taskId}
     </select>

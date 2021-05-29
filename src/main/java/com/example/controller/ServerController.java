@@ -1,5 +1,5 @@
 package com.example.controller;
-// 2021 04 21 添加的数据，是为了增加WEB网页上的站服务器的设备信息：CPU、内存以及磁盘信息
+
 
 
 /**
@@ -22,8 +22,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@RestController  // 模块注明
-@EnableScheduling //时间模块
+@RestController  // To indicate the module, here is the control module
+@EnableScheduling //To indicate the module
 @RequestMapping("/device")
 public class ServerController {
 
@@ -41,13 +41,13 @@ public class ServerController {
 
 
 
-        //当前系统的CPU使用率
+        //The CPU usage of the current system
         double cpuUsage = ComputerMonitorUtil.getCpuUsage();
-        //当前系统的内存使用率
+        //The memory usage of the current system
         double memUsage = ComputerMonitorUtil.getMemUsage();
-        //当前系统的硬盘使用率
+        //The disk usage of the current system
         double diskUsage = ComputerMonitorUtil.getDiskUsage();
-        //double 转 int    *100
+        //double transform int    *100
         int cpu_temp = (int)cpuUsage* 100;
         int memory_temp = (int)memUsage* 100;
         int disk_temp = (int)diskUsage* 100;
@@ -62,14 +62,14 @@ public class ServerController {
         server.setDisk((disk_temp));
 
 
-        //  20200628    Date数据类型的时间获取
+        //  20200628    Time fetching for the DATE data type
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
         System.out.println(date);
         server.setTime(date);
 
 
-//        // 2021 04 22 用于测试
+//        // 2021 04 22 test
 //        System.out.println("=--------"+ serverService.getServer());
 
         if( check_serverMessageIsOK(server) == false ){
@@ -78,13 +78,13 @@ public class ServerController {
             return new ResponseEntity<>(serverService.getServer(), HttpStatus.ACCEPTED);
         }
 
-        //将此次的数据写入 数据库
+        //Write this data to the database
         serverService.addServer(server);
 
         return new ResponseEntity<>(server, HttpStatus.OK);
     }
 
-    //检测server是否符合要求
+    //Verify that the Server meets the requirements
     public boolean check_serverMessageIsOK(Server server){
         if(server.getDisk()>0 && server.getDisk() < 10000 &&
             server.getCpu()> 0 && server.getCpu()< 10000 &&
@@ -92,7 +92,7 @@ public class ServerController {
             return true;
         return false;
     }
-    //展示所有的device数据
+    //
     @RequestMapping("getAllDevice")
     private ResponseEntity<List<Server>> GetAllDevice() throws Exception {
         if(serverService.getAllServer()!= null){

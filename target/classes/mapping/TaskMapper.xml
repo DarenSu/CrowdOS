@@ -20,7 +20,7 @@
     </resultMap>
 
 
-
+<!--Adding and querying data in Bean_Task database         2016.6.18-->
     <insert id="add_Task" parameterType="com.example.entity.Task" useGeneratedKeys="true" keyProperty="taskId">
         insert into task (taskId, taskName,postTime, deadLine,userId,userName,coin, describe_task, totalNum,taskStatus,taskKind,longitude,latitude,sensorTypes)
         values ( #{taskId,jdbcType=INTEGER},
@@ -42,40 +42,39 @@
 
 
 
-    <!-- 2019.7.5  获取入参为taskName的所有的数据，查询多个list    -->
+    <!-- 2019.7.2 Modification: Modified from a single result display to multiple result displays    -->
 
     <select id="SelInfo" parameterType="string" resultType="com.example.entity.Task">
         select * from task where taskName = #{taskName}
     </select>
 
 
-    <!--    //20210516   任务剩余的总人数-1  -->
+    <!--    20210516   The total number of people remaining in the task minus 1 -->
     <update id="updateTaskTotalNum" parameterType="com.example.entity.Task" >
         UPDATE task SET
---      20210516        前面的参数是数据库里的，后面的参数是前段传进来的参数
+--      20210516        The front parameter is the database parameter, and the back parameter is the parameter passed in the front segment
         totalNum = #{totalNum}
         WHERE userId = #{userId} and taskId = #{taskId}
     </update>
-<!--       //20210516  根据taskId查找该条task的整个信息 -->
+<!--       20210516  Find the entire information of the task according to taskId -->
     <select id="SelTaskFromTaskId" parameterType="int" resultType="com.example.entity.Task">
         select * from task where taskId = #{taskId}
     </select>
 
 
-    <!--2019.7.6 一次性返回数据库最后面的十条数据-->
+    <!--2019.7.6 Modification: Return the last ten data of the database at one time-->
     <select id="getTen"  resultType="com.example.entity.Task">
         select * from task order by task.taskId desc limit 0,10
     </select>
-<!--    List<Task> getTen() ;-->
+<!--    List<Task> getTen() ;   2021.1.11 Modification: Return all data in the database at once-->
     <select id="getAll"  resultType="com.example.entity.Task">
         select * from task
 <!--        select * from task order by task.taskId desc limit 0,100-->
     </select>
 
 
-    <!--2019.8.12 一次性返回数据库某id的前十条数据      有错误     mybatis中的小于等于：&lt;=   -->
-    <!--2019.8.12 实现思路-小于此ID并且不找过十条数据    -->
-    <!--   taskKind = #{taskKind}中，前面的参数是数据库里的，后面的参数是前段传进来的参数 -->
+
+    <!--2019.8.12 Modification: Return the last ten data of the database at one time    -->
     <select id="getNewTen"  resultType="com.example.entity.Task" parameterType="INTEGER">
 
     <!--select * from task where taskId in (select top 10 taskId from task where taskId &lt; mintaskId order by id desc-->
@@ -86,8 +85,7 @@
 
     </select>
 
-    <!--2019.9.11 根据任务的taskId返回任务的List   -->
-<!--    不仅仅返回了十条数据，并且还进行了排序操作，将搜索的数据按照taskId进行排序返回-->
+    <!--2019.9.11 Return a list of tasks according to the taskId of the task   -->
     <select id="SelTaskFromKind"  resultType="com.example.entity.Task" parameterType="INTEGER">
         select * from task where taskKind = #{taskKind} order by task.taskId desc limit 0,10
     </select>
@@ -96,7 +94,7 @@
 
 
 
-<!--2019.7.18  功能：查询某userId所发布的所有的任务  ，输入的参数：userId，返回的结果：List<task>-->
+<!--2019.7.18  Function: Query all tasks published by a userId, input parameter: userId, return result: List<task>-->
     <select id="SelUserId" parameterType="INTEGER" resultType="com.example.entity.Task">
         select * from task where userId =#{userId}
     </select>
@@ -121,7 +119,7 @@
 
 
 
-
+    <!--test-->
     <!--<insert id="insert" parameterType="com.example.entity.User">
         insert into User (userId, userName, phone,
         sex)

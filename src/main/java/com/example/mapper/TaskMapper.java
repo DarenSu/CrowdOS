@@ -26,26 +26,26 @@ public interface TaskMapper {
     static void del(Integer taskId) {
     }
 
-    ///Task数据库中数据的添加和查询         2016.6.18
+    ///Adding and querying data in Bean_Task database         2016.6.18
     void add_Task(Task task);
-    
-    ///有问题 id再给的文件中为String
+
+    ///2019-11-6 Query all contents of task according to taskId
     Task Sel_Task(Integer taskId);
 
-    ////2019.7.5 修改：从单个的结果展示修改为多个结果展示
+    ////2019.7.2 Modification: Modified from a single result display to multiple result displays
     List<Task> SelInfo(String taskName);
 
-    ////2019.7.6 修改：一次性返回数据库最后面的十条数据
+    //2019.7.6 Modification: Return the last ten data of the database at one time
     List<Task> getTen() ;
-    ////2021.1.11 修改：一次性返回数据库所有数据
+    //2021.1.11 Modification: Return all data in the database at once
     List<Task> getAll() ;
-    ////2019.8.12 修改：一次性返回数据库某taskID前面的十条数据
+    //2019.8.12 Modification: Return the last ten data of the database at one time
     List<Task> getNewTen(Integer mintaskId);
-    ///2019.9.11 根据任务的taskId返回任务的List
+    //2019.9.11 Return a list of tasks according to the taskId of the task
     List<Task> SelTaskFromKind(Integer taskKind);
 
 
-    ////2019.7.18  功能：查询某userId所发布的所有的任务  ，输入的参数：userId，返回的结果：List<task>
+    //2019.7.18  Function: Query all tasks published by a userId, input parameter: userId, return result: List<task>
     List<Task> SelUserId(Integer userId);
 
     //User checkUser(User user);
@@ -55,9 +55,9 @@ public interface TaskMapper {
     void del_Task(Integer taskId);
 
     Task checkTask(Task task);
-    //20210516   任务剩余的总人数-1
+    //20210516   The total number of people remaining in the task minus 1
     void updateTaskTotalNum(Task task);
-    //20210516  根据taskId查找该条task的整个信息
+    //20210516  Find the entire information of the task according to taskId
     Task SelTaskFromTaskId(Integer taskId);
 
     //void add_Task(Task task);

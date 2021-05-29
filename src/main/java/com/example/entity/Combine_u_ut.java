@@ -6,16 +6,10 @@ package com.example.entity;
  * @Time: 14:39
  */
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import java.util.Date;
-import java.util.List;
-
-
-//当前task主要直接对接应用的直接使用
+//The current task is mainly directly connected to the direct use of the application
 public class Combine_u_ut {
-    private User u;                      //user类
-    private User_Task ut;                //user_task类
+    private User u;                      //user
+    private User_Task ut;                //user_task
 
     public Combine_u_ut(User u, User_Task ut) {
         this.u = u;

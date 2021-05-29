@@ -10,25 +10,25 @@ public interface UserServiceInterface {
 
 
     User Sel(int id);
-    ////2019.7.2 修改：从单个的结果展示修改为多个结果展示
+    ////2019.7.2
     public List<User> SelInfo(String userName );
 
 
-    ////2019.7.5 用户登录
+    ////2019.7.5
     public User EnterUser(User user );
-    ////2019.7.5 防止用户重复名称登录和能够使用真实姓名登录
+    ////2019.7.5
     public User check(User user );
 
-    ////2019.9.16 修改：一次性返回数据库用户信息最后面的十条数据
+    ////2019.9.16
     public List<User> getUserRank();
 
-    ///2019.9.25 防止用户重复注册
+    ///2019.9.25
     public User checkLogin(User user );
 
 
     void addUser(User user);
 
-///Bean_Task数据库中数据的添加和查询         2016.6.18
+///          2016.6.18
 //	public void addBean_Task(Bean_Task bean) {
 //		userMapper.add_BeanTask(bean);
 //	}
@@ -43,7 +43,7 @@ public interface UserServiceInterface {
 
 
 
-    ///查询1&0
+    ///1&0
     User checkUser(User user);
 
 

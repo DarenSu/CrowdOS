@@ -5,9 +5,9 @@ import com.example.DemoApplication;
 
 /**
  * author: Created by lsw on 2020/06/24 11:25
- * description:异常中断处理
-  * 2020/07/02进行修正
-  * 2020/07/14再次修改
+ * description:Abnormal interrupt handling
+  * 2020/07/02 modify
+  * 2020/07/14 modify again
  */
 
 

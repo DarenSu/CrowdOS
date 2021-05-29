@@ -1,10 +1,8 @@
 package com.example.service.serviceImpl;
 
 import com.example.entity.Familiar_Sensor;
-import com.example.entity.User;
 import com.example.entity.User_Task;
 import com.example.mapper.Familiar_SensorMapper;
-import com.example.mapper.UserMapper;
 import com.example.mapper.User_TaskMapper;
 import com.example.service.serviceInterface.Familiar_SensorServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +19,12 @@ public class Familiar_SensorServiceImpl implements Familiar_SensorServiceInterfa
     User_TaskMapper user_taskMapper;
 
 
-    //20200824   传感器数据（json数据+文件）上传至传感器数据表
+    //20200824
     public void addFamiliar_Sensor(Familiar_Sensor familiar_sensor) {
         familiar_sensorMapper.addfile(familiar_sensor);
     }
 
-    //2017.7.13 任务数据上传至用户-任务表
+    //2017.7.13
     public void addUser_Task(User_Task user_task) {
         user_taskMapper.add(user_task);
     }

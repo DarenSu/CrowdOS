@@ -12,15 +12,15 @@ public class CheckLivenessIsEmpty {
         String encodeStr = "";
         try {
             if (Three(liveness) == 1){
-                return 1;//少于3个数据属性为空  ，不需要删除
+                return 1;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return 0;//需要删除
+        return 0;
     }
     /**
-     * 将byte转为16进制
+     * Convert byte to hexadecimal
      * @param bytes
      * @return
      */
@@ -36,11 +36,11 @@ public class CheckLivenessIsEmpty {
         if (liveness.getTotalYear() == null) {integer++;}
         if (liveness.getOnlineTime() == null) {integer++;integer1++;}
         if (integer1 > 0){
-            return 0;//关键数据属性为空   上线时间，总上线次数  ，需要删除
+            return 0;
         }
         else if (integer <3 ){
-            return 1;//少于3个数据属性为空  ，不需要删除
+            return 1;
         }
-        return 0;//有超过三个数据属性为空  ，需要删除
+        return 0;
     }
 }

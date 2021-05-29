@@ -1,26 +1,22 @@
 package com.example.entity;
 
-/**
- * @Author:0xOO
- * @Date: 2018/9/26 0026
- * @Time: 14:39
- */
+
 /**
  * @Author:DarenSu
- * @Date: 2019/6/13 修改
+ * @Date: 2019/6/13
  * @Time: 14:42
  */
 
 
 
 public class User_Task {
-    private Integer user_taskId;                //用户-任务ID
-    private Integer userId;                      //用户ID
-    private Integer taskId;                      //任务ID
-    private Integer user_taskStatus;                //用户-任务执行状态  0-接受未执行  &1-接收并执行
-    private String content;                     //内容
-    private String image;                       //图片信息   （暂时并不需要使用）
-    private Integer type;                        //文件的格式，0-文字，1-图片，2-视频，3-语音
+    private Integer user_taskId;
+    private Integer userId;
+    private Integer taskId;
+    private Integer user_taskStatus;                // 0-received but not executed  &1-received and executed
+    private String content;                     //context
+    private String image;                       //picture   （Temporarily not applicable）
+    private Integer type;                        //file type，0-text，1-image，2-video，3-audio
 
     public User_Task() {
 		super();

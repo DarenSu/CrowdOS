@@ -18,12 +18,12 @@ public class Familiar_SensorService {
     User_TaskMapper user_taskMapper;
 
 
-    //20200824   传感器数据（json数据+文件）上传至传感器数据表
+    //20200824   Upload sensor data (json data + file) to sensor data table
     public void addFamiliar_Sensor(Familiar_Sensor familiar_sensor) {
         familiar_sensorMapper.addfile(familiar_sensor);
     }
 
-    //2017.7.13 任务数据上传至用户-任务表
+    //2019.7.13 Upload task data to user-task table
     public void addUser_Task(User_Task user_task) {
         user_taskMapper.add(user_task);
     }

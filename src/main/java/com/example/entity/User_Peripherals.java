@@ -7,27 +7,25 @@ import java.util.Date;
 public class User_Peripherals {
 
 
-    private Integer user_peripheralsId;     //用户-外设ID
-    private Integer userId;                 //用户ID
-    private Integer taskId;                 //任务ID
-    private Integer peripheralsName;        //用户-外设的名字
-    private String peripheralsType;         //用户-外设的型号
-    private Integer peripheralsStatus;      //用户-外设的健康状态
+    private Integer user_peripheralsId;
+    private Integer userId;
+    private Integer taskId;
+    private Integer peripheralsName;
+    private String peripheralsType;
+    private Integer peripheralsStatus;
     @JsonFormat(pattern = "yyyy.MM.dd")
-    private Date postTime;                  //感知开始日期
+    private Date postTime;                  // sensing begin time
     @JsonFormat(pattern = "yyyy.MM.dd")
-    private Date deadLine;                  //感知结束日期
+    private Date deadLine;                   // sensing end time
 
 
-    private Integer stepCout;               //步数
-    private Integer heartbeat;              //心跳
-    private Integer bloodOxygenSaturation;  //血氧饱和度
-    /*
-    * 这部分需要添加外设的运动数据，需要具体的外设接进来后才可以进行属性的确认
-    * */
+    private Integer stepCout;
+    private Integer heartbeat;
+    private Integer bloodOxygenSaturation;
 
-    private String image;                   //用户-外设的图片信息
-    private String txtimage;                //用户-外设的文本信息
+
+    private String image;                   //user peripheral image
+    private String txtimage;                //user peripheral text
 
 
 

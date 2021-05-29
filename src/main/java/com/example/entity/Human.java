@@ -2,29 +2,25 @@ package com.example.entity;
 
 public class Human {
 
-//      20210416   实体识别的规则信息制定
-//      首先是在实体识别码（identificationCode）中进行实体的识别
-//      实体的大类主要有三个，所以其前两位主要存放 00 01 10 11这四种，分别代表未知分类，和人机物三大类
-//      接着，人机物里面又可以分多个小类，如机里面有无人机、手机、智能车等等，所以需要实体识别码后面的四位对其小类进行标识
-//      由于目前只分类后面
 
-    private Integer peripheralsId;     //用户-外设ID
-    private Integer identificationCode; //实体识别码
-    private Integer broadHeading;       //实体大类    0-未知分类    1-人    2-机    3-物
-    private Integer subclass;           //实体小类   大类里面更细致的划分
-    private Integer userId;                 //所属用户的用户ID
-    private Integer relation;        //关系 0或1
-    private String  position;        //位置  经纬度
-    private String sensing_Type;        //感知类型   0或1   固定或移动
-    private Integer taskId;        //和其有关的任务
-    private Integer decision;        //决策  value 0-10
-    private Integer professional;        //专业程度  value 0-10
-    private Integer credit;        //信用值  value 0-10
-    private Integer sharing;        //是否共享 0或1
-    private Integer computing;        //算力   value 0-10
-    private Integer communication;        //用户-外设的名字
-    private String Sensors;        //传感器种类
-    private Integer workmanner;        //运作方式
+
+    private Integer peripheralsId;
+    private Integer identificationCode; //Entity ID
+    private Integer broadHeading;       //Entity types .   0-?    1- people   2-machine    3-thing
+    private Integer subclass;           //Small entity class
+    private Integer userId;
+    private Integer relation;
+    private String  position;
+    private String sensing_Type;
+    private Integer taskId;
+    private Integer decision;        //decision-making  value 0-10
+    private Integer professional;        //  value 0-10
+    private Integer credit;        //credit values.  value 0-10
+    private Integer sharing;        // 0或1
+    private Integer computing;        //computing power   value 0-10
+    private Integer communication;        //user-peripheral name
+    private String Sensors;        //sensor type
+    private Integer workmanner;
     private String reserved;        //保留属性
 
 

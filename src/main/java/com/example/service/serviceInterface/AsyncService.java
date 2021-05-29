@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface AsyncService {
     /**
-     * 执行异步任务
+     * Performing asynchronous tasks
      */
 
     void executeAsync();

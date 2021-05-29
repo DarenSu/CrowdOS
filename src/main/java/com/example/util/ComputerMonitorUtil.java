@@ -28,22 +28,23 @@ public class ComputerMonitorUtil {
     private static final Logger logger = Logger.getLogger(ComputerMonitorUtil.class);
 
     /**
-     * 功能：获取Linux和Window系统cpu使用率
+     * 功能：Linux & Window
+     *  CPU
      * */
     public static double getCpuUsage() {
-// 如果是window系统
+        // window
         if (osName.toLowerCase().contains("windows")
                 || osName.toLowerCase().contains("win")) {
             try {
                 String procCmd = System.getenv("windir")
                         + "//system32//wbem//wmic.exe process get Caption,CommandLine,KernelModeTime,ReadOperationCount,ThreadCount,UserModeTime,WriteOperationCount";
-// 取进程信息
-                long[] c0 = readCpu(Runtime.getRuntime().exec(procCmd));//第一次读取CPU信息
-                Thread.sleep(CPUTIME);//睡500ms
-                long[] c1 = readCpu(Runtime.getRuntime().exec(procCmd));//第二次读取CPU信息
+                // Fetch process information
+                long[] c0 = readCpu(Runtime.getRuntime().exec(procCmd));//The first read of CPU information
+                Thread.sleep(CPUTIME);//Sleep 500 ms
+                long[] c1 = readCpu(Runtime.getRuntime().exec(procCmd));//Read the CPU information a second time
                 if (c0 != null && c1 != null) {
-                    long idletime = c1[0] - c0[0];//空闲时间
-                    long busytime = c1[1] - c0[1];//使用时间
+                    long idletime = c1[0] - c0[0];
+                    long busytime = c1[1] - c0[1];
                     Double cpusage = Double.valueOf(PERCENT * (busytime) * 1.0 / (busytime + idletime));
                     BigDecimal b1 = new BigDecimal(cpusage);
                     double cpuUsage = b1.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
@@ -94,7 +95,7 @@ public class ComputerMonitorUtil {
     }
 
     /**
-     * 功能：Linux CPU使用信息
+     * 功能：Linux CPU
      * */
     public static Map<?, ?> cpuinfo() {
         InputStreamReader inputs = null;
@@ -141,7 +142,8 @@ public class ComputerMonitorUtil {
     }
 
     /**
-     * 功能：Linux 和 Window 内存使用率
+     * Linux & Window
+     * Memory usage
      * */
     public static double getMemUsage() {
         if (osName.toLowerCase().contains("windows")
@@ -150,9 +152,9 @@ public class ComputerMonitorUtil {
             try {
                 OperatingSystemMXBean osmxb = (OperatingSystemMXBean) ManagementFactory
                         .getOperatingSystemMXBean();
-// 总的物理内存+虚拟内存
+                // Total physical memory + virtual memory
                 long totalvirtualMemory = osmxb.getTotalSwapSpaceSize();
-// 剩余的物理内存
+                // Remaining physical memory
                 long freePhysicalMemorySize = osmxb.getFreePhysicalMemorySize();
                 Double usage = (Double) (1 - freePhysicalMemorySize * 1.0 / totalvirtualMemory) * 100;
                 BigDecimal b1 = new BigDecimal(usage);
@@ -211,7 +213,8 @@ public class ComputerMonitorUtil {
     }
 
     /**
-     * Window 和Linux 得到磁盘的使用率
+     * Window &  Linux
+     * Disk utilization
      *
      * @return
      * @throws Exception
@@ -239,7 +242,7 @@ public class ComputerMonitorUtil {
             return precent;
         } else {
             Runtime rt = Runtime.getRuntime();
-            Process p = rt.exec("df -hl");// df -hl 查看硬盘空间
+            Process p = rt.exec("df -hl");// df -hl View hard disk space
             BufferedReader in = null;
             try {
                 in = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -279,7 +282,7 @@ public class ComputerMonitorUtil {
             } finally {
                 in.close();
             }
-// 保留2位小数
+            // Keep two decimal places
             double precent = (usedHD / totalHD) * 100;
             BigDecimal b1 = new BigDecimal(precent);
             precent = b1.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
@@ -288,7 +291,7 @@ public class ComputerMonitorUtil {
 
     }
 
-    // window读取cpu相关信息
+    // window cpu
     private static long[] readCpu(final Process proc) {
         long[] retn = new long[2];
         try {
@@ -312,7 +315,7 @@ public class ComputerMonitorUtil {
                 if (line.length() < wocidx) {
                     continue;
                 }
-// 字段出现顺序：Caption,CommandLine,KernelModeTime,ReadOperationCount
+// Order of field occurrence：Caption,CommandLine,KernelModeTime,ReadOperationCount
                 String caption = substring(line, capidx, cmdidx - 1).trim();
 // System.out.println("caption:"+caption);
                 String cmd = substring(line, cmdidx, kmtidx - 1).trim();
@@ -370,7 +373,7 @@ public class ComputerMonitorUtil {
     }
 
     /**
-     * 从字符串文本中获得数字
+     * Get the number from the string text
      *
      * @param text
      * @return
@@ -382,14 +385,16 @@ public class ComputerMonitorUtil {
     }
 
     /**
-     * 由于String.subString对汉字处理存在问题（把一个汉字视为一个字节)，因此在 包含汉字的字符串时存在隐患，现调整如下：
+     * Due to the problem of string.substring handling Chinese characters (treating a Chinese character as a byte),
+     * there are hidden dangers when containing Chinese characters.
+     * The adjustment is as follows:
      *
      * @param src
-     * 要截取的字符串
+     * The string to be intercepted
      * @param start_idx
-     * 开始坐标（包括该坐标)
+     * Start coordinate (inclusive)
      * @param end_idx
-     * 截止坐标（包括该坐标）
+     * Cutoff coordinates (inclusive)
      * @return
      */
     private static String substring(String src, int start_idx, int end_idx) {
@@ -403,11 +408,11 @@ public class ComputerMonitorUtil {
 
     public static void main(String[] args) throws Exception {
 
-        //当前系统的CPU使用率
+        //The CPU usage of the current system
         double cpuUsage = ComputerMonitorUtil.getCpuUsage();
-//当前系统的内存使用率
+//The memory usage of the current system
         double memUsage = ComputerMonitorUtil.getMemUsage();
-//当前系统的硬盘使用率
+//The disk usage of the current system
         double diskUsage = ComputerMonitorUtil.getDiskUsage();
 
         System.out.println("cpuUsage:"+cpuUsage);

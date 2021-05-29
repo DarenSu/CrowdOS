@@ -4,7 +4,6 @@ package com.example.controller;
 import com.example.service.LivenessService;
 import com.example.service.TaskService;
 import com.example.service.UserService;
-import com.example.service.serviceInterface.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,11 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Author:DarenSu
- * @Date: 2019/6/13 修改
+ * @Date: 2019/6/13
  * @Time: 14:42
  */
 
-@RestController      //进行模块的注明，此处为控制模块
+@RestController      //To indicate the module, here is the control module
 @RequestMapping("/security")
 
 public class SecurityController {
@@ -33,8 +32,8 @@ public class SecurityController {
     private TaskService bean_TaskService;
     @Autowired
     private LivenessService livenessService;
-    @Autowired
-    private UserServiceInterface userServiceInterface;
+//    @Autowired
+//    private UserServiceInterface userServiceInterface;
 
 
     private Object setuser1;
@@ -69,5 +68,71 @@ public class SecurityController {
 //        System.out.println(t);
         return s;
     }
+
+
+
+    /*
+        //20210117  IOS security protocol return
+    @RequestMapping("getSecurity")
+    public String GetSecurity(){
+        String s = "The mobile APP application respects and protects all services that utilize the user’s privacy. " +
+                "In order to provide you with more accurate and user-friendly services, this program will use and " +
+                "disclose your personal information in accordance with the provisions of this privacy policy. \n" +
+                "When you agree to the mobile APP application service agreement, you will be deemed to have agreed to" +
+                " the entire content of this privacy policy. This privacy policy is an inseparable part of the " +
+                "service agreement mobile APP application. Without your permission, the mobile APP application " +
+                "information will not be disclosed or provided to a third party as an integral part. Without your " +
+                "permission, the mobile APP application Information will not be disclosed or provided to third parties\n" +
+                "1. Scope of application\n" +
+                "a) When you register for this program account, you provide personal registration information " +
+                "according to the requirements of this program；\n" +
+                "b) When you use the program's network services or visit the program's platform webpage, the program " +
+                "automatically receives and records the information on your browser and computer, including but not " +
+                "limited to your IP address, browser type, and language used , Date and time of access; \n" +
+                "c) This program obtains user personal data from business partners through legal channels. \n" +
+                "You understand and agree that the following information does not apply to this privacy policy: \n" +
+                "a) Keyword information you enter when using the search service provided by this program platform;\n" +
+                "b) Relevant information and data collected by this program that you publish in this program; \n" +
+                "c) Violation of the law or violation of the rules of this procedure and the measures this procedure " +
+                "has taken against you.\n" +
+                "2. Information use\n" +
+                "a) This program will not provide, sell, rent, share, or trade your personal information to any " +
+                "unrelated third party, unless you have obtained your permission in advance, or the third party and " +
+                "the program (including the program's affiliates) separately or jointly provide you Service, and " +
+                "after the service ends, it will be prohibited from accessing all of these materials that it was able" +
+                " to access before. \n" +
+                "b)This program also does not allow any third party to collect, edit, sell or disseminate your " +
+                "personal information by any means. If any user of this program platform engages in the above " +
+                "activities, once discovered, this program has the right to immediately terminate the service " +
+                "agreement with the user. \n" +
+                "c) For the purpose of serving users, this program may use your personal information to provide you " +
+                "with information that you are interested in, including but not limited to sending you product and " +
+                "service information, or sharing information with partners of this program so that they can send you " +
+                "information Information about its products and services (the latter requires your prior consent). \n" +
+                "3.Information storage and exchange\n" +
+                "The information and collection will be stored on the server Mobile APP application. The information" +
+                " and data of your mobile APP application can be sent to your country, region or the location where " +
+                "the mobile APP application collects overseas information and data and is accessed, stored and " +
+                "displayed abroad.。\n" +
+                "4.Information security\n" +
+                "a）The mobile APP application account has a security function, please keep your username and password" +
+                " information. The mobile APP uses security measures such as user password encryption to ensure that " +
+                "your information is not lost, abused and altered. Despite the aforementioned security measures, " +
+                "please note that there is no \"absolutely secure\" information network.\n" +
+                "Especially if the user name and password of the mobile APP application are leaked, please contact " +
+                "the mobile APP application service immediately to take corresponding measures.\n" +
+                "5.Changes to this privacy policy\n" +
+                "a）If you decide to change the privacy policy, we will post these changes on this website and where " +
+                "we deem appropriate so that you can understand how we collect and use your personal information, " +
+                "who can access this information, and under what circumstances we will disclose these messages\n" +
+                "Please properly protect your personal information and only provide it to others when necessary. If " +
+                "you find that your personal information has been leaked, especially the user name and password of " +
+                "this app, please contact this app immediately so that this app can take corresponding measures\n";
+//        int t = 0;
+//        System.out.println(t);
+        return s;
+    }
+
+    */
 
 }

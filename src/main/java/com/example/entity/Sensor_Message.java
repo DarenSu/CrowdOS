@@ -6,54 +6,52 @@ import java.util.Date;
 
 /**
  * @Author:DarenSu
- * @Date: 2020/05/28 修改
+ * @Date: 2020/05/28
  * @Time: 14:42
  */
 
-//      传感器相关的类
-//      后续需要和前端进行协商，这部分没有统一
-//      暂时就做最简单的
+//      sensor related class
 
-//      20200625   增加数据存储方式
-//     类似与之前的文件存储，具体的需要进一步与前端协商。切记
+
+//      20200625   add data storage method
 
 public class Sensor_Message {
-    private Integer sensor_messageId;          //主键
-    private Integer userId;                    //用户ID
-    private Integer taskId;                    //任务ID
-    private String fileName;                    // 文件名字
+    private Integer sensor_messageId;          //primary key
+    private Integer userId;
+    private Integer taskId;
+    private String fileName;
 
 
     @JsonFormat(pattern = "yyyy.MM.dd")
-    private Date onlineTime;     // 数据上传日期     1
-    private String longitude; // 经度
-    private String latitude;  //维度
-    private String accelerated;  //加速度
-    private String direction;  //方向传感器          5
+    private Date onlineTime;     // data upload time     1
+    private String longitude;
+    private String latitude;
+    private String accelerated;
+    private String direction;
 
-    private String temperature;  //温度
-    private String humidity;  //湿度
-    private String gravity;  // 重力传感器
-    private String airPressure;  // 气压
-    private String light;  // 光线传感器             10
+    private String temperature;
+    private String humidity;
+    private String gravity;
+    private String airPressure;
+    private String light;
 
-    private String distance;  // 距离传感器
-    private String magnetic;  // 磁场传感器
-    private String gyroscope;  // 陀螺仪
-    private String voice;  // 声音
-    private String picture;  // 图像                  15
+    private String distance;
+    private String magnetic;
+    private String gyroscope;
+    private String voice;
+    private String picture;
 
-    private String fingerprint;  // 指纹
-    private String heartRate;  //心率传感器
-    private String bloodOxygen;  //血氧传感器
-    private String ultravioletRay;  //紫外线传感器
-    private String stepNumber;  //步数探测              20
+    private String fingerprint;
+    private String heartRate;
+    private String bloodOxygen;
+    private String ultravioletRay;
+    private String stepNumber;
 
-    private String stepCount;  //计步器
-    private String temp1;  //其他1
-    private String temp2;  //其他2
-    private String temp3;  //其他3
-    private String sensorFilePath;  //文件存储位置        25
+    private String stepCount;
+    private String temp1;  // others 1
+    private String temp2;  // others 2
+    private String temp3;  // others 3
+    private String sensorFilePath;
 
 
     public Sensor_Message() {

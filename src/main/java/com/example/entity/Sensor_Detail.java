@@ -6,31 +6,28 @@ import java.util.Date;
 
 /**
  * @Author:DarenSu
- * @Date: 2020/05/28 修改
+ * @Date: 2020/05/28
  * @Time: 14:42
  */
 
-//      传感器相关的类
-//      后续需要和前端进行协商，这部分没有统一
-//      暂时就做最简单的
+//      sensor related class
 
-//      20200625   增加数据存储方式
-//     类似与之前的文件存储，具体的需要进一步与前端协商。切记
+//      20200625   add data storage method
 
 public class Sensor_Detail {
-    private Integer sensor_detailId;          //主键
-    private Integer userId;                    //用户ID
-    private Integer taskId;                    //任务ID
+    private Integer sensor_detailId;          // primary key
+    private Integer userId;
+    private Integer taskId;
 
     @JsonFormat(pattern = "yyyy.MM.dd")
-    private Date onlineTime;        // 数据上传日期
-    private String fileName;        //  文件名字
-    private String sensorType;      //   传感器种类或者传感器名字
-    private String acquisitionTime; //    数据采集时间
-    private String sensorValue;     //  数据值   可能一个传感器有多个数据，上传的文件中使用“-”进行分割多个数据
+    private Date onlineTime;        // data upload time
+    private String fileName;
+    private String sensorType;
+    private String acquisitionTime; //    data collection time
+    private String sensorValue;     //  one sensor may have multiple values, uploaded file use dash "-" to delimit
 
-    private String temp1;           // 测试& 预留数据
-    private String temp2;           // 测试& 预留数据
+    private String temp1;           // test & reserve data
+    private String temp2;           // test & reserve data
 
 
     public Sensor_Detail(){

@@ -20,17 +20,17 @@ public interface Sensor_MessageMapper {
 
 
 
-    //20200514   传感器数据（json数据+文件）上传至传感器数据表
+    //20200514   Upload sensor data (json data + file) to sensor data table
     void addfilebyte(Sensor_Message sensor_message) ;
 
 
-    //    <!--20200514 寻找最新的id，也就是最大的自增主键-->
+    //    20200514 Find the latest id, which is the largest auto-incrementing primary key
     Sensor_Message getMaxId();
-    //    20200515  根据任务的userId、taskId返回整个传感器数据的List
+    //    20200515  Return a List of the entire sensor data according to the userId and taskId of the task
     List<Sensor_Message> selSensor_Byte(Sensor_Message sensor_message);
 
-    //  20210517 根据taskId查看该任务的所有感知数据
+    //  20210517 View all sensing data of the task according to taskId
     List<Sensor_Message> selAllMessageFromTaskId(Sensor_Message sensor_message);
-    // 20210517 根据taskId和userId查看该执行这在该任务的所有感知数据
+    // 20210517 According to the taskId and userId to view all the sensing data of the execution of the task
     List<Sensor_Message> selAllMessageFromUserIdTaskId(Sensor_Message sensor_message);
 }

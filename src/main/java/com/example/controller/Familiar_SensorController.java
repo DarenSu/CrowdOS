@@ -12,21 +12,23 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.*;
 import java.util.List;
 
-@RestController      //进行模块的注明，此处为控制模块
+@RestController      //To indicate the module, here is the control module
 @RequestMapping("/sensor")
 public class Familiar_SensorController {
     @Autowired
     private Familiar_SensorService familiar_sensorService;
 
 
-    ///2019.7.25 上传任务的文字信息和图片，两个参数，user_task文字信息+单张图片
-    ///目前没有实现多张图片上传，实现的是单图片的上传
+    ///2019.7.25 upload the text description and pictures of task, with two parameters - text description of
+    // user_task and single picture
+    /// multiple pictures upload functionality aren't implemented, only single picture upload functionality is
+    // implemented.
     @RequestMapping(value = "/uploadSensorFiles", method = RequestMethod.POST)
     @ResponseBody
-    // User类           文件类型的参数（可以是文件、视频、图片均可）
+    // Class User       file type parameters (text, video and image type are all allowable)
     public ResponseEntity<Familiar_Sensor> add_Sensor_File(@RequestPart("familiar_sensor") Familiar_Sensor familiar_sensor, @RequestPart("file") MultipartFile file) {
-        //查看文件是否有重复
-        // 获取文件名
+        // check whether files are duplicate
+        // obtain the file name
         System.out.println("欢迎来到传感器数据上传：sensor/uploadSensorFiles");
         System.out.println("sfdaeg");
         System.out.println(familiar_sensor);
@@ -34,29 +36,30 @@ public class Familiar_SensorController {
         String fileName = file.getOriginalFilename();
         System.out.println(fileName);
 
-        //2019.9.17  读取上传的文件的大小，不能超过SSM所支持的最大值,单位为B
-        //2019.9.17  前端那边设置最多可以传输十个文件
+        // 2019.9.17 read the size of uploaded file, the uploaded file size can't exceed maximum size supported by
+        // SSM, in Bytes
+        // 2019.9.17 maximum size is set to 10 uploaded files at front end
         long fileLength = 0L;
         fileLength = file.getSize()/1024;
         System.out.println(fileLength+"KB"+"    "+"单张照片小于20480KB，可以传输");
         if (fileLength > 20480){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        // 获取文件的后缀名
+        // obtain the suffix of file name
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
-        // 文件上传后的路径
+        // the path of uploaded file
         //String filePath = "F:" + File.separator + "springboot-upload" + File.separator + "image" + File.separator ;
-        //之前的代码形式，不过这样子访问的是C盘里面的内容
+        //This is the code before modifying, it accesses the content in C drive
         //String filePath =  "/E/springboot-upload/image/";
-        //20200912  自己改的
+        //20200912  20200912  I changed by myself
 
 
         String filePath =  "root:/F/springboot-upload/sensorFiles/";
-        // 解决中文问题，liunx下中文路径，图片显示问题
+        // solve the Chinese character problem, file path in Chinese, and picture display problem
         // fileName = UUID.randomUUID() + suffixName;
         File pfile = new File(filePath);
         if (!pfile.exists()) {
-            //如果不存在的话则自己生成路径
+            //if not exist, path is automatically generated
             pfile.mkdirs();
         }
 
@@ -65,9 +68,9 @@ public class Familiar_SensorController {
         System.out.println("The dest file's absolute path: " + dest.getAbsolutePath());
         //File dest = new File(filePath + fileName);
         //System.out.println("upload file's absolute path is"  + dest.getAbsolutePath());
-        // 检测是否存在目录
+        // check whether the directory ever exists
         if (!dest.getParentFile().exists()) {
-            //如果不存在的话则自己生成路径
+            //if the file path doesn't exist, path is automatically generated
             dest.getParentFile().mkdirs();
         }
 
@@ -79,11 +82,11 @@ public class Familiar_SensorController {
                 file.transferTo(dest);
             //}
             System.out.println("正在上传中2ccccccccccccccccccccccc");
-            //上传图片的地址到数据库的相关位置
+            //upload the file address to database
             familiar_sensor.setSensorFile(filePath + fileName);
-            //同时将任务的具体内容也上传，此时的utask里面已经有了图片的位置信息
+            //upload the task content simultaneously, now utask already has the location info of picture
             familiar_sensorService.addFamiliar_Sensor(familiar_sensor);
-            //将这个结果返回，并且返回状态为OK
+            //return this result and set the return state as OK
             return new ResponseEntity<>(familiar_sensor, HttpStatus.OK);
         } catch (IllegalStateException e) {
             e.printStackTrace();
@@ -95,9 +98,10 @@ public class Familiar_SensorController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    //  用户下载传感数据的步骤
-    //  1--前端先传一个familiar_sensor，里面有userId和taskId，然后靠这些取得该用户需要下载的文件的sensorFile
-    //  2--然后再用另一个函数，以sensorFile为参数传递，进行下载
+    // the steps of downloading sensing data
+    // 1--an object of familiar_sensor is passed, with userID and taskID, which are used to access the sensorFile of
+    // the file user wants to download
+    // 2--begin downloading with sensorFile as argument passed to another function
     @RequestMapping(value = "selFamiliar_Sensor", method = RequestMethod.POST)
     public ResponseEntity<List<Familiar_Sensor>> selFamiliar_Sensor(/*@RequestBody*/ Familiar_Sensor familiar_sensor){
         return new ResponseEntity<List<Familiar_Sensor>>(familiar_sensorService.selFamiliar_Sensor(familiar_sensor),HttpStatus.OK);
@@ -105,7 +109,7 @@ public class Familiar_SensorController {
 
 
 
-    ///20200816    输入参数sensorFile,选择更新最新版本
+    // 20200816 input the argument sensorFile, update to the newest version
     @RequestMapping("downVersionFromServer/{sensorFile}")
     public ResponseEntity<byte[]> downVersionFromServer(@PathVariable String sensorFile) {
         //@RequestMapping("downVersionFromServer")
@@ -114,7 +118,10 @@ public class Familiar_SensorController {
 //		image = suffixName;
 
         //sensorFile = version_updatingService.getLastOne().getApkName();
-        /// 20200828  下载文件的步骤，首先寻找到该用户需要下载的文件的那条数据，然后返回前段，前端再将这条数据的地址传过来
+
+
+        // 20200828 steps of downloading file, firstly, search for the piece of record user wants to download,
+        // secondly, return this record to the front end, thirdly, the front end pass the record address back.
 
         System.out.println(sensorFile);
 
@@ -123,7 +130,7 @@ public class Familiar_SensorController {
         if( status1 || status2  ){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        //2019.9.15   数据流转换
+        //2019.9.15 data flow conversion
         InputStream in;
         ResponseEntity<byte[]> response=null ;
         String filePath = "E" + File.separator + "springboot-upload" + File.separator + "version" + File.separator ;
@@ -146,8 +153,5 @@ public class Familiar_SensorController {
         }
         return response;
     }
-
-
-
 
 }

@@ -27,25 +27,21 @@ import java.util.List;
 //import com.***.common.upload.file.UploadFileConfig;
 
 /*
-传感器文件上传
- - 采用的模式是每个传感上传一个文件夹，文件夹一行代表着一条记录，里面有两个属性：时间/数值
- - 并且使用的模式是前端定时向后台传送文件，并非是任务的要求才传送该数据的，也就是这个和FS里面的传感器文件传输是不一样的
- - 并且使用的参数有两个，分别是Sensor_Detail和file，其中Sensor_Detail里面只有userId非空即可
- - 经测试发现，一小时之内，每个传感器产生数据的量大概在800条左右
- - 经测试发现，一小时之内，每个传感器产生的数据大小在35 - 65kb
+Sensor File Upload
+ - The mode used is that each sensor uploads a folder, and the folder row represents a record, which has two attributes: time/value
  */
 
 
-@RestController      //进行模块的注明，此处为控制模块
+@RestController      //To indicate the module, here is the control module
 @RequestMapping("/sensordetail")
 public class Sensor_DetailController {
 
-    //  2021.05.14          日志记录
+    //  2021.05.14   log record
     private static final Logger logger = (Logger) LoggerFactory.getLogger(Sensor_DetailController.class);
-    // 公共文件存储目录
+    // Public file storage directory
     @Autowired
     private ExecutorConfig executorConfig;
-    // 文件上传线程池
+    // File upload thread pool
     @Autowired
     private AsyncService asyncService;
 
@@ -62,19 +58,20 @@ public class Sensor_DetailController {
 
 
 
-    /// 2021.05.14 上传传感器数据，并将其文件逐行读出来，这里的每行数据有两个属性，用“/”隔开，采集日期/感知数据1-感知数据2
-    /// 目前没有实现多张图片上传，实现的是单图片的上传
-    /// 已成功运行
+    /// 2021.05.14 Upload sensor data and read out the file line by line. Each line of data here has two attributes,
+    // separated by "/", date of collection/perception data 1-perception data 2
+    /// Currently there is no realization of uploading multiple pictures, but the realization of uploading a single picture
+    /// Successfully run
     @RequestMapping(value = "/uploadSensorFileMessageDetail", method = RequestMethod.POST)
     @ResponseBody
-    // User类           文件类型的参数（可以是文件、视频、图片均可）
+    // Sensor_Detail           File type parameters (can be files, videos, pictures)
     public ResponseEntity<Sensor_Detail> add_Sensor_File_Bytes(@RequestPart("sensor_detail") Sensor_Detail sensor_detail, @RequestPart("file") MultipartFile file) throws IOException {
 
         System.out.println("欢迎来到传感器数据到逐条上传到表里：sensordetial/uploadSensorFileMessageDetail");
 
-        // 首先检验该条数据是否在存在在表中，也就是这条数据的userId和taskId是否真的有关联
-        // 需要在ut表中进行查询
-        // 不需要计算了，因为这个函数的功能实现的是传感器数据的定时上传，和任务是没有关系的
+        // First check whether the data exists in the table, that is, whether the userId and taskId of this data are
+        // really related
+        // Need to query in the ut table
 //        User_Task user_task= new User_Task();
 //        user_task.setUserId(sensor_detail.getUserId());
 //        user_task.setTaskId(sensor_detail.getTaskId());
@@ -83,16 +80,15 @@ public class Sensor_DetailController {
 //            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 //        }
 
-        //  设定这类和人物没有关系的传感器感知数据的任务的id为-1
+        //  Set the task ID of this type of sensor sensing data that is not related to the person to -1
         sensor_detail.setTaskId(-1);
-        // 20210513 数据判断，防止无意义的访问导致数据库崩溃
+        // 20210513 Data judgement to prevent database crash caused by meaningless access
         if(sensor_detail.getSensor_detailId() != null || sensor_detail.getUserId() == null ||
                 sensor_detail.getTaskId() == null || file.isEmpty()){//数据有问题，返回400
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         System.out.println("测试到了这里了！！！");
-        //查看文件是否有重复
-        // 获取文件名
+
 
 //        System.out.println("sfdaeg");
         System.out.println(sensor_detail);
@@ -101,22 +97,21 @@ public class Sensor_DetailController {
         sensor_detail.setFileName(fileName);
         System.out.println(fileName);
 
-        // 20210514  读取上传的文件的大小，不能超过SSM所支持的最大值,单位为B
-        // 20210514  前端那边设置最多可以传输十个文件
+        // 20210514  Read the size of the uploaded file, cannot exceed the maximum supported by SSM  ,unit:B
         long fileLength = 0L;
         fileLength = file.getSize()/1024;
         System.out.println(fileLength+"KB"+"    "+"单张照片小于20480KB，可以传输");
-        if (fileLength > 20480){// 数据格式不对，即数据有问题，返回400
+        if (fileLength > 20480){// The data format is incorrect, that is, the data has a problem，400
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        // 20210514    Date数据类型的时间获取
+        // 20210514    Time fetching for the DATE data type
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
         System.out.println(date);
         sensor_detail.setOnlineTime(date);
 
-        // 20210514  这部分可以将文件资源直接转换成数据流
+        // 20210514  This section converts file resources directly into data streams
         String fileByte= String.valueOf(file.getBytes());
 
 //        System.out.println("转换成功的二进制文件类型："+ getType(file.getBytes()));
@@ -124,16 +119,15 @@ public class Sensor_DetailController {
 
         System.out.println("转换成功的二进制文件："+ fileByte);
 
-        // 20210514 将转换成二进制的数据存储到数据结构中
+        // 20210514 Stores the converted binary data into a data structure
 //        sensor_byte.setFileByte(fileByte);
-        // 20210514 存储到数据库中   还没有写，需要写
 
-        // 20210515  此处进行间将文件逐行进行读取，并将其中的数据存入数据库中
+        // 20210515  Here the file is read line by line and the data is stored in the database
 //        File fileCopy= (File) file;
 
 //        InputStream inputStream = file.getInputStream();
 //        new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)).lines().forEach(this::handleLine);
-        // 获取当前表中最大的主键id，一边后面递增使用
+        // Gets the largest primary key ID in the current table
         int MaxId = sensor_detailService.getMaxId().getSensor_detailId();
 
         System.out.println("MaxId="+MaxId);
@@ -143,10 +137,10 @@ public class Sensor_DetailController {
 //            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream((File) file), "UTF-8"));//构造一个BufferedReader类来读取文件
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));//构造一个BufferedReader类来读取文件
 
-            // 文件进行逐行读取的操作
+            // The file is read line by line
             int dataMaxNum= 2;
             String s = null;
-            while((s = br.readLine())!=null){//使用readLine方法，一次读一行
+            while((s = br.readLine())!=null){//Using the readLine method, read one line at a time
                 Sensor_Detail sensor_detail1temp= sensor_detail;
 
                 System.out.println("s="+s);
@@ -155,7 +149,7 @@ public class Sensor_DetailController {
                 int count = 0;
                 for (int i= 0; i< s.length(); i++) {
                     StringBuilder stemp= new StringBuilder();
-                    if(count >= dataMaxNum) {//只读取四个数据,每行的数据超过了这个量就是数据错误，返回400
+                    if(count >= dataMaxNum) {//Only four rows are read. Any more than this is a data error  ,400
                         System.out.println("-1");
                         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
                     }
@@ -195,7 +189,7 @@ public class Sensor_DetailController {
                         continue;
                     }
 
-                    // 不断添加数据
+                    // Keep adding data
                     tempp.append(new StringBuilder(s.charAt(i)+""));
                     if(count == dataMaxNum- 1 && i == s.length()- 1){
                         count++;
@@ -205,7 +199,7 @@ public class Sensor_DetailController {
 
 //                    System.out.print(i +"-"+ s.charAt(i)+"  ");
                 }
-                //读完每行数据后要将此数据存入数据库中
+                //After reading each row of data, the data is stored in the database
                 MaxId++;
                 sensor_detail1temp.setSensor_detailId(MaxId);
 
@@ -219,22 +213,20 @@ public class Sensor_DetailController {
 //            log.error(e.getMessage(), e);
         }
 
-        // 20210514 同时将任务的具体内容也上传，此时的utask里面已经有了图片的位置信息
-//        sensor_byteService.addSensor_Byte(sensor_byte);
 
-        // 20210514  是否需要查看下该条数据是否存在？？？？？？？？
+//        sensor_byteService.addSensor_Byte(sensor_byte);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    // 20210517 根据taskId查看该任务的所有感知数据
+    // 20210517 View all perceptual data of the task according to taskId
     @RequestMapping(value = "/getAllMessageFromTaskId/{taskId}")
     @ResponseBody
     public ResponseEntity<List<Sensor_Detail>> GetAllMessageFromTaskId(@PathVariable Integer taskId){
         Sensor_Detail sensor_detail= new Sensor_Detail();
         sensor_detail.setTaskId(taskId);
         List<Sensor_Detail> result= sensor_detailService.selAllMessageFromTaskId(sensor_detail);
-        if (result == null || result.size() == 0){// 无资源没有找到，返回404
+        if (result == null || result.size() == 0){// 404
             System.out.println("没有该数据");
             return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -242,7 +234,7 @@ public class Sensor_DetailController {
     }
 
 
-    // 20210517 根据taskId和userId查看该执行这在该任务的所有感知数据
+    // 20210517 According to the taskId and userId to view all the perceptual data of the execution of the task
     @RequestMapping(value = "getAllMessageFromUserIdTaskId")
     @ResponseBody
     public ResponseEntity<List<Sensor_Detail>> GetAllMessageFromTaskId(@RequestBody Sensor_Detail sensor_detail){
@@ -250,7 +242,7 @@ public class Sensor_DetailController {
 //        sensor_message.setTaskId(taskId);
         List<Sensor_Detail> result= sensor_detailService.selAllMessageFromUserIdTaskId(sensor_detail);
         System.out.println("返回结果result="+result);
-        if (result == null){// 无资源没有找到，返回404
+        if (result == null){// 404
             return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(result,HttpStatus.OK);

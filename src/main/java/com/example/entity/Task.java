@@ -12,29 +12,30 @@ import java.util.Date;
 
 
 
-//当前task主要直接对接应用的直接使用
+// this task class is used directly by application
 public class Task {
-    private Integer taskId;               //任务ID
-    private String taskName;              //任务名称
+    private Integer taskId;
+    private String taskName;
 
     @JsonFormat(pattern = "yyyy.MM.dd")
-    private Date postTime;                //发布日期
+    private Date postTime;
     @JsonFormat(pattern = "yyyy.MM.dd")
-    private Date deadLine;                //截止日期
-    private Integer userId;               //任务发布者的ID
-    private String userName;              //任务发布者的名字
-    private Float coin;                   //激励金
-    private String describe_task;              //任务描述
-    private Integer totalNum;                 //该任务的执行总人数
-    private Integer taskStatus;               //该任务的执行状态
-    private Integer taskKind;             //任务的类型，通过整数型和对应的约定映射表来规定任务类型,数值范围0、1、2、3、4
-                                            //公共安全、环境调研、民生日常、商业应用、普通任务
-    private Integer temp;         //任务是否执行   （届时可能有错误，需要进行修改）
-    //20201008  新增属性
-    private Float longitude;  //经度
-    private Float latitude;  //维度
+    private Date deadLine;
+    private Integer userId;               //Id of the task publisher
+    private String userName;              //Name of the task publisher
+    private Float coin;                   //incentive
+    private String describe_task;
+    private Integer totalNum;                 //The total number of people performing the task
+    private Integer taskStatus;               //The execution status of the task
+    private Integer taskKind;             //task type，map the integer to a task type through mapping table, values
+    // from 0-4 each of which represents public security, environment survey, daily life, business application and
+    // normal task
+    private Integer temp;         // whether the task has been performed
+    //20201008  newly added attributes
+    private Float longitude;
+    private Float latitude;
 
-    private String sensorTypes;  //类型
+    private String sensorTypes;
 
 
 

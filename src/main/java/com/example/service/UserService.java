@@ -7,15 +7,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * @Author:0xOO
- * @Date: 2018/9/26 0026
- * @Time: 15:23
- */
+
 
 /**
  * @Author:DarenSu
- * @Date: 2019/6/13 修改
+ * @Date: 2019/6/13
  * @Time: 14:42
  */
 
@@ -32,27 +28,27 @@ public class UserService {
 		return userMapper.Sel(id);
 	}
 
-	////2019.7.2 修改：从单个的结果展示修改为多个结果展示
+	//2019.7.2 Modification: Modified from a single result display to multiple result displays
 	public List<User> SelInfo(String userName ) {
 		return userMapper.SelInfo(userName);
 	}
 
 
-	////2019.7.5 用户登录
+	//2019.7.5 User login
 	public User EnterUser(User user ) {
 		return userMapper.Enter(user);
 	}
-	////2019.7.5 防止用户重复名称登录和能够使用真实姓名登录
+	//2019.7.5 Prevent users from logging in with the same name twice and being able to log in with their real names
 	public User check(User user ) {
 		return userMapper.check(user);
 	}
 
-	////2019.9.16 修改：一次性返回数据库用户信息最后面的十条数据
+	//2019.9.16 Modification: Return the last ten data of database user information at one time
 	public List<User> getUserRank() {
 		return userMapper.getUserRank();
 	}
 
-	///2019.9.25 防止用户重复注册
+	//2019.9.25 prevent the same user from signing up twice with a single name
 	public User checkLogin(User user ) {
 		return userMapper.checkLogin(user);
 	}
@@ -62,40 +58,12 @@ public class UserService {
 		userMapper.add(user);
 	}
 	
-///Bean_Task数据库中数据的添加和查询         2016.6.18	
-//	public void addBean_Task(Bean_Task bean) {
-//		userMapper.add_BeanTask(bean);
-//	}
-//	
-//	
-//	public Bean_Task Sel_BeanTask(String id) {
-//		return userMapper.Sel_BeanTask(id);
-//	}
-//	
-	
-	
-	
-	
-	
-	///查询1&0
+
+	///1&0
 	public User checkUser(User user) {
 		return userMapper.checkUser(user);
 	}
 
 
-	//public void delUser(Integer userId) {
-		//userMapper.del(userId);
-	//}
-	
-//	public void DelUser(int id) {
-//		// TODO Auto-generated method stub
-//		userMapper.del(id);
-//
-//	}
 
-
-	
-	//public void delUser(int id) {
-	//	userMapper.del(id);
-	//}
 }

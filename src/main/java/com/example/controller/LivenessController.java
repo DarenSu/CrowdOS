@@ -17,11 +17,11 @@ import java.util.List;
 
 /**
  * @Author:DarenSu
- * @Date: 2020/4/27 修改
+ * @Date: 2020/4/27
  * @Time: 14:42
  */
 
-@RestController      //进行模块的注明，此处为控制模块
+@RestController      //To indicate the module, here is the control module
 @RequestMapping("/liveness")
 public class LivenessController {
 
@@ -40,22 +40,25 @@ public class LivenessController {
 
     private Object setuser1;
 
-    ///   20200425      通过id获取所有数据
+    ///   20200425      Get all data by id
     @RequestMapping("getLiveness/{id}")
     public Liveness GetLiveness(@PathVariable int id) {
         return livenessService.Sel(id);
     }
 
     ///   20200525
-    // 测试用登录测试，其实这个类不需要进行登陆的，之所以这样是为了进行测试
-    // 为了测试service里面如何进行逻辑操作
+    // The login test is used for testing. In fact, this class does not need to be logged in.  The reason for this is
+    // for testing.
+    // In order to test how to perform logical operations in the service
     //   DarenSu     20200424
-    //   活跃度检测，主要进行对每个用户的活跃度进行检测
-    //   输入参数：userId，从而反馈回来该用户的活跃度，
-    //   并且会针对每个登陆的用户的活跃度进行变化，有登陆响应时候，会立即进行日、周、月、年活跃度的更新，登录时间的更新，
-    //     ###############          切记    ######    退出时间未更新   已解决已更新，见logoutUser          #####################
-    //   返回参数：日活跃度、周活跃度、月活跃度、年活跃度都可以进行返回
-    //   该函数的返回参数为日活跃度，就是返回该用户今天的活跃度
+    //   Activity detection, mainly to detect the activity of each user
+    //   Input parameter: userId, so as to feedback the user's activity，
+    //   And changes will be made to the activity of each logged-in user. When there is a login response, the daily,
+    //   weekly, monthly, and annual activity will be updated immediately, and the login time will be updated.，
+    //     ###############          Remember    ######    The logout time has not been updated. It has been resolved
+    //     and updated, see logoutUser          #####################
+    //   Return parameters: daily activity, weekly activity, monthly activity, and annual activity can all be returned
+    //   The return parameter of this function is daily activity, which is to return the user’s activity today
     @RequestMapping(value = "enterLiveness", method = RequestMethod.POST)
     public ResponseEntity<Liveness> EnterLiveness( @RequestBody  Liveness liveness){
 
@@ -66,7 +69,9 @@ public class LivenessController {
         return livenessResponseEntity;
     }
 
-    //前后台对接    2019.6.22  自己写的有点问题  自己测试走表单不需要requestbody，前后台对接使用的是json数据，需要使用requestbody
+    //Front-end and back-end  2019.6.22 There is a problem with writing by myself. I don’t need
+    // @Requestbody to
+    // test the form by myself. The front-end and back-end docking uses json data, so requestbody is required.
     @RequestMapping(value="addLiveness",method=RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<Liveness> add_Task(@RequestBody Liveness liveness) {
@@ -83,17 +88,20 @@ public class LivenessController {
         //return "OK";
     }
     //           20200624
-    // 退出登出记录，用户已有登记记录，并且可以等级其登陆的日期
-    // 然而目前还没有退出登录的标记，无法记录其退出的时间节点
-    // 由于目前没有使用token，那么目前就是使用比较简单的方式进行退出的时间登录
-    // 思路：前端请求退出的要求，触发该功能，然后登记其推出的时间，并将其退出的时间进行标记
-    // 切记：前端传来的liveness里面不含有livenessId的，里面具体有什么是看前段传入什么的
+    // Exit the logout record, the user has a registered record, and can rank the date of their login
+    // However, there is no sign of logout, and the time node of its logout cannot be recorded.
+    // Since token is not currently used, it is a relatively simple way to log out at the time of login
+    // Idea: The front-end requests the exit request, triggers the function, then registers its launch time, and
+    // marks the exit time
+    // Remember: the liveness from the front end does not contain the livenessId, what is in it depends on what is
+    // passed in the previous paragraph
     @RequestMapping(value = "logoutUser", method = RequestMethod.POST)
-    public ResponseEntity<Liveness> logoutUser(/*@RequestBody*/ Liveness liveness){  //liveness里面最少包括userId
-        //首先获取前端传送的liveness在数据库中真正对应的那一组最新的数据
+    public ResponseEntity<Liveness> logoutUser(/*@RequestBody*/ Liveness liveness){  //liveness at least contains userId
+        //First get the latest set of data in the database corresponding to the liveness transmitted by the front end
         System.out.println("活跃度检测系列 - 退出登录标记");
         System.out.println(liveness);
-        if(livenessService.SelByUserId(liveness.getUserId()).size() != 0){  //判断此liveness是否在数据库中存在
+        if(livenessService.SelByUserId(liveness.getUserId()).size() != 0){   //check whether liveness exists in the
+            // database
             List<Liveness> livenessListtemp = livenessService.SelByUserId(liveness.getUserId());
             Liveness livenesstemp = livenessListtemp.get(livenessListtemp.size() - 1);
             System.out.println("0");
@@ -104,12 +112,14 @@ public class LivenessController {
 
 
 
-            //取值，从数据库中查询此id对应的登陆时间，然后针对userId和onlineTime查询所有的数据
+            // get value, query the login time of this id from database, then query all of the data corresponding to
+            // userId and onlineTime
             Date onlineDate = liveness1.getOnlineTime();
             List<Liveness> livenessesList = livenessService.SelByOnlineTime(liveness1);
             System.out.println("1");
-            System.out.println(livenessesList.get(0));  //测试，查看List数据的输出顺序，结论：o对应最久的数据，size()-1对应最新的数据
-            //20200702  赋值， 将这些取出的数据进行退出时间的更新
+            System.out.println(livenessesList.get(0));              // test, view output order of List data, conclusion: the data at zero index is the oldest,
+            // the data at size()-1 index is the latest
+            //20200702  assignment, update the logout time of these fetched data
             Calendar calendar = Calendar.getInstance();
             Date deadlineDate = calendar.getTime();
             System.out.println(deadlineDate);
@@ -123,32 +133,36 @@ public class LivenessController {
                 System.out.println("##############");
                 System.out.println(livenessService.SelByOnlineTime(liveness2).get(livenessService.SelByOnlineTime(liveness2).size()-1).getDeadlineTime());
             }
-            //测试用，测试其是否进行了更新
+            // use for test, test whether it has been updated
             System.out.println("2");
             System.out.println(livenessService.Sel(livenessesList.get(livenessesList.size() - 1).getLivenessId()));
 
             return new ResponseEntity<>(HttpStatus.OK);
         }
-        else {//没有该用户的时候，返回登陆总数为-1的虚拟用户数据
+        else {// when there is no such user, return the data of virtual user whose login
+            // amount is -1
             Liveness liveness11 = new Liveness();
             liveness11 = null;
-            //liveness11.setTotal(0);    ///重点切记：123是常量，456是常量，+123和 -456 都不是常量，而是一个运算符后面跟一个常量组成的表达式
-                                         ///int中一般很少赋值使用0，其0就是null
-            //  暂时没有找到可以进行自己写东西返回的方法
+            //liveness11.setTotal(0);      ///Important to remember: 123 is a constant, 456 is a constant, +123 and
+            // -456 are not constants, but an
+            // expression composed of an operator followed by a constant
+            // Generally, 0 is rarely used in int assignment, and 0 is null
+            // how to write automatically is yet to solve
             return new ResponseEntity<>(liveness11,HttpStatus.NOT_FOUND);
         }
         //return new ResponseEntity<>(HttpStatus.OK);
     }
     @RequestMapping(value = "delLiveness", method=RequestMethod.POST)
 	public ResponseEntity<Liveness> delLiveness(/*@RequestBody*/ Liveness liveness) {
-		///先检查是否有这个ID，有的话可以执行删除操作，没有的话直接返回NOT_FOUND
+        ///First check whether there is this ID, if there is, you can perform the delete operation, if not, return
+        // to NOT_FOUND directly
         System.out.println("删除操作");
 
 		livenessService.delete_Liveness(liveness);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
-	//20201214  自增id删除后未进行重置，故加此功能
+    //20201214  Since the ID is deleted, it is not reset, so this function is added
     @RequestMapping(value = "resetTheLivenessid", method=RequestMethod.POST)
     public ResponseEntity<Liveness> resetTheLivenessid() {
         livenessService.updateTheLivenessid();
@@ -160,21 +174,22 @@ public class LivenessController {
 
 
     //   DarenSu     20200424
-    //   活跃度检测，主要进行对每个用户的活跃度进行检测
-    //   输入参数：userId，从而反馈回来该用户的活跃度，
-    //   并且会针对每个登陆的用户的活跃度进行变化，有登陆响应时候，会立即进行日、周、月、年活跃度的更新，登录时间的更新，
-    //     ###############          切记    ######    退出时间未更新           #####################
-    //   返回参数：日活跃度、周活跃度、月活跃度、年活跃度都可以进行返回
-    //   该函数的返回参数为日活跃度，就是返回该用户今天的活跃度
+    //   Activity detection, mainly to detect the activity of each user
+    //   Input parameter: userId, so as to feedback the user's activity
+    //   And changes will be made to the activity of each logged-in user. When there is a login response, the daily,
+    //   weekly, monthly, and annual activity will be updated immediately, and the login time will be updated.
+    //     ###############          Remember    ######    Exit time not updated           #####################
+    //   Return parameters: daily activity, weekly activity, monthly activity, and annual activity can all be returned
+    //   The return parameter of this function is daily activity, which is to return the user’s activity today
     @RequestMapping(value="enterUser", method=RequestMethod.POST)
     public ResponseEntity<User> EnterUser(/*@RequestBody*/ User user) {
         //return userService.SelInfo(userName).toString();
         System.out.println(user);
         //System.out.println(userService.EnterUser(user));
 
-        //////2020.04.21   密码加密
+        //////2020.04.21   password encryption
         String passWordtemp = user.getPassWord();
-        ////SHA256加密
+        ////SHA256 encryption
 
         if(StringUtils.isEmpty(passWordtemp)){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -187,14 +202,15 @@ public class LivenessController {
 
 
 
-        ///没有判断，添加错误的返回判断    2019.7.15
-        User check_userName = userService.check(user);    /// 2019.9.25 - check函数有改动，用户名和真实姓名都可以进行登录
+        /// No conditional statement, add the conditional judge for wrong return
+        User check_userName = userService.check(user);    /// 2019.9.25 - The check function has been changed, and
+        // both the user name and real name can be logged in
 
-        if (check_userName == null) { //没有该用户的情况
+        if (check_userName == null) { // The case when there is no such user
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         //return userService.EnterUser(user);
-        else { //有用户的情况下
+        else { //when there is the user
             return new ResponseEntity<>(userService.EnterUser(user), HttpStatus.OK);
         }
     }
@@ -203,22 +219,22 @@ public class LivenessController {
 
 
 
-    ///通过id获取所有数据
+    /// obtain all of the data via id
 //    @RequestMapping("getLiveness/{id}")
 //    public User GetUser(@PathVariable int id) {
 //        return userService.Sel(id);
 //    }
 
 
-    /////2020.6.17 用户注册即添加+还有检测名字是否重复
+    /////2020.6.17 User registration is added + and check whether the name is duplicated
     @RequestMapping(value="addUser", method=RequestMethod.POST)
     public ResponseEntity<User> addUser(/*@RequestBody*/ User user) {
         User check_userName = userService.checkLogin(user);
 
-        //////2020.04.21   密码加密
-        //////2020.06.18   密码加密修改篇
+        //////2020.04.21   password encryption
+        //////2020.06.18   password encryption modification
         String passWordtemp = user.getPassWord();
-        ////SHA256加密
+        ////SHA256 encryption
 
         if(StringUtils.isEmpty(passWordtemp)){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -237,7 +253,6 @@ public class LivenessController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
 
 
 

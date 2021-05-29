@@ -15,7 +15,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@RestController      //进行模块的注明，此处为控制模块
+@RestController      //To indicate the module, here is the control module
 @RequestMapping("/sensorbyte")
 public class Sensor_ByteController {
     @Autowired
@@ -25,9 +25,10 @@ public class Sensor_ByteController {
 
 
 
-    //  用户下载传感数据的步骤
-    //  1--前端先传一个Sensor_Byte，里面有userId和taskId，然后靠这些取得该用户需要下载的文件的sensorFile
-    //  2--然后再用另一个函数，以sensorFile为参数传递，进行下载
+    //  Steps for users to download sensor data
+    //  1--The front end first transmits a Sensor_Byte, which contains userId and taskId, and then uses these to
+    //  obtain the sensorFile of the file that the user needs to download
+    //  2--Then use another function, pass sensorFile as a parameter, and download
     @RequestMapping(value = "selSensor_Byte", method = RequestMethod.POST)
     public ResponseEntity<List<Sensor_Byte>> selSensor_Byte(/*@RequestBody*/ Sensor_Byte sensor_byte){
         System.out.println("sensor_byte"+sensor_byte);
@@ -38,23 +39,23 @@ public class Sensor_ByteController {
     }
 
 
-    ///2021.05.14 上传传感器的文字信息--二进制，两个参数，Sensor_Byte文字信息+单张图片
-    ///目前没有实现多张图片上传，实现的是单图片的上传
+    ///2021.05.14 Upload the text information of the sensor-binary, two parameters, Sensor_Byte text information +
+    // single picture
+    ///Currently there is no realization of uploading multiple pictures, but the realization of uploading a single picture
     @RequestMapping(value = "/uploadSensorFileBytes", method = RequestMethod.POST)
     @ResponseBody
-    // User类           文件类型的参数（可以是文件、视频、图片均可）
+    // User class           File type parameter (it can be file, video, picture)
     public ResponseEntity<Sensor_Byte> add_Sensor_File_Bytes(/*@RequestPart("sensor_byte")*/ Sensor_Byte sensor_byte, @RequestPart("file") MultipartFile file) throws IOException {
 
         System.out.println("欢迎来到传感器数据到二进制的上传：sensor/uploadSensorFileBytes");
 
-        // 20210513 数据判断，防止无意义的访问导致数据库崩溃
+        // 20210513 Data judgement to prevent database crash caused by meaningless access
         if(sensor_byte.getSensor_messageId() != null || sensor_byte.getUserId() == null ||
-                sensor_byte.getTaskId() == null || file.isEmpty()){//数据有问题，返回400
+                sensor_byte.getTaskId() == null || file.isEmpty()){//Something is wrong with the data.,400
             return new ResponseEntity<Sensor_Byte>(HttpStatus.BAD_REQUEST);
         }
         System.out.println("测试到了这里了！！！");
-        //查看文件是否有重复
-        // 获取文件名
+
 
 //        System.out.println("sfdaeg");
         System.out.println(sensor_byte);
@@ -62,22 +63,22 @@ public class Sensor_ByteController {
         String fileName = file.getOriginalFilename();
         System.out.println(fileName);
 
-        // 20210514  读取上传的文件的大小，不能超过SSM所支持的最大值,单位为B
-        // 20210514  前端那边设置最多可以传输十个文件
+        // 20210514  Read the size of the uploaded file, cannot exceed the maximum supported by SSM  ,unit:B
+
         long fileLength = 0L;
         fileLength = file.getSize()/1024;
         System.out.println(fileLength+"KB"+"    "+"单张照片小于20480KB，可以传输");
-        if (fileLength > 20480){// 数据格式不对，即数据有问题，返回400
+        if (fileLength > 20480){// The data format is incorrect, that is, the data has a problem，400
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        // 20210514    Date数据类型的时间获取
+        // 20210514    Time fetching for the DATE data type
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
         System.out.println(date);
         sensor_byte.setOnlineTime(date);
 
-        // 20210514  这部分可以将文件资源直接转换成数据流
+        // 20210514  This section converts file resources directly into data streams
         String fileByte= String.valueOf(file.getBytes());
 
 //        System.out.println("转换成功的二进制文件类型："+ getType(file.getBytes()));
@@ -85,11 +86,11 @@ public class Sensor_ByteController {
 
         System.out.println("转换成功的二进制文件："+ fileByte);
 
-        // 20210514 将转换成二进制的数据存储到数据结构中
+        // 20210514 Stores the converted binary data into a data structure
         sensor_byte.setFileByte(fileByte);
-        // 20210514 存储到数据库中   还没有写，需要写
 
-        // 20210515  此处进行间将文件逐行进行读取，并将其中的数据存入数据库中
+
+        // 20210515  Here the file is read line by line and the data is stored in the database
 //        File fileCopy= (File) file;
 
 //        InputStream inputStream = file.getInputStream();
@@ -102,10 +103,10 @@ public class Sensor_ByteController {
 //            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream((File) file), "UTF-8"));//构造一个BufferedReader类来读取文件
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));//构造一个BufferedReader类来读取文件
 
-            // 文件进行逐行读取的操作
+            // The file is read line by line
             int dataMaxNum= 4;
             String s = null;
-            while((s = br.readLine())!=null){//使用readLine方法，一次读一行
+            while((s = br.readLine())!=null){//Using the readLine method, read one line at a time
                 Sensor_Byte sensor_bytetemp= sensor_byte;
 
                 System.out.println("s="+s);
@@ -114,7 +115,7 @@ public class Sensor_ByteController {
                 int count = 0;
                 for (int i= 0; i< s.length(); i++) {
                     StringBuilder stemp= new StringBuilder();
-                    if(count >= dataMaxNum) {//只读取四个数据,每行的数据超过了这个量就是数据错误，返回400
+                    if(count >= dataMaxNum) {//Only four rows are read. If each row contains more data than this, it is a data error ，400
                         System.out.println("-1");
                         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
                     }
@@ -129,7 +130,7 @@ public class Sensor_ByteController {
                         continue;
                     }
 
-                    // 不断添加数据
+                    // Keep adding data
                     tempp.append(new StringBuilder(s.charAt(i)+""));
                     if(count == dataMaxNum- 1 && i == s.length()- 1){
                         count++;
@@ -139,7 +140,7 @@ public class Sensor_ByteController {
 
 //                    System.out.print(i +"-"+ s.charAt(i)+"  ");
                 }
-                //读完每行数据后要将此数据存入数据库中
+                //After reading each row of data, the data is stored in the database
                 MaxId++;
                 sensor_bytetemp.setSensor_messageId(MaxId);
 
@@ -153,10 +154,10 @@ public class Sensor_ByteController {
 //            log.error(e.getMessage(), e);
         }
 
-        // 20210514 同时将任务的具体内容也上传，此时的utask里面已经有了图片的位置信息
+
 //        sensor_byteService.addSensor_Byte(sensor_byte);
 
-        // 20210514  是否需要查看下该条数据是否存在？？？？？？？？
+
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -164,7 +165,7 @@ public class Sensor_ByteController {
 
 
 
-    ///20200816    输入参数sensorFile,选择更新最新版本
+    ///20200816    Enter the parameter sensorFile and choose to update the latest version
     @RequestMapping("downVersionFromServer/{sensorFile}")
     public ResponseEntity<byte[]> downVersionFromServer(@PathVariable String sensorFile) {
         //@RequestMapping("downVersionFromServer")
@@ -173,7 +174,7 @@ public class Sensor_ByteController {
 //		image = suffixName;
 
         //sensorFile = version_updatingService.getLastOne().getApkName();
-        /// 20200828  下载文件的步骤，首先寻找到该用户需要下载的文件的那条数据，然后返回前段，前端再将这条数据的地址传过来
+        /// 20200828
 
         System.out.println(sensorFile);
 
@@ -182,7 +183,7 @@ public class Sensor_ByteController {
         if( status1 || status2  ){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        //2019.9.15   数据流转换
+        //2019.9.15  Data stream conversion
         InputStream in;
         ResponseEntity<byte[]> response=null ;
         String filePath = "E" + File.separator + "springboot-upload" + File.separator + "version" + File.separator ;

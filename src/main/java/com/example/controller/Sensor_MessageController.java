@@ -29,18 +29,21 @@ import java.util.List;
 //import com.***.common.upload.file.UploadFileCallback;
 //import com.***.common.upload.file.UploadFileConfig;
 
-@RestController      //进行模块的注明，此处为控制模块
+@RestController      //To indicate the module, here is the control module
 @RequestMapping("/sensormessage")
 public class Sensor_MessageController {
 
-    //  2021.05.14          日志记录
-    private static final Logger logger = (Logger) LoggerFactory.getLogger(Sensor_MessageController.class);
-    // 公共文件存储目录
+
+
+    //  2021.05.14  log record
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(Sensor_DetailController.class);
+    // Public file storage directory
     @Autowired
     private ExecutorConfig executorConfig;
-    // 文件上传线程池
+    // File upload thread pool
     @Autowired
     private AsyncService asyncService;
+
 
     @Autowired
     private Familiar_SensorService familiar_sensorService;
@@ -51,14 +54,14 @@ public class Sensor_MessageController {
     @Autowired
     User_TaskService user_taskService;
 
-    ///2019.7.25 上传任务的文字信息和图片，两个参数，user_task文字信息+单张图片
-    ///目前没有实现多张图片上传，实现的是单图片的上传
+    ///2019.7.25 Upload the text message and picture of the task, two parameters, user_task text message + single picture
+    ///Currently there is no realization of uploading multiple pictures, but the realization of uploading a single picture
     @RequestMapping(value = "/uploadSensorFiles", method = RequestMethod.POST)
     @ResponseBody
-    // User类           文件类型的参数（可以是文件、视频、图片均可）
+    // User class           File type parameters (can be files, videos, pictures)
     public ResponseEntity<Familiar_Sensor> add_Sensor_File(@RequestPart("familiar_sensor") Familiar_Sensor familiar_sensor, @RequestPart("file") MultipartFile file) throws IOException {
-        //查看文件是否有重复
-        // 获取文件名
+        //Check the file for duplicates
+        // Get file name
         System.out.println("欢迎来到传感器数据上传：sensor/uploadSensorFiles");
         System.out.println("sfdaeg");
         System.out.println(familiar_sensor);
@@ -66,13 +69,12 @@ public class Sensor_MessageController {
         String fileName = file.getOriginalFilename();
         System.out.println(fileName);
 
-        // 20210514  这部分可以将文件资源直接转换成数据流
+        // 20210514  This section converts file resources directly into data streams
         String fileByte= String.valueOf(file.getBytes());
-        // 将这些数据存储到数据库中
 
 
-        //2019.9.17  读取上传的文件的大小，不能超过SSM所支持的最大值,单位为B
-        //2019.9.17  前端那边设置最多可以传输十个文件
+        //2019.9.17  Read the size of the uploaded file, cannot exceed the maximum supported by SSM  ,unit:B
+        //2019.9.17  The front end can transfer up to ten files
         long fileLength = 0L;
         fileLength = file.getSize()/1024;
         System.out.println(fileLength+"KB"+"    "+"单张照片小于20480KB，可以传输");
@@ -89,11 +91,13 @@ public class Sensor_MessageController {
 
 
         String filePath =  "root:/F/springboot-upload/sensorFiles/";
-        // 解决中文问题，liunx下中文路径，图片显示问题
+        // Solve the Chinese problem,
+        // the Chinese path under LIUNX,
+        // the picture display problem
         // fileName = UUID.randomUUID() + suffixName;
         File pfile = new File(filePath);
         if (!pfile.exists()) {
-            //如果不存在的话则自己生成路径
+            //Generate the path itself if it doesn't exist
             pfile.mkdirs();
         }
 
@@ -102,9 +106,9 @@ public class Sensor_MessageController {
         System.out.println("The dest file's absolute path: " + dest.getAbsolutePath());
         //File dest = new File(filePath + fileName);
         //System.out.println("upload file's absolute path is"  + dest.getAbsolutePath());
-        // 检测是否存在目录
+        // Checks for the existence of a directory
         if (!dest.getParentFile().exists()) {
-            //如果不存在的话则自己生成路径
+            //Generate the path itself if it doesn't exist
             dest.getParentFile().mkdirs();
         }
 
@@ -116,11 +120,11 @@ public class Sensor_MessageController {
                 file.transferTo(dest);
             //}
             System.out.println("正在上传中2ccccccccccccccccccccccc");
-            //上传图片的地址到数据库的相关位置
+            //Upload the image address to the relevant location in the database
             familiar_sensor.setSensorFile(filePath + fileName);
-            //同时将任务的具体内容也上传，此时的utask里面已经有了图片的位置信息
+            //At the same time, the specific content of the task is also uploaded, and the position information of the picture is already in the utask at this time
             familiar_sensorService.addFamiliar_Sensor(familiar_sensor);
-            //将这个结果返回，并且返回状态为OK
+            //Returns the result and return status of OK
             return new ResponseEntity<>(familiar_sensor, HttpStatus.OK);
         } catch (IllegalStateException e) {
             e.printStackTrace();
@@ -132,46 +136,49 @@ public class Sensor_MessageController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    //  用户下载传感数据的步骤
-    //  1--前端先传一个familiar_sensor，里面有userId和taskId，然后靠这些取得该用户需要下载的文件的sensorFile
-    //  2--然后再用另一个函数，以sensorFile为参数传递，进行下载
+    //  Steps for users to download sensor data
+    //  1--The front end first transmits a familiar_sensor, which contains userId and taskId, and then uses these to
+    //  obtain the sensorFile of the file that the user needs to download
+    //  2--Then use another function, pass sensorFile as a parameter, and download
     @RequestMapping(value = "selFamiliar_Sensor", method = RequestMethod.POST)
     public ResponseEntity<List<Familiar_Sensor>> selFamiliar_Sensor(/*@RequestBody*/ Familiar_Sensor familiar_sensor){
         return new ResponseEntity<List<Familiar_Sensor>>(familiar_sensorService.selFamiliar_Sensor(familiar_sensor),HttpStatus.OK);
     }
 
 
-    /// 2021.05.14 上传传感器数据，并将其文件逐行读出来，这里的每行数据有24个属性，用“/”隔开，传感器数据数据1/传感器数据2/.../采集日期
-    /// 目前没有实现多张图片上传，实现的是单图片的上传
-    /// 已成功运行
+    /// 2021.05.14 Upload sensor data and read out the file line by line. Each line of data here has 24 attributes,
+    // separated by "/", sensor data data 1 / sensor data 2 /.../collection date
+    /// Currently there is no realization of uploading multiple pictures, but the realization of uploading a single picture
+    /// Successfully run
     @RequestMapping(value = "/uploadSensorFileMessages", method = RequestMethod.POST)
     @ResponseBody
-    // User类           文件类型的参数（可以是文件、视频、图片均可）
+    // User class           File type parameters (can be files, videos, pictures)
     public ResponseEntity<Sensor_Message> add_Sensor_File_Bytes(@RequestPart("sensor_message") Sensor_Message sensor_message, @RequestPart("file") MultipartFile file) throws IOException {
 
 
 
         System.out.println("欢迎来到传感器数据到逐条上传到表里：sensor/uploadSensorFileBytes");
 
-        // 首先检验该条数据是否在存在在表中，也就是这条数据的userId和taskId是否真的有关联
-        // 需要在ut表中进行查询
+        // First check whether the data exists in the table, that is, whether the userId and taskId of this data are
+        // really related
+        // Need to query in the ut table
         User_Task user_task= new User_Task();
         user_task.setUserId(sensor_message.getUserId());
         user_task.setTaskId(sensor_message.getTaskId());
         User_Task user_taskresult = user_taskService.SelUser_Task(user_task);
-        if( user_taskresult == null ){//请求成功了，但是没有资源，也就是这个userId和taskId没有关联
+        if( user_taskresult == null ){//The request was successful, but there is no resource,
+            // This meaning that the userId and taskId are not associated
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
 
-        // 20210513 数据判断，防止无意义的访问导致数据库崩溃
+        // 20210513 Data judgement to prevent database crash caused by meaningless access
         if(sensor_message.getSensor_messageId() != null || sensor_message.getUserId() == null ||
-                sensor_message.getTaskId() == null || file.isEmpty()){//数据有问题，返回400
+                sensor_message.getTaskId() == null || file.isEmpty()){//Something is wrong with the data. 400
             return new ResponseEntity<Sensor_Message>(HttpStatus.BAD_REQUEST);
         }
         System.out.println("测试到了这里了！！！");
-        //查看文件是否有重复
-        // 获取文件名
+
 
 //        System.out.println("sfdaeg");
         System.out.println(sensor_message);
@@ -180,22 +187,21 @@ public class Sensor_MessageController {
         sensor_message.setFileName(fileName);
         System.out.println(fileName);
 
-        // 20210514  读取上传的文件的大小，不能超过SSM所支持的最大值,单位为B
-        // 20210514  前端那边设置最多可以传输十个文件
+        // 20210514  Read the size of the uploaded file, cannot exceed the maximum supported by SSM  ,unit:B
         long fileLength = 0L;
         fileLength = file.getSize()/1024;
         System.out.println(fileLength+"KB"+"    "+"单张照片小于20480KB，可以传输");
-        if (fileLength > 20480){// 数据格式不对，即数据有问题，返回400
+        if (fileLength > 20480){// The data format is incorrect, that is, the data has a problem，400
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        // 20210514    Date数据类型的时间获取
+        // 20210514    Time fetching for the DATE data type
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
         System.out.println(date);
         sensor_message.setOnlineTime(date);
 
-        // 20210514  这部分可以将文件资源直接转换成数据流
+        // 20210514  This section converts file resources directly into data streams
         String fileByte= String.valueOf(file.getBytes());
 
 //        System.out.println("转换成功的二进制文件类型："+ getType(file.getBytes()));
@@ -203,16 +209,16 @@ public class Sensor_MessageController {
 
         System.out.println("转换成功的二进制文件："+ fileByte);
 
-        // 20210514 将转换成二进制的数据存储到数据结构中
+        // 20210514 Stores the converted binary data into a data structure
 //        sensor_byte.setFileByte(fileByte);
-        // 20210514 存储到数据库中   还没有写，需要写
 
-        // 20210515  此处进行间将文件逐行进行读取，并将其中的数据存入数据库中
+
+        // 20210515  Here the file is read line by line and the data is stored in the database
 //        File fileCopy= (File) file;
 
 //        InputStream inputStream = file.getInputStream();
 //        new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)).lines().forEach(this::handleLine);
-        // 获取当前表中最大的主键id，一边后面递增使用
+        // Gets the largest primary key ID in the current table
         int MaxId = sensor_messageService.getMaxId().getSensor_messageId();
 
         System.out.println("MacId="+MaxId);
@@ -222,10 +228,10 @@ public class Sensor_MessageController {
 //            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream((File) file), "UTF-8"));//构造一个BufferedReader类来读取文件
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));//构造一个BufferedReader类来读取文件
 
-            // 文件进行逐行读取的操作
+            // he file is read line by line
             int dataMaxNum= 24;
             String s = null;
-            while((s = br.readLine())!=null){//使用readLine方法，一次读一行
+            while((s = br.readLine())!=null){//Using the readLine method, read one line at a time
                 Sensor_Message sensor_bytetemp= sensor_message;
 
                 System.out.println("s="+s);
@@ -234,7 +240,7 @@ public class Sensor_MessageController {
                 int count = 0;
                 for (int i= 0; i< s.length(); i++) {
                     StringBuilder stemp= new StringBuilder();
-                    if(count >= dataMaxNum) {//只读取四个数据,每行的数据超过了这个量就是数据错误，返回400
+                    if(count >= dataMaxNum) {//Only twenty-four  rows are read. Any more than this is a data error  ,400
                         System.out.println("-1");
                         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
                     }
@@ -274,7 +280,7 @@ public class Sensor_MessageController {
                         continue;
                     }
 
-                    // 不断添加数据
+                    // Keep adding data
                     tempp.append(new StringBuilder(s.charAt(i)+""));
                     if(count == dataMaxNum- 1 && i == s.length()- 1){
                         count++;
@@ -284,7 +290,7 @@ public class Sensor_MessageController {
 
 //                    System.out.print(i +"-"+ s.charAt(i)+"  ");
                 }
-                //读完每行数据后要将此数据存入数据库中
+                //After reading each row of data, the data is stored in the database
                 MaxId++;
                 sensor_bytetemp.setSensor_messageId(MaxId);
 
@@ -298,10 +304,11 @@ public class Sensor_MessageController {
 //            log.error(e.getMessage(), e);
         }
 
-        // 20210514 同时将任务的具体内容也上传，此时的utask里面已经有了图片的位置信息
+        // 20210514 At the same time, the specific content of the task is also uploaded,
+        // and the position information of the picture is already in the utask at this time
 //        sensor_byteService.addSensor_Byte(sensor_byte);
 
-        // 20210514  是否需要查看下该条数据是否存在？？？？？？？？
+        // 20210514  Do you need to check whether this data exists ？？？？？？？？
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -309,14 +316,14 @@ public class Sensor_MessageController {
 
 
 
-    // 20210517 根据taskId查看该任务的所有感知数据
+    // 20210517 View all perceptual data of the task according to taskId
     @RequestMapping(value = "/getAllMessageFromTaskId/{taskId}")
     @ResponseBody
     public ResponseEntity<List<Sensor_Message>> GetAllMessageFromTaskId(@PathVariable Integer taskId){
         Sensor_Message sensor_message= new Sensor_Message();
         sensor_message.setTaskId(taskId);
         List<Sensor_Message> result= sensor_messageService.selAllMessageFromTaskId(sensor_message);
-        if (result == null || result.size() == 0){// 无资源没有找到，返回404
+        if (result == null || result.size() == 0){// 404
             System.out.println("没有该数据");
             return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -324,21 +331,21 @@ public class Sensor_MessageController {
     }
 
 
-    // 20210517 根据taskId和userId查看该执行这在该任务的所有感知数据
+    // 20210517 According to the taskId and userId to view all the perceptual data of the execution of the task
     @RequestMapping(value = "/getAllMessageFromUserIdTaskId")
     @ResponseBody
     public ResponseEntity<List<Sensor_Message>> GetAllMessageFromTaskId(@RequestBody Sensor_Message sensor_message){
 //        Sensor_Message sensor_message= new Sensor_Message();
 //        sensor_message.setTaskId(taskId);
         List<Sensor_Message> result= sensor_messageService.selAllMessageFromUserIdTaskId(sensor_message);
-        if (result == null){// 无资源没有找到，返回404
+        if (result == null){// 404
             return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(result,HttpStatus.OK);
     }
 
 
-    ///20200816    输入参数sensorFile,选择更新最新版本
+    ///20200816    Enter the parameter sensorFile and choose to update the latest version
     @RequestMapping("downVersionFromServer/{sensorFile}")
     public ResponseEntity<byte[]> downVersionFromServer(@PathVariable String sensorFile) {
         //@RequestMapping("downVersionFromServer")
@@ -347,7 +354,7 @@ public class Sensor_MessageController {
 //		image = suffixName;
 
         //sensorFile = version_updatingService.getLastOne().getApkName();
-        /// 20200828  下载文件的步骤，首先寻找到该用户需要下载的文件的那条数据，然后返回前段，前端再将这条数据的地址传过来
+        /// 20200828  Download the file step, first to find the user needs to download the file of the data, and then return to the front segment, the front end will pass the address of this data
 
         System.out.println(sensorFile);
 
@@ -356,7 +363,7 @@ public class Sensor_MessageController {
         if( status1 || status2  ){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        //2019.9.15   数据流转换
+        //2019.9.15   Data stream conversion
         InputStream in;
         ResponseEntity<byte[]> response=null ;
         String filePath = "E" + File.separator + "springboot-upload" + File.separator + "version" + File.separator ;

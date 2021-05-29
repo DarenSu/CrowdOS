@@ -24,22 +24,23 @@ public interface UserMapper {
 
 
     User getUser(int id);
-    ////2019.7.2 修改：从单个的结果展示修改为多个结果展示
+
 
     //User SelInfo(String userName);
+    //2019.7.2 Modification: Modified from a single result display to multiple result displays
     List<User> SelInfo(String userName);
 
     //List<User> getName(String Name);
 
 
-    ////2019.7.5 用户登录
+    //2019.7.5 User login
     User Enter(User user);
-    ////2019.7.5 防止用户重复名称注册
+    //2019.7.5 Prevent users from logging in with the same name twice and being able to log in with their real names
     User check(User user);
-    ////2019.9.16 修改：一次性返回数据库用户信息最后面的十条数据
+    //2019.9.16 Modification: Return the last ten data of database user information at one time
     List<User> getUserRank() ;
 
-    ///2019.9.25 防止用户重复注册
+    //2019.9.25 prevent the same user from signing up twice with a single name
     User checkLogin(User user);
 
     void add(User user);

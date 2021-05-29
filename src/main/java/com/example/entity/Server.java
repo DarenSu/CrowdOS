@@ -12,13 +12,13 @@ import java.util.Date;
 
 
 public class Server {
-    private Integer serverId;                 //设备ID
-    private Integer cpu;                //CPU
-    private Integer memory;                //内存
-    private Integer disk;                //磁盘
+    private Integer serverId;
+    private Integer cpu;
+    private Integer memory;
+    private Integer disk;
     @JsonFormat(pattern = "yyyy.MM.dd")
-    private Date time;                //访问时间
-    private String temp;                  //备用变量
+    private Date time;                //access time
+    private String temp;                  //backup
 
     public Server() { super();}
 

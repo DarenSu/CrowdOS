@@ -12,9 +12,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-@MapperScan("com.example.mapper") //扫描的mapper
+@MapperScan("com.example.mapper") //Scan the mapper
 @SpringBootApplication
-//函数的启动
+//Start of a function
 
 
 public class DemoApplication {
@@ -42,9 +42,9 @@ public class DemoApplication {
 	@Bean
 	public MultipartConfigElement multipartConfigElement() {
 		MultipartConfigFactory factory = new MultipartConfigFactory();
-		//单个文件最大
+
 		factory.setMaxFileSize("20480KB");
-		/// 设置总上传数据总大小
+		// Sets the total size of the uploaded data
 		factory.setMaxRequestSize("20971520KB");
 
 		return factory.createMultipartConfig();

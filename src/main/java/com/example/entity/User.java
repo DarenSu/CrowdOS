@@ -1,31 +1,27 @@
 package com.example.entity;
 
-/**
- * @Author:0xOO
- * @Date: 2018/9/26 0026
- * @Time: 14:39
- */
+
 /**
  * @Author:DarenSu
- * @Date: 2019/6/13 修改
+ * @Date: 2019/6/13
  * @Time: 14:42
  */
 
 
 
 public class User {
-    private Integer userId;                 //用户ID
-    private String userName;                //用户账号
-    private String passWord;                //登录密码
-    private String realName;                //真实姓名
-    private Integer coins;                  //积分
+    private Integer userId;
+    private String userName;
+    private String passWord;
+    private String realName;
+    private Integer coins;                  // credit points
 
-    //  20200723    测试用，暂时屏蔽该部分的信息，
-    //  20200812     修改比较麻烦，太繁琐，就没有进行恢复，有时间再说吧 ， 也要记得
-    //private String Nickname;                //用户昵称
-    //private String QQNumber;                //QQ
-    //private String Phone;                   //电话
-    //private String UserIcon;                //头像存储路径
+    //  20200723    test
+    //  20200812
+    //private String Nickname;
+    //private String QQNumber;
+    //private String Phone;
+    //private String UserIcon;
 
 
     public User() {

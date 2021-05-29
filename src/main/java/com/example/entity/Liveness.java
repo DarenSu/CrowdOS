@@ -13,22 +13,22 @@ import java.util.Date;
 
 
 public class Liveness {
-    private Integer livenessId;                //唯一识别码
+    private Integer livenessId;
 
-    private Integer userId;                    //用户ID
-    private Integer taskId;                    //任务ID
+    private Integer userId;
+    private Integer taskId;
 
     @JsonFormat(pattern = "yyyy.MM.dd")
-    private Date onlineTime;                  //上线日期
+    private Date onlineTime;
     @JsonFormat(pattern = "yyyy.MM.dd")
-    private Date deadlineTime;                 //下线日期
+    private Date deadlineTime;
 
-    private Integer temp;                       //0-1变量，记录是否上限
+    private Integer temp;                       //0/1，Whether the record is capped
 
-    private Integer totalWeek;                 //记录一周的上线数目
-    private Integer totalMouth;                //记录一月的上线数目
-    private Integer totalYear;                 //记录一年的上线数目
-    private Integer total;                      //记录上线的总数
+    private Integer totalWeek;                 //  record online total one week
+    private Integer totalMouth;                //  record online total one month
+    private Integer totalYear;                 //  record online total one year
+    private Integer total;                     //  record online total in total
 
     public Liveness() {
         super();

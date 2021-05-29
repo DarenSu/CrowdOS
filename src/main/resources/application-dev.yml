@@ -11,7 +11,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 ---
-#####  由于默认的是UTC时间，所以在中国有8个小时的时差，需要将serverTimezone的值改为GMT%2B8
+#####
 spring:
   datasource:
 #    url: jdbc:mysql://127.0.0.1:3306/zph?serverTimezone=GMT%2B8
@@ -30,8 +30,8 @@ logging:
         mapper : debug
 
 ###2020-07-13添加
-#日志打印 - logging.file=target/app.log
-#参考网址：https://blog.csdn.net/u014248473/article/details/88072072
+#Log print - logging.file=target/app.log
+#Refer to the website：https://blog.csdn.net/u014248473/article/details/88072072
 #logging:
   file: target/app.log
 

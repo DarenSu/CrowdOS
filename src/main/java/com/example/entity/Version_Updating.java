@@ -1,13 +1,9 @@
 package com.example.entity;
 
-/**
- * @Author:0xOO
- * @Date: 2019/10/28 0026
- * @Time: 14:39
- */
+
 /**
  * @Author:DarenSu
- * @Date: 2019/10/28 修改
+ * @Date: 2019/10/28
  * @Time: 14:42
  */
 
@@ -15,11 +11,11 @@ package com.example.entity;
 
 public class Version_Updating {
 
-    private Integer versionId;                          //序号
-    private Integer versionCode;                        //版本代码
-    private String versionName;                         //新版本号
-    private String versionAddress;                      //旧版本
-    private String apkName;                             //apk名字
+    private Integer versionId;
+    private Integer versionCode;                        //Version of the code
+    private String versionName;                         //The new version number
+    private String versionAddress;                      //The old version number
+    private String apkName;
 
     public Version_Updating() {
         super();
