@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    username: root
-#    password: 123123123    #EqCvN3FP
-    password: EqCvN3FP
+    username: james #username
+    password: 123456 #password
+    #  'zph' is the name of the database
 #    url: jdbc:mysql://127.0.0.1/zph?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     url: jdbc:mysql://47.96.146.104:3306/zph?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -22,14 +22,14 @@ mybatis:
   mapper-locations: classpath:mapping/*Mapper.xml
   type-aliases-package: com.example.entity
 
-#showSql   //EqCvN3FP
+#showSql
 logging:
   level:
     com:
       example:
         mapper : debug
 
-###2020-07-13添加
+###2020-07-13
 #Log print - logging.file=target/app.log
 #Refer to the website：https://blog.csdn.net/u014248473/article/details/88072072
 #logging:
