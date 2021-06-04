@@ -14,24 +14,18 @@ import java.util.Date;
 
 
 public class User {
-    private Integer userId;                 //用户ID
-    private String userName;                //用户账号
-    private String passWord;                //登录密码
-    private String realName;                //真实姓名
-    private String mail;                    // 邮箱地址
+    private Integer userId;
+    private String userName;
+    private String passWord;
+    private String realName;
+    private String mail;
     @JsonFormat(pattern = "yyyy.MM.dd")
     private Date onlineTime;
     private String token;
     private Integer Phone;
     private String imagePath;
-    private Integer coins;                  //积分
+    private Integer coins;
 
-    //  20200723    测试用，暂时屏蔽该部分的信息，
-    //  20200812     修改比较麻烦，太繁琐，就没有进行恢复，有时间再说吧 ， 也要记得
-    //private String Nickname;                //用户昵称
-    //private String QQNumber;                //QQ
-    //private String Phone;                   //电话
-    //private String UserIcon;                //头像存储路径
 
 
     public User() {
