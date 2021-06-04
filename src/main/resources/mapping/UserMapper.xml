@@ -7,6 +7,11 @@
         <result column="userName" jdbcType="VARCHAR" property="userName" />
         <result column="passWord" jdbcType="VARCHAR" property="passWord" />
         <result column="realName" jdbcType="VARCHAR" property="realName" />
+        <result column="mail" jdbcType="VARCHAR" property="mail" />
+        <result column="onlineTime" jdbcType="DATE" property="onlineTime" />
+        <result column="token" jdbcType="VARCHAR" property="token" />
+        <result column="Phone" jdbcType="INTEGER" property="Phone" />
+        <result column="imagePath" jdbcType="VARCHAR" property="imagePath" />
         <result column="coins" jdbcType="INTEGER" property="coins" />
     </resultMap>
 
@@ -62,9 +67,11 @@
 
     
 	<insert id="add" parameterType="com.example.entity.User" useGeneratedKeys="true" keyProperty="userId">
-        insert into user (userId, userName, passWord, realName, coins)
+        insert into user (userId, userName, passWord, realName, mail, onlineTime, token, Phone, imagePath, coins)
         values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR},
-        #{realName,jdbcType=VARCHAR},#{coins,jdbcType=INTEGER})
+        #{realName,jdbcType=VARCHAR},
+        #{mail,jdbcType=VARCHAR},#{onlineTime},#{token,jdbcType=VARCHAR},#{Phone,jdbcType=INTEGER},#{imagePath,jdbcType=VARCHAR},
+        #{coins,jdbcType=INTEGER})
     </insert>
 
 
