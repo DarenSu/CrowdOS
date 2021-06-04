@@ -265,6 +265,9 @@ public class UserController {
 
 
                 if (check_userName == null) {//there's no such person
+                    if(user.getUserName().indexOf(".com")!=-1 && user.getUserName().indexOf("@")!=-1){
+                        user.setMail(user.getUserName());
+                    }
                     userService.addUser(user);
                     return new ResponseEntity<>(user, HttpStatus.OK);
                 } else {//Already has this person  404
