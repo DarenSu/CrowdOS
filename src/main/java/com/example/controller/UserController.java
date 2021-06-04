@@ -197,15 +197,39 @@ public class UserController {
         }
     }
 
+    // user.getUserName != null
+    // Check to see if the account has been registered
+    @RequestMapping(value = "checkLogin", method = RequestMethod.POST)
+    public ResponseEntity<String> checkLogin(@RequestBody User user){
+        String str = new String();
+        if(user.getUserName() == null ){// 空数据
+            str = "NOT_ACCEPTABLE:空数据";
+            System.out.println(str);
+            return new ResponseEntity<>(str, HttpStatus.NOT_ACCEPTABLE);
+        }
+        if( userService.checkLogin(user) != null){
+            str = "NOT_FOUND:已有该账号";
+            System.out.println(str);
+            System.out.println(userService.checkLogin(user));
+            return new ResponseEntity<>(str, HttpStatus.NOT_FOUND);
+        }
+        str = "OK:可以进行注册";
+        System.out.println(str);
+        return new ResponseEntity<>(str, HttpStatus.OK);
+    }
+
+
     /////2020.6.17 User registration is added and check whether the name is duplicated
     @RequestMapping(value = "addUser", method = RequestMethod.POST)
     public ResponseEntity<User> addUser(@RequestBody User user) {
-        //20201012 Data detection during user registration to prevent empty data from coming in
+        // 20201012 Data detection during user registration to prevent empty data from coming in
         User userTemp = user;
+        // Incentives are initialized
+        userTemp.setCoins(1000);
         if (userTemp.getUserName() == null){//passed data is empty  406
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }else if (userTemp.getUserName() != null && userTemp.getUserId() == null
-                && userTemp.getPassWord() == null && userTemp.getRealName() == null ){
+                && userTemp.getPassWord() == null /*&& userTemp.getRealName() == null*/ ){
             if (userService.checkLogin(userTemp) == null){//never register  200
                 return new ResponseEntity<>(HttpStatus.OK);
             }else {//already registered  404
@@ -218,7 +242,7 @@ public class UserController {
                 && userTemp.getCoins() != null) {
             //  20201024 If the data is not empty, you need to check whether the data type is correct
             if (userTemp.getUserName() instanceof String && userTemp.getCoins() instanceof Integer
-                    && userTemp.getPassWord() instanceof String && userTemp.getRealName() instanceof String) {
+                    && userTemp.getPassWord() instanceof String /*&& userTemp.getRealName() instanceof String*/) {
 
 
                 User check_userName = userService.checkLogin(user);

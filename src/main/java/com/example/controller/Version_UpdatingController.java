@@ -116,6 +116,11 @@ public class Version_UpdatingController {
         String filePath = "E" + File.separator + "springboot-upload" + File.separator + "version" + File.separator;
 //		System.out.println(image);
         File file = new File(filePath + image);
+        if (!file.getParentFile().exists()) {
+            // No path found and return empty
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
         try {
             in = new FileInputStream(file);
             byte[] b = new byte[in.available()];
