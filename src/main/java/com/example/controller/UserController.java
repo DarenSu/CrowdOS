@@ -202,7 +202,7 @@ public class UserController {
     @RequestMapping(value = "checkLogin", method = RequestMethod.POST)
     public ResponseEntity<String> checkLogin(@RequestBody User user){
         String str = new String();
-        if(user.getUserName() == null ){// 空数据
+        if(user.getUserName() == null ){
             str = "NOT_ACCEPTABLE:空数据";
             System.out.println(str);
             return new ResponseEntity<>(str, HttpStatus.NOT_ACCEPTABLE);
