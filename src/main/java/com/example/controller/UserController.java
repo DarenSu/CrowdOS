@@ -12,10 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 //import org.apache.commons.codec.digest.DigestUtils;
 
 
@@ -101,8 +98,8 @@ public class UserController {
     @RequestMapping(value = "enterUser", method = RequestMethod.POST)
     public ResponseEntity<User> EnterUser(@RequestBody User user) {
         //return userService.SelInfo(userName).toString();
-        user.setOnlineTime(Calendar.getInstance().getTime());
-        
+
+
         Liveness liveness = new Liveness();
 
         System.out.println(user);
@@ -188,7 +185,11 @@ public class UserController {
 //					livenessService.delete_Liveness(livenessesListTemp.get(i));
 //				}
 //			}
-
+            // 20210405 Can be used in the token
+            Calendar calendar = Calendar.getInstance();
+            Date date = calendar.getTime();
+            user.setOnlineTime(date);
+            userTemp1.setOnlineTime(date);
             if (check_userName1 == null ) {
                 return new ResponseEntity<>(userService.EnterUser(user), HttpStatus.OK);
             }
