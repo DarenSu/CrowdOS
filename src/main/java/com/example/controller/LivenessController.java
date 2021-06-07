@@ -96,7 +96,7 @@ public class LivenessController {
     // Remember: the liveness from the front end does not contain the livenessId, what is in it depends on what is
     // passed in the previous paragraph
     @RequestMapping(value = "logoutUser", method = RequestMethod.POST)
-    public ResponseEntity<Liveness> logoutUser(/*@RequestBody*/ Liveness liveness){  //liveness at least contains userId
+    public ResponseEntity<Liveness> logoutUser(@RequestBody Liveness liveness){  //liveness at least contains userId
         //First get the latest set of data in the database corresponding to the liveness transmitted by the front end
         System.out.println("活跃度检测系列 - 退出登录标记");
         System.out.println(liveness);
@@ -173,7 +173,7 @@ public class LivenessController {
 
 
 
-    //   DarenSu     20200424
+    // just for test
     //   Activity detection, mainly to detect the activity of each user
     //   Input parameter: userId, so as to feedback the user's activity
     //   And changes will be made to the activity of each logged-in user. When there is a login response, the daily,
@@ -218,6 +218,8 @@ public class LivenessController {
 
 
 
+
+    // just for test
 
     /// obtain all of the data via id
 //    @RequestMapping("getLiveness/{id}")
