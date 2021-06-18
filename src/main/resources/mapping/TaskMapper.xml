@@ -101,7 +101,8 @@
 
 
     <select id="Sel_Task" resultMap="BaseResultMap">
-        select * from task where taskId = #{taskId} and taskKind = ('2')
+        select * from task where taskId = #{taskId}
+        -- and taskKind = ('2')
     </select>
 
 
