@@ -29,19 +29,19 @@
 
 2.Launch IDEA and open the project folder 
 
-![image-08](D:\git-ReadMe\image-08.png)
+![image-08](https://user-images.githubusercontent.com/28086957/122929366-73bca080-d39d-11eb-8009-e606519fb1b6.png)
 
 3.run code
 
-![image-09](D:\git-ReadMe\image-09.png)
+![image-09](https://user-images.githubusercontent.com/28086957/122929408-8040f900-d39d-11eb-932b-6d44e36eb1f0.png)
 
 4.Waiting for IDEA to automatically configure the required environment
 
-![image-10](D:\git-ReadMe\image-10.png)
+![image-10](https://user-images.githubusercontent.com/28086957/122929421-833be980-d39d-11eb-896b-89d323759bb0.png)
 
 5.Run the project code again after the configuration is complete
 
-![image-11](D:\git-ReadMe\image-11.png)
+![image-11](https://user-images.githubusercontent.com/28086957/122929440-86cf7080-d39d-11eb-994e-8f0db5a4bba3.png)
 
 Successfully
 
