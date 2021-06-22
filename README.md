@@ -43,7 +43,7 @@
 
 ![image-11](https://user-images.githubusercontent.com/28086957/122929440-86cf7080-d39d-11eb-994e-8f0db5a4bba3.png)
 
-Successfully
+- Successfully
 
 ## API
 - [API文档]()
