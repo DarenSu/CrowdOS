@@ -49,10 +49,10 @@ Successfully
 - [API文档]()
 
 ## Android
-https://github.com/BluthLeee/CrowdOS/releases
+- https://github.com/BluthLeee/CrowdOS/releases
 
 ## CrowdChain
-https://github.com/JackKing-defier/CrowdChain/releases
+- https://github.com/JackKing-defier/CrowdChain/releases
 
 ## Bugs and feature requests
 
@@ -60,4 +60,4 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT)
+- [MIT](http://opensource.org/licenses/MIT)
