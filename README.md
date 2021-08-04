@@ -46,7 +46,7 @@
 - Successfully
 
 ## API
-- [API文档]()
+- [WeSense Back-stage Function Instruction.docx](https://github.com/DarenSu/CrowdOS/files/6610060/WesensingAPP.V2.docx)
 
 ## Android
 - https://github.com/BluthLeee/CrowdOS/releases
